@@ -1,0 +1,114 @@
+<article class="post simple" id="p{{tpl:EntryID}}" role="article">
+	<header>
+			<tpl:EntryIf has_featured_media="1">
+		<!-- # Featured media -->
+		<tpl:FeaturedMedia>
+		    <div class="post-featured-media {{tpl:FeaturedMediaType}}" id="featured-media-{{tpl:EntryID}}">
+		        <tpl:FeaturedMediaIf is_audio="1">
+		            {{tpl:include src="_audio_player.html"}}
+		        </tpl:FeaturedMediaIf>
+		        <tpl:FeaturedMediaIf is_video="1">
+		            <tpl:FeaturedMediaIf is_flv="0">
+		                {{tpl:include src="_video_player.html"}}
+		            {{tpl:else}}
+		                {{tpl:include src="_flv_player.html"}}
+		            </tpl:FeaturedMediaIf>
+		        </tpl:FeaturedMediaIf>
+		        <tpl:FeaturedMediaIf is_image="1">
+		            <img src="{{tpl:FeaturedMediaImageURL size="o"}}" alt="{{tpl:FeaturedMediaTitle}}" />
+		        </tpl:FeaturedMediaIf>
+		    </div>
+		</tpl:FeaturedMedia>
+			<!-- # {{tpl:EntryContent encode_html="1" remove_html="1" cut_string="300"}}
+			<tpl:EntryIfContentCut encode_html="1" remove_html="1" cut_string="300">
+				<span class="ellipsis">&nbsp;[&#8230;]</span>
+			</tpl:EntryIfContentCut> -->
+		</tpl:EntryIf>
+		<tpl:EntryIf has_featured_media="0">
+			<div class="image">
+				<img src="{{tpl:CategoryImageFile size="o" random="1"}}" alt="{{tpl:EntryCategory}}" />
+			</div>
+		</tpl:EntryIf>
+
+		<div class="post-premices">
+		<tpl:EntryIf has_category="1">
+			<p class="post-cat"><a href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></p>
+		</tpl:EntryIf>
+
+			<h2 class="post-title">{{tpl:EntryTitle encode_html="1"}}</h2>
+		</div>
+
+		<div class="post-meta">
+			<!-- # <p class="post-info">
+				<span class="post-author">{{tpl:lang By}} {{tpl:EntryAuthorLink}}, </span>
+				<span class="post-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate upddt="1" format="%e %B %Y"}}</time></span>
+				<span class="post-permalink"><a href="{{tpl:EntryURL}}">{{tpl:lang Permalink}}</a></span>
+				<tpl:EntryIf has_category="1">
+					<span class="post-cat"><tpl:EntryCategoriesBreadcrumb><a
+					href="{{tpl:CategoryURL}}">{{tpl:CategoryTitle encode_html="1"}}</a> › </tpl:EntryCategoriesBreadcrumb><a
+					href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></span>
+				</tpl:EntryIf>
+			</p> -->
+
+			<tpl:EntryTags>
+				<tpl:TagsHeader>
+					<ul class="post-tags-list">
+				</tpl:TagsHeader>
+					<li class="post-tags-item"><a href="{{tpl:TagURL}}">{{tpl:TagID}}</a></li>
+				<tpl:TagsFooter>
+					</ul>
+				</tpl:TagsFooter>
+			</tpl:EntryTags>
+		</div>
+	</header>
+
+	<!-- # --BEHAVIOR-- publicEntryBeforeContent -->
+	{{tpl:SysBehavior behavior="publicEntryBeforeContent"}}
+
+	<!-- # Entry with an excerpt -->
+	<tpl:EntryIf extended="1">
+		<div class="post-excerpt">{{tpl:EntryExcerpt}}</div>
+	</tpl:EntryIf>
+
+	<div class="post-content">{{tpl:EntryContent}}</div>
+
+	<!-- # Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox"></div>
+		<nav class="navlinks">
+		<tpl:EntryPrevious><p class="prev-post"><a href="{{tpl:EntryURL}}"
+		 title="{{tpl:EntryTitle encode_html="1"}}" class="prev">&lt; Article précédent</a></tpl:EntryPrevious></p>
+		<tpl:EntryNext> <span>-</span> <p class="next-post"><a href="{{tpl:EntryURL}}"
+		 title="{{tpl:EntryTitle encode_html="1"}}" class="next">Article suivant &gt;</a></tpl:EntryNext></p>
+	</nav>
+	<!-- # --BEHAVIOR-- publicEntryAfterContent -->
+		{{tpl:SysBehavior behavior="publicEntryAfterContent"}}
+
+<!-- # Attachments -->
+<!-- # <tpl:Attachments>
+	<tpl:AttachmentsHeader>
+		<footer class="post-attachments" id="attachments">
+			<h3 class="post-attachments-title">{{tpl:lang Attachments}}</h3>
+			<ul class="post-attachments-list">
+	</tpl:AttachmentsHeader>
+				<li class="post-attachments-item {{tpl:AttachmentType}}">
+					<tpl:AttachmentIf is_audio="1">
+						{{tpl:include src="_audio_player.html"}}
+					</tpl:AttachmentIf>
+					<tpl:AttachmentIf is_video="1">
+						<tpl:AttachmentIf is_flv="0">
+							{{tpl:include src="_video_player.html"}}
+						{{tpl:else}}
+							{{tpl:include src="_flv_player.html"}}
+						</tpl:AttachmentIf>
+					</tpl:AttachmentIf>
+					<tpl:AttachmentIf is_video="0" is_audio="0">
+						<a href="{{tpl:AttachmentURL}}"
+						 title="{{tpl:AttachmentFileName}} ({{tpl:AttachmentSize}})">{{tpl:AttachmentTitle}}</a>
+					</tpl:AttachmentIf>
+				</li>
+	<tpl:AttachmentsFooter>
+			</ul>
+		</footer>
+	</tpl:AttachmentsFooter>
+</tpl:Attachments> -->
+</article>

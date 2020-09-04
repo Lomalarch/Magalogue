@@ -1,0 +1,80 @@
+<div id="topcontainer-small">
+		<nav role="navigation">
+			<ul class="skip-links" id="prelude">
+				<li><a href="#main">{{tpl:lang To content}}</a></li>
+				<li><a href="#blognav">{{tpl:lang To menu}}</a></li>
+				<li><a href="#search-small">{{tpl:lang To search}}</a></li>
+			</ul>
+		</nav>
+		<header class="header-small">
+			<p class="UmiHomeLink"><a href="/"><img src="{{tpl:BlogThemeURL}}/img/umi_logo_small.png" alt="Un Max d’idées" /></a></p>
+    <div id="search-small">
+      <form method="get" action="{{tpl:BlogURL}}">
+        <fieldset>
+  	<p><input type="text" name="q" id="q" maxlength="255" placeholder="Rechercher…" size="10" />
+  	  <input type="submit" value="ok" class="submit" />
+  	</p>
+        </fieldset>
+      </form>
+    </div>
+    <div class="header__nav-small">
+			{{tpl:SimpleMenu class="nav"}}
+			<div class="follow-us-small">
+				<ul>
+					<li><a href="https://www.facebook.com/Un-max-did%C3%A9es-707087559316235/" title="Abonnez-vous à notre page Facebook"><img src="{{tpl:BlogThemeURL}}/img/fb-link.png" alt="Facebook" /></a></li>
+					<li><a href="https://twitter.com/unmaxdidees_com" title="Suivez-nous sur Twitter"><img src="{{tpl:BlogThemeURL}}/img/twitter-link.png" alt="Twitter" /></a></li>
+					<li><a href="https://fr.pinterest.com/unmaxdidees/" title="Épinglez-nous sur Pinterest"><img src="{{tpl:BlogThemeURL}}/img/pinterest-link.png" alt="Pinterest" /></a></li>
+					<li><a href="http://www.unmaxdidees.com/?multiBlogFeedPosts" title="Abonnez-vous au fil RSS"><img src="{{tpl:BlogThemeURL}}/img/rss-link.png" alt="RSS" /></a></li>
+				</ul>
+			</div>
+	<p class="site-baseline-small">{{tpl:BlogDescription}}</p>
+</div>	
+    </header>  
+</div>
+<div id="topcontainer">
+	<p class="site-baseline">{{tpl:BlogDescription}}</p>
+	<div id="balloon"></div>
+	<header class="header">
+		<nav role="navigation">
+			<ul class="skip-links" id="prelude">
+				<li><a href="#main">{{tpl:lang To content}}</a></li>
+				<li><a href="#blognav">{{tpl:lang To menu}}</a></li>
+				<li><a href="#search">{{tpl:lang To search}}</a></li>
+			</ul>
+		</nav>
+
+		<div class="header-band">
+			<div class="follow-us">
+				<ul>
+					<li><a href="https://www.facebook.com/Un-max-did%C3%A9es-707087559316235/" title="Abonnez-vous à notre page Facebook"><img src="{{tpl:BlogThemeURL}}/img/fb-link.png" alt="Facebook" /></a></li>
+					<li><a href="https://twitter.com/unmaxdidees_com" title="Suivez-nous sur Twitter"><img src="{{tpl:BlogThemeURL}}/img/twitter-link.png" alt="Twitter" /></a></li>
+					<li><a href="https://fr.pinterest.com/unmaxdidees/" title="Épinglez-nous sur Pinterest"><img src="{{tpl:BlogThemeURL}}/img/pinterest-link.png" alt="Pinterest" /></a></li>
+					<li><a href="{{tpl:BlogURL}}feed/atom" title="Abonnez-vous au fil RSS"><img src="{{tpl:BlogThemeURL}}/img/rss-link.png" alt="RSS" /></a></li>
+				</ul>
+			</div>
+			<div class="banner" role="banner">
+				<p class="HomeLink"><a href="/">{{tpl:BlogName}}</a></p>
+			</div>
+			<tpl:Widget id="search">
+			<setting name="title"></setting>
+			<setting name="placeholder">Rechercher…</setting>
+			<setting name="homeonly">0</setting>
+			<setting name="content_only">0</setting>
+			</tpl:Widget>
+
+			{{tpl:SimpleMenu class="nav header__nav"}}
+
+		</div>
+		<!-- #    <div id="toppub">
+	      <script type="text/javascript">
+	      //<![CDATA[
+	      OA_show('Topbanner');
+	      //]]>
+	      </script>
+	  	</div> -->
+
+	  	<!-- # --BEHAVIOR-- publicTopAfterContent -->
+	  	{{tpl:SysBehavior behavior="publicTopAfterContent"}}
+
+	</header>
+</div>

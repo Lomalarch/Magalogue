@@ -1,0 +1,354 @@
+.sidebar {
+    color: $mauve;
+    a:link, a:visited {
+        color: $mauve;
+     }
+}
+.univers-creatif .sidebar {
+    color: $light-blue;
+    a:link, a:visited {
+        color: $light-blue;
+   }
+}
+.puericulture .sidebar {
+    color: $light-mauve;
+    a:link, a:visited {
+        color: $light-mauve;
+   }
+}
+.decorer .sidebar {
+    color: $light-green;
+    a:link, a:visited {
+        color: $light-green;
+   }
+}
+.colorier-et-jouer .sidebar {
+    color: $dark-green;
+    a:link, a:visited {
+        color: $dark-green;
+   }
+}
+.les-indispensables .sidebar {
+    color: $orange;
+    a:link, a:visited {
+        color: $orange;
+   }
+}
+.jeux-et-jouets .sidebar {
+    color: $vermillon;
+    a:link, a:visited {
+        color: $vermillon;
+   }
+}
+.mode-enfants .sidebar {
+    color: $pale-blue;
+    a:link, a:visited {
+        color: $pale-blue;
+   }
+}
+.sidebar {
+    @include pie-clearfix;
+    padding-bottom: 2em;
+    background: $white;
+    // color: $mauve;
+    // margin-top: 3em;
+    // text-shadow: $white 0px -1px 0px;
+    a:link, a:visited {
+    //     color: $mauve;
+        border: none;
+    }
+    // a:hover, a:focus, a:active,
+    // li:hover, li:focus {
+    //     background-color: $mauve;
+    //     color: $white;
+    // }
+}
+// .blogName {
+//     height: 0;
+// }
+.site-title {
+    position: relative;
+    top: 1.5em;
+    height: 35px;
+    text-align: center;
+    font-size: .9em;
+    background: transparent url(img/CartoucheTitre.png) no-repeat center;
+    padding: 10px 0 0 5px;
+    margin-left: 15px;
+}
+a.site-title__link,
+a.site-title__link:link,
+a.site-title__link:visited
+a.site-title__link:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: $white;
+}
+.site-title__text {
+    color: $white;
+    // color: rgba(120, 120, 120, 0.8);
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 2px;
+    // text-shadow: 1px 4px 6px $white, 0 0 0 $black, 1px 4px 6px $white;
+}
+.blognav__title,
+.blogextra__title,
+.umi-home__title {
+    @include visually-hidden;
+}
+
+.blognav__widgets h3,
+.blognav__widgets h4,
+.blogextra__widgets h3,
+.blogextra__widgets h4 {
+    font-size: 1em;
+    // color: $white;
+    font-weight: bold;
+}
+.widget.tags h3 {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+// .blognav__widgets h3,
+.blogextra__widgets h3 {
+    text-transform: uppercase;
+}
+.blognav__widgets h4,
+.blogextra__widgets h4 {
+    margin-top: 1.5em;
+    margin-bottom: 0;
+}
+.blognav__widgets .widget, .blogextra__widgets .widget {
+    padding: 1em;
+    font-size: .875em;
+    line-height: 1.71429;
+   > ul {
+        @include no-bullets;
+        padding-left: 0;
+    }
+    > nav ul {
+        @include no-bullets;
+        padding-left: 0;
+    }
+}
+.accueil .blognav__widgets {
+    border: $dark-footer 1px solid;
+}
+.blognav__widgets {
+    border: $mauve 1px solid;
+}
+.univers-creatif .blognav__widgets {
+    border: $light-blue 1px solid;
+}
+.puericulture .blognav__widgets {
+    border: $light-mauve 1px solid;
+}
+.decorer .blognav__widgets {
+    border: $light-green 1px solid;
+}
+.colorier-et-jouer .blognav__widgets {
+    border: $dark-green 1px solid;
+}
+.les-indispensables .blognav__widgets {
+    border: $orange 1px solid;
+}
+.jeux-et-jouets .blognav__widgets {
+    border: $vermillon 1px solid;
+}
+.mode-enfants .blognav__widgets {
+    border: $pale-blue 1px solid;
+}
+.blognav__widgets {
+    padding: 2em 0 1em;
+    // border: $mauve 1px solid;
+}
+.blognav__widgets, .blogextra__widgets {
+    margin-left: 1.25em;
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: block;
+        padding: .25em;
+        // border-bottom: 1px solid $gray-medium;
+    }
+    // li ul {
+    // margin-left: -.25em;
+    // }
+    // // li li {
+    //     border-top: 1px solid $gray-medium;
+    //     border-bottom: none;
+    // }
+}
+#sidebar #search {
+    display: none;
+}
+#q {
+    width: 75%;
+}
+.accueil .categories nav li {
+        border-bottom: 1px solid $dark-footer;
+        font-size: 1.25em;
+        font-weight: normal;
+        padding: 0 15px .5em 0;
+        margin-bottom: .5em;
+        font-style: normal;
+}
+.categories h3.ui-accordion-header-collapsed, .cuisine .categories ul {
+        border-bottom: 1px solid $mauve;
+}
+.univers-creatif .categories h3.ui-accordion-header-collapsed, .univers-creatif .categories ul {
+        border-bottom: 1px solid $light-blue;
+}
+.puericulture .categories h3.ui-accordion-header-collapsed, .puericulture .categories ul {
+        border-bottom: 1px solid $light-mauve;
+}
+.decorer .categories h3.ui-accordion-header-collapsed, .decorer .categories ul {
+        border-bottom: 1px solid $light-green;
+}
+.colorier-et-jouer .categories h3.ui-accordion-header-collapsed, .colorier-et-jouer .categories ul {
+        border-bottom: 1px solid $dark-green;
+}
+.les-indispensables .categories h3.ui-accordion-header-collapsed, .les-indispensables .categories ul {
+        border-bottom: 1px solid $orange;
+}
+.jeux-et-jouets .categories h3.ui-accordion-header-collapsed, .jeux-et-jouets .categories ul {
+        border-bottom: 1px solid $vermillon;
+}
+.mode-enfants .categories h3.ui-accordion-header-collapsed, .mode-enfants .categories ul {
+        border-bottom: 1px solid $pale-blue;
+}
+.categories {
+    padding: 0 2em;
+    h3 {
+        font-size: 1.25em;
+        font-weight: normal;
+        padding: 0 15px .5em 0;
+        margin-bottom: .1em;
+    }
+    // h3.ui-accordion-header-collapsed {
+    //     background: transparent url(img/unfold-arrow.png) no-repeat center right;
+    // }
+    // h3.ui-accordion-header-active {
+    //     background: transparent url(img/fold-arrow.png) no-repeat center right;
+    // }
+    // h3.ui-accordion-header-collapsed, ul {
+    //     border-bottom: 1px solid $mauve;
+    // }
+    li {
+        font-style: italic;
+        font-size: .9em;
+        li {
+            border-bottom: none;
+            // font-size: .75em;
+        }
+    }
+}
+.category-current {
+    // margin-left: -2em;
+    background-color: $mauve;
+}
+.univers-creatif .category-current {
+    // margin-left: -2em;
+    background-color: $light-blue;
+}
+.puericulture .category-current {
+    // margin-left: -2em;
+    background-color: $light-mauve;
+}
+.decorer .category-current {
+    // margin-left: -2em;
+    background-color: $light-green;
+}
+.colorier-et-jouer .category-current {
+    // margin-left: -2em;
+    background-color: $dark-green;
+}
+.les-indispensables .category-current {
+    // margin-left: -2em;
+    background-color: $orange;
+}
+.jeux-et-jouets .category-current {
+    // margin-left: -2em;
+    background-color: $vermillon;
+}
+.mode-enfants .category-current {
+    // margin-left: -2em;
+    background-color: $pale-blue;
+}
+.sidebar .category-current {
+    // margin-left: -2em;
+    // background-color: $mauve;
+    color: white;
+    a:link, a:visited, a:hover, a:active {
+        color: white;
+    }
+}
+// .category-current ul {
+//     background-color: transparent;
+//     color: $mauve;
+// }
+ul.tags {
+    @include no-bullets;
+    padding-left: 0;
+    margin: 0;
+    line-height: 1.1;
+}
+.tags li {
+    display: inline;
+}
+.widget.tags ul {
+    line-height: 1.1;
+}
+li.tag-current {
+    background: yellow;
+}
+.tag0 { font-size: 100%; }
+.tag10 { font-size: 105%; }
+.tag20 { font-size: 110%; }
+.tag30 { font-size: 120%; }
+.tag40 { font-size: 130%; }
+.tag50 { font-size: 140%; }
+.tag60 { font-size: 150%; }
+.tag70 { font-size: 160%; }
+.tag80 { font-size: 170%; }
+.tag90 { font-size: 180%; }
+.tag100 { font-size: 190%; }
+.widget.tags {
+    text-align: right;
+    ul {
+        text-align: center;
+    }
+}
+.extratoppub {
+    margin: 1em -53px 0;
+    text-align: center;
+    background: transparent url(img/ours_deco.png) no-repeat right;
+}
+.extrasidepub {
+    float: left;
+    margin: 1em 1em 0 0;
+}
+.extrasidepubcontainer {
+    background-color: $gray-light;
+}
+
+/* .sidebar li:hover ul {
+    background-color: $gray-very-dark;
+} */
+@media screen and(min-width: ($small-screen + .1em)) and (max-width: $large-screen) {
+    .blognav__widgets .widget, .blogextra__widgets .widget {
+        width: 50%;
+        float: left;
+    }
+}
+@media screen and(min-width: ($large-screen + .1em)) and(max-width: $xlarge-screen) {
+    .blognav__widgets .widget, .blogextra__widgets .widget {
+        width: 33.33%;
+        float: left;
+    }
+}

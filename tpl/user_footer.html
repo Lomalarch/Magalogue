@@ -1,0 +1,75 @@
+ <script src="{{tpl:BlogThemeURL}}/js/jquery.tagcanvas.min.js" type="text/javascript"></script>
+ <!-- # <script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/jquery.lockfixed.min.js"></script> -->
+<script type="text/javascript">
+	$("html").addClass("js");
+	// Show/Hide main menu
+	$(".header__nav-small").
+	before('<button id="hamburger" type="button"><span class="visually-hidden">' + dotclear_berlin_navigation + '</span></button>').
+	toggle();
+	$("#hamburger").click(function() {
+		$(this).toggleClass("open");
+		$(".header__nav-small").toggle('easing');
+	});
+	// Show/Hide sidebar on small screens
+	$("#main").prepend('<button id="offcanvas-on" type="button"><span class="visually-hidden">' + dotclear_berlin_show_menu + '</span></button>');
+	$("#offcanvas-on").click(function() {
+		var btn = $('<button id="offcanvas-off" type="button"><span class="visually-hidden">' + dotclear_berlin_hide_menu + '</span></button>');
+		$("#wrapper").addClass("off-canvas");
+		$("#footer").addClass("off-canvas");
+		$("#sidebar").prepend(btn);
+		btn.click(function(evt) {
+			$("#wrapper").removeClass("off-canvas");
+			$("#footer").removeClass("off-canvas");
+			evt.target.remove();
+		});
+	});
+	$(document).ready(function() {
+		// totop scroll
+		$(window).scroll(function() {
+			if ($(this).scrollTop() != 0) {
+				$('#gotop').fadeIn();
+			} else {
+				$('#gotop').fadeOut();
+			}
+		});
+		$('#gotop').click(function(e) {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 800);
+			e.preventDefault();
+		});
+	});
+	// $.lockfixed(".header",{offset: {top:0, bottom: 620}});
+	var stickyOffset = $('.header').offset().top;
+	$(window).scroll(function(){
+		var sticky = $('.header'),
+		scroll = $(window).scrollTop();
+    
+  if (scroll >= stickyOffset) {
+  	sticky.addClass('fixed');
+  	$('.site-baseline').addClass('header-jump')
+  }
+  else {
+  	sticky.removeClass('fixed');
+   	$('.site-baseline').removeClass('header-jump') 	
+  }
+  //TagCloud
+   if( ! $('#myCanvas').tagcanvas({
+     textColour : '',
+     textFont : '',
+     shape : 'vcylinder',
+     outlineThickness : 1,
+     maxSpeed : 0.03,
+     depth : 0.75,
+     initial : [0.1,0]
+   })) {
+     // TagCanvas failed to load
+     $('#myCanvasContainer').hide();
+   }
+});
+</script>
+<tpl:SysIf  current_mode="post">
+<!-- #Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-532974207021c243"></script>
+</tpl:SysIf>
+
