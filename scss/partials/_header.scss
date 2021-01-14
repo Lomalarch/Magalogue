@@ -38,7 +38,7 @@
 .header a:link,
 .header a:visited,
 .header-small a:link,
-.header-small a:visited, {
+.header-small a:visited {
     // color: $primary-color;
     border-bottom-color: transparent;
 }
@@ -122,37 +122,35 @@
     @include zen-grid-item(3,10);
     background: transparent url(img/search-form.png) no-repeat;
     margin-top: 40px;
-    fieldset {
-        padding: 0 0 0 25px;
-        p {
-            margin: 0;
-        }
-        input {
-            border: none;
-            background: transparent;
-            padding: 8px 0;
-            color: $white;
-        }
-        input#q {
-            width: 155px;
-            // font-style: italic;
-            padding-left: 1.1em;
-        }
-        #q::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-            font-style: italic;
-        }
-        #q::-moz-placeholder { /* Firefox 19+ */
-            font-style: italic;
-            opacity: 1;
-        }
-        #q:-ms-input-placeholder { /* IE 10+ */
-            font-style: italic;
-        }
+    padding: 0 0 0 25px;
+    p {
+        margin: 0;
+    }
+    input {
+        border: none;
+        background: transparent;
+        padding: 8px 0;
+        color: $white;
+    }
+    input#q {
+        width: 155px;
+        // font-style: italic;
+        padding-left: 1.1em;
+    }
+    #q::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-style: italic;
+    }
+    #q::-moz-placeholder { /* Firefox 19+ */
+        font-style: italic;
+        opacity: 1;
+    }
+    #q:-ms-input-placeholder { /* IE 10+ */
+        font-style: italic;
+    }
 
-        input[type="submit"] {
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+    input[type="submit"] {
+        text-transform: uppercase;
+        font-weight: bold;
     }
 }
 #search-small {
@@ -269,7 +267,7 @@
     margin-top: 0;
     margin-bottom: rhythm(.5, 24px);
     color: $white;
-    background-color: #5fd2dc;
+    background-color: $dark-footer;
     text-align: center;
     padding: 1em 0;
 }

@@ -1,15 +1,16 @@
-<!-- # [if IE 6]>
-	<link rel="stylesheet" type="text/css" href="/themes/Umi2014/IEsucks.css" />
-<![endif]-->
-<!-- <link rel="stylesheet" type="text/css" href="{{tpl:BlogThemeURL}}/jquery-ui.css"> -->
+<!-- # <link rel="stylesheet" type="text/css" href="{{tpl:BlogThemeURL}}/jquery-ui.min.css"> -->
+<tpl:SysIf current_mode="default">
+  <link rel="stylesheet" type="text/css" href="{{tpl:BlogThemeURL}}/slick.css">
+  <link rel="stylesheet" type="text/css" href="{{tpl:BlogThemeURL}}/slick-theme.css">
+</tpl:SysIf>
 <style type="text/css">
   .site-title {
         background: transparent url({{tpl:BlogThemeURL}}/img/CartoucheTitre.png) no-repeat center;
   }
-  .categories h3.ui-accordion-header-active {
+  .categories li > ul > li.ui-accordion-header-active {
     background: transparent url({{tpl:BlogThemeURL}}/img/fold-arrow.png) no-repeat center right;
   }
-  .categories h3.ui-accordion-header-collapsed {
+  .categories li > ul > li.ui-accordion-header-collapsed {
     background: transparent url({{tpl:BlogThemeURL}}/img/unfold-arrow.png) no-repeat center right;
   }
   #gotop {

@@ -5,24 +5,24 @@ hr.umi-home-separator {
   clear: both;
   background: transparent;
 }
-#umi-home #main {
+.dc-home #main {
   float: none;
   width: 100%;
   margin: 0;
   padding: 0;
 }
-#umi-home .slider-thumb .image img {
+.dc-home .slider-thumb .image img {
   width: 100%;
   max-width: 100%;
 }
-#umi-home .slider-thumb .image {
+.dc-home .slider-thumb .image {
   height: 440px;
   overflow: hidden;
   @media screen and(max-width: ($medium-screen)) {
     height: 193px;
   }
 }
-#umi-home .slider-thumb .post-premices {
+.dc-home .slider-thumb .post-premices {
   margin: 2em 1em 2em;
   padding: 1em 4em;
   background-color: #fff;
@@ -44,24 +44,24 @@ hr.umi-home-separator {
     }
   }
 }
-#umi-home .slider-thumb {
+.dc-home .slider-thumb {
   position: relative;
 }
 @media screen and(min-width: ($xlarge-screen +.1em)) {
-  #umi-home .post {
+  .dc-home .post {
     float: left;
     width: 32%;
     margin-right: 2%;
   }
-  #umi-home .post.line-end {
+  .dc-home .post.line-end {
     float: right;
     margin-right: 0;
   }
-  #umi-home .post.odd {
+  .dc-home .post.odd {
     clear: none;
   }
 }
-#umi-home #lastnews .post-premices {
+.dc-home #lastnews .post-premices {
   padding: 1em 1.3em;
 }
 #lastnews .post-title {

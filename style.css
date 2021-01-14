@@ -190,8 +190,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 1px; }
 
 /*
-* Scut, a collection of Sass utilities to ease and improve our implementations of common style-code patterns.
-* v0.8.0
+* Scut, a collection of Sass utilities
+* to ease and improve our implementations of common style-code patterns.
+* v1.4.0
 * Docs at http://davidtheclark.github.io/scut
 */
 @font-face {
@@ -247,11 +248,11 @@ h6 {
   .accueil a:hover, .accueil a:active {
     border-color: #383648; }
 
-.cuisine a {
+a {
   color: #a54c70; }
-  .cuisine a:link, .cuisine a:visited {
+  a:link, a:visited {
     border-bottom: 1px solid #a54c70; }
-  .cuisine a:hover, .cuisine a:active {
+  a:hover, a:active {
     border-color: #a54c70; }
 
 .univers-creatif a {
@@ -656,32 +657,31 @@ body {
   box-sizing: border-box;
   word-wrap: break-word;
   background: transparent url(img/search-form.png) no-repeat;
-  margin-top: 40px; }
-  #search fieldset {
-    padding: 0 0 0 25px; }
-    #search fieldset p {
-      margin: 0; }
-    #search fieldset input {
-      border: none;
-      background: transparent;
-      padding: 8px 0;
-      color: #fff; }
-    #search fieldset input#q {
-      width: 155px;
-      padding-left: 1.1em; }
-    #search fieldset #q::-webkit-input-placeholder {
-      /* Chrome/Opera/Safari */
-      font-style: italic; }
-    #search fieldset #q::-moz-placeholder {
-      /* Firefox 19+ */
-      font-style: italic;
-      opacity: 1; }
-    #search fieldset #q:-ms-input-placeholder {
-      /* IE 10+ */
-      font-style: italic; }
-    #search fieldset input[type="submit"] {
-      text-transform: uppercase;
-      font-weight: bold; }
+  margin-top: 40px;
+  padding: 0 0 0 25px; }
+  #search p {
+    margin: 0; }
+  #search input {
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    color: #fff; }
+  #search input#q {
+    width: 155px;
+    padding-left: 1.1em; }
+  #search #q::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-style: italic; }
+  #search #q::-moz-placeholder {
+    /* Firefox 19+ */
+    font-style: italic;
+    opacity: 1; }
+  #search #q:-ms-input-placeholder {
+    /* IE 10+ */
+    font-style: italic; }
+  #search input[type="submit"] {
+    text-transform: uppercase;
+    font-weight: bold; }
 
 #search-small {
   float: left;
@@ -747,7 +747,7 @@ body {
   margin-top: 0;
   margin-bottom: 0.5em;
   color: #fff;
-  background-color: #5fd2dc;
+  background-color: #383648;
   text-align: center;
   padding: 1em 0; }
 
@@ -987,7 +987,6 @@ body {
 
 .footer__widgets {
   padding: 1em;
-  background-color: #fff;
   text-align: center;
   line-height: 2; }
 
@@ -1114,16 +1113,6 @@ body {
   .sidebar a:link, .sidebar a:visited {
     border: none; }
 
-.site-title {
-  position: relative;
-  top: 1.5em;
-  height: 35px;
-  text-align: center;
-  font-size: .9em;
-  background: transparent url(img/CartoucheTitre.png) no-repeat center;
-  padding: 10px 0 0 5px;
-  margin-left: 15px; }
-
 a.site-title__link,
 a.site-title__link:link,
 a.site-title__link:visited
@@ -1193,7 +1182,7 @@ a.site-title__link:hover {
 .accueil .blognav__widgets {
   border: #383648 1px solid; }
 
-.blognav__widgets {
+.blognav__widgets .categories {
   border: #a54c70 1px solid; }
 
 .univers-creatif .blognav__widgets {
@@ -1243,37 +1232,55 @@ a.site-title__link:hover {
   margin-bottom: .5em;
   font-style: normal; }
 
-.categories h3.ui-accordion-header-collapsed, .cuisine .categories ul {
+.categories li.ui-accordion-header-collapsed, .cuisine .categories ul {
   border-bottom: 1px solid #a54c70; }
 
-.univers-creatif .categories h3.ui-accordion-header-collapsed, .univers-creatif .categories ul {
-  border-bottom: 1px solid #00a0d3; }
-
+/* .univers-creatif .categories h3.ui-accordion-header-collapsed, .univers-creatif .categories ul {
+        border-bottom: 1px solid $light-blue;
+}
 .puericulture .categories h3.ui-accordion-header-collapsed, .puericulture .categories ul {
-  border-bottom: 1px solid #b397ce; }
-
+        border-bottom: 1px solid $light-mauve;
+}
 .decorer .categories h3.ui-accordion-header-collapsed, .decorer .categories ul {
-  border-bottom: 1px solid #27be95; }
-
+        border-bottom: 1px solid $light-green;
+}
 .colorier-et-jouer .categories h3.ui-accordion-header-collapsed, .colorier-et-jouer .categories ul {
-  border-bottom: 1px solid #008000; }
-
+        border-bottom: 1px solid $dark-green;
+}
 .les-indispensables .categories h3.ui-accordion-header-collapsed, .les-indispensables .categories ul {
-  border-bottom: 1px solid #ea7a17; }
-
+        border-bottom: 1px solid $orange;
+}
 .jeux-et-jouets .categories h3.ui-accordion-header-collapsed, .jeux-et-jouets .categories ul {
-  border-bottom: 1px solid #d59ad4; }
-
+        border-bottom: 1px solid $vermillon;
+}
 .mode-enfants .categories h3.ui-accordion-header-collapsed, .mode-enfants .categories ul {
-  border-bottom: 1px solid #7bb4f0; }
-
+        border-bottom: 1px solid $pale-blue;
+} */
 .categories {
-  padding: 0 2em; }
+  padding: 0 2em;
+  margin-top: 1em;
+  /* .ui-accordion a {
+      display:block;
+  } */ }
   .categories h3 {
     font-size: 1.25em;
+    color: #fff;
     font-weight: normal;
-    padding: 0 15px .5em 0;
-    margin-bottom: .1em; }
+    position: relative;
+    top: -30px;
+    height: 35px;
+    text-align: center;
+    background: transparent url(img/CartoucheTitre.png) no-repeat center;
+    padding: 6px 0 0 5px;
+    margin: auto 0 -30px 1.5em; }
+  .categories h4 {
+    margin: 0; }
+  .categories span.ui-accordion-header-collapsed {
+    background: transparent url(img/unfold-arrow.png) no-repeat center right; }
+  .categories span.ui-accordion-header-active {
+    background: transparent url(img/fold-arrow.png) no-repeat center right; }
+  .categories span.ui-accordion-header-collapsed {
+    border-bottom: 1px solid #a54c70; }
   .categories li {
     font-style: italic;
     font-size: .9em; }
@@ -2042,6 +2049,94 @@ button.submit:active, button.preview:active {
 .dc-archive-month #content-info h2 {
   margin-left: 2em;
   margin-top: .5em; }
+
+hr.umi-home-separator {
+  border-top: 1px double #cdcdcd;
+  border-bottom: 1px double #cdcdcd;
+  height: 5px;
+  clear: both;
+  background: transparent; }
+
+.dc-home #main {
+  float: none;
+  width: 100%;
+  margin: 0;
+  padding: 0; }
+
+.dc-home .slider-thumb .image img {
+  width: 100%;
+  max-width: 100%; }
+
+.dc-home .slider-thumb .image {
+  height: 440px;
+  overflow: hidden; }
+  @media screen and (max-width: 40em) {
+    .dc-home .slider-thumb .image {
+      height: 193px; } }
+
+.dc-home .slider-thumb .post-premices {
+  margin: 2em 1em 2em;
+  padding: 1em 4em;
+  background-color: #fff;
+  position: absolute;
+  width: 33%;
+  top: 132px;
+  left: 73px; }
+  @media screen and (max-width: 40em) {
+    .dc-home .slider-thumb .post-premices {
+      margin: 0;
+      top: 5%;
+      left: 5%;
+      width: 50%;
+      padding: 1em 15px; }
+      .dc-home .slider-thumb .post-premices .post-title {
+        font-size: 1.25em; }
+      .dc-home .slider-thumb .post-premices .post-cat {
+        margin-bottom: .5em; } }
+
+.dc-home .slider-thumb {
+  position: relative; }
+
+@media screen and (min-width: 76.1em) {
+  .dc-home .post {
+    float: left;
+    width: 32%;
+    margin-right: 2%; }
+
+  .dc-home .post.line-end {
+    float: right;
+    margin-right: 0; }
+
+  .dc-home .post.odd {
+    clear: none; } }
+.dc-home #lastnews .post-premices {
+  padding: 1em 1.3em; }
+
+#lastnews .post-title {
+  font-size: 1.35em; }
+
+#lastnews .post-cat {
+  margin: 0 0 1em; }
+
+.section-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1em;
+  background: transparent url(img/gray-line.png) repeat-x center;
+  color: #444;
+  letter-spacing: 2px; }
+
+.section-title span {
+  background: white;
+  padding: 0 50px; }
+
+.bottomwidgets {
+  margin-top: 2em; }
+
+.bottomwidget {
+  float: left;
+  width: 48.5%;
+  margin-right: 1%; }
 
 /** --------------------------------------------------
     Modules
