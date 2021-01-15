@@ -18,9 +18,9 @@
 {{tpl:SysBehavior behavior="publicFooterContent"}}
 <script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/jquery-ui.min.js"></script>
 <script type="text/javascript">
+	var c = 0;
 	if ($(".categories li.category-current")[0]){
-		var c = -1;
-		$(".category-current").parent().prev().addClass("category-current-below");
+		$(".category-current").parent().addClass("category-current-below");
 		$(".categories ul:has(ul)").each(function(){
 			c++;
 			if ($(this).hasClass("category-current-below")) {
@@ -28,18 +28,6 @@
 			}
 		});
 	}
-	else {
-		var c = 0;
-	}
-	// $(".categories > ul > li").addClass("level1");
-/*	$(".category-current").parent().prev().css("category-current-below");
-	while ($(".categories > ul > li")) {
-		c++;
-		if ($("li.category-current") == true) {
-			break;
-		}
-	}
-*/
 	$(function() {
 		$(".categories li:has(ul) >  a").wrap('<h4></h4>');
 		$(".categories").accordion({
@@ -52,10 +40,6 @@
 		$(".categories li:has(ul) >  a").click(function() {
 			window.location($(this).attr("href"));
 		});
-		/* $( ".categories li:has(ul) >  a" ).click(function(event){
-			event.stopPropagation();
-			//event.preventDefault();
-		}); */
 	});
 	$(".category-current").parent().prev().addClass("category-current-below");
 	// $(".post-tags-item").parent().css("background-color","yellow");

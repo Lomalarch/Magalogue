@@ -65,9 +65,9 @@
 					<tpl:Block name="page-wrapper">
 						<main id="main" role="main">
 							<tpl:Block name="wrapper-main">
-								<!-- #<tpl:Block name="main-breadcrumb">
-								<p class="breadcrumb"><a href="/">Accueil</a> › <a href="{{tpl:BlogURL}}">{{tpl:BlogName}}</a><tpl:SysIf current_mode="post"><tpl:EntryCategoriesBreadcrumb> › <a href="{{tpl:CategoryURL}}">{{tpl:CategoryTitle encode_html="1"}}</a></tpl:EntryCategoriesBreadcrumb></tpl:SysIf></p>
-								</tpl:Block> -->
+								<tpl:Block name="main-breadcrumb">
+									{{tpl:Breadcrumb}}
+								</tpl:Block>
 								<section id="content">
 									<tpl:Block name="main-content">
 

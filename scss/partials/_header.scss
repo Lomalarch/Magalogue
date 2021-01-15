@@ -19,11 +19,11 @@
 }
 #balloon {
     position: absolute;
-    top: 0;
+    top: 16px;
     left: 50%;
     max-width: 72em;
     width: 72em;
-    margin-left: -36em;
+    margin-left: -43em;
     height: 165px;
     background: transparent url(img/ballon.png) no-repeat top right;
     // z-index: 2;
@@ -264,8 +264,8 @@
     // font-family: $sans-serif;
     font-style: italic;
     font-weight: bold;
-    margin-top: 0;
-    margin-bottom: rhythm(.5, 24px);
+    margin: 0 auto;
+    // margin-bottom: rhythm(.5, 24px);
     color: $white;
     background-color: $dark-footer;
     text-align: center;

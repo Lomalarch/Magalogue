@@ -132,33 +132,12 @@ a.site-title__link:hover {
 .blognav__widgets .categories {
     border: $mauve 1px solid;
 }
-.univers-creatif .blognav__widgets {
-    border: $light-blue 1px solid;
-}
-.puericulture .blognav__widgets {
-    border: $light-mauve 1px solid;
-}
-.decorer .blognav__widgets {
-    border: $light-green 1px solid;
-}
-.colorier-et-jouer .blognav__widgets {
-    border: $dark-green 1px solid;
-}
-.les-indispensables .blognav__widgets {
-    border: $orange 1px solid;
-}
-.jeux-et-jouets .blognav__widgets {
-    border: $vermillon 1px solid;
-}
-.mode-enfants .blognav__widgets {
-    border: $pale-blue 1px solid;
-}
 .blognav__widgets {
     padding: 2em 0 1em;
     // border: $mauve 1px solid;
 }
 .blognav__widgets, .blogextra__widgets {
-    margin-left: 1.25em;
+    margin-left: .75em;
     ul {
         margin: 0;
         padding: 0;
@@ -182,17 +161,17 @@ a.site-title__link:hover {
 #q {
     width: 75%;
 }
-.accueil .categories nav li {
+/* .accueil .categories nav li {
         border-bottom: 1px solid $dark-footer;
         font-size: 1.25em;
         font-weight: normal;
         padding: 0 15px .5em 0;
         margin-bottom: .5em;
         font-style: normal;
-}
-.categories li.ui-accordion-header-collapsed, .cuisine .categories ul {
-        border-bottom: 1px solid $mauve;
-}
+} */
+/* .categories h4.ui-accordion-header-collapsed, .categories ul ul {
+        border-bottom: 1px solid $light-mauve;
+} */
 /* .univers-creatif .categories h3.ui-accordion-header-collapsed, .univers-creatif .categories ul {
         border-bottom: 1px solid $light-blue;
 }
@@ -219,6 +198,7 @@ a.site-title__link:hover {
     margin-top: 1em;
     h3 {
         font-size: 1.25em;
+        text-transform: uppercase;
         color: #fff;
         font-weight: normal;
         position: relative;
@@ -227,8 +207,8 @@ a.site-title__link:hover {
         text-align: center;
         // font-size: .9em;
         background: transparent url(img/CartoucheTitre.png) no-repeat center;
-        padding: 6px 0 0 5px;
-        margin: auto 0 -30px 1.5em;
+        padding-top: 6px;
+        margin: auto 0 -30px 0;
         // margin-bottom:;
     }
     /* .ui-accordion a {
@@ -237,20 +217,26 @@ a.site-title__link:hover {
     h4 {
         margin: 0;
     }
-    span.ui-accordion-header-collapsed {
+    h4.ui-accordion-header-collapsed {
         background: transparent url(img/unfold-arrow.png) no-repeat center right;
     }
-    span.ui-accordion-header-active {
+    h4.ui-accordion-header-active {
         background: transparent url(img/fold-arrow.png) no-repeat center right;
     }
-    span.ui-accordion-header-collapsed {
-        border-bottom: 1px solid $mauve;
+    h4.ui-accordion-header-collapsed, ul ul {
+        padding-bottom: 5px;
+        border-bottom: 1px solid $light-mauve;
     }
     li {
-        font-style: italic;
-        font-size: .9em;
-        li {
-            border-bottom: none;
+        font-size: 1.1em;
+        font-style: normal;
+        font-weight: bold;
+/*         font-style: italic;
+        font-size: .9em; */
+        ul li {
+            font-style: italic;
+            font-size: .9em;
+            // border-bottom: none;
             // font-size: .75em;
         }
     }
@@ -312,7 +298,7 @@ ul.tags {
     line-height: 1.1;
 }
 li.tag-current {
-    background: yellow;
+    background: $light-mauve;
 }
 .tag0 { font-size: 100%; }
 .tag10 { font-size: 105%; }

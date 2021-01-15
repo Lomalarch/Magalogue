@@ -24,7 +24,7 @@ hr.umi-home-separator {
 }
 .dc-home .slider-thumb .post-premices {
   margin: 2em 1em 2em;
-  padding: 1em 4em;
+  padding: 1em 3em;
   background-color: #fff;
   position: absolute;
   width: 33%;
@@ -47,11 +47,28 @@ hr.umi-home-separator {
 .dc-home .slider-thumb {
   position: relative;
 }
+.dc-home .slick-dots {
+  bottom: 15px;
+  li button::before {
+    color: #fff;
+    font-size: 15px;
+    opacity: 100%;
+  }
+  li.slick-active button::before {
+    color: $mauve;
+  }
+}
+.dc-home #lastnews {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 @media screen and(min-width: ($xlarge-screen +.1em)) {
   .dc-home .post {
-    float: left;
+    /* float: left; */
     width: 32%;
-    margin-right: 2%;
+    //flex-shrink: 0;
+    /* margin-right: 2%; */
   }
   .dc-home .post.line-end {
     float: right;

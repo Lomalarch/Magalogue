@@ -23,7 +23,7 @@
 @import "partials/content";
 @import "partials/post";
 @import "partials/archive";
-@import "partials/umi-home";
+@import "partials/home";
 
 /** --------------------------------------------------
     Modules
@@ -31,6 +31,6 @@
 @import "modules/off-canvas";
 
 /*** dev only ***/
-#main {
-    //@include debug-vertical-alignment;
-}
+// #main {
+//     //@include debug-vertical-alignment;
+// }

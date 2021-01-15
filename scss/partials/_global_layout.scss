@@ -26,7 +26,7 @@ body {
 }
 @media screen and(min-width: ($xlarge-screen + .1em)) and(max-width: 110em) {
     #page, #bottomlinks, .header-band/* , .blogName */ {
-        max-width: $xlarge-screen;
+        max-width: 61.25em;
     }
     #main {
         @include zen-grid-item(9,1)
@@ -39,11 +39,11 @@ body {
     }
 }
 @media screen and(min-width: 110.1em) {
-    body {
-        font-size: .8em;
-    }
+    // body {
+    //     font-size: .8em;
+    // }
     #page, #bottomlinks, .header-band/* , .blogName */ {
-        max-width: $xlarge-screen;
+        max-width: 61.25em;
     }
     /*.header {
         max-width: zen-grid-item-width(8);

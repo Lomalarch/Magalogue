@@ -47,8 +47,9 @@ $box-sizing-polyfill-path: "scripts";
 // =Typographie
 // ========================================================================== //
 
-@include font-face(Lato, font-files("Lato-Regular.ttf"));
-@include font-face(playfair-display, font-files("PlayfairDisplay-Regular.otf"));
+@include font-face(Lato, font-files("lato-regular-webfont.woff2"));
+@include font-face(playfair-display, font-files("playfairdisplay-regular-webfont.woff2"));
+@include font-face(slick, font-files("slick.woff"));
 
 $sans-serif: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 $serif: playfair-display, "New Century Schoolbook","Century Schoolbook","Century Schoolbook L", Georgia, serif;
@@ -67,7 +68,7 @@ $blue: #267daf;
 $red: #d52125;
 $mauve: #a54c70;
 $light-blue: #00a0d3;
-$light-mauve: #b397ce;
+$light-mauve: rgba(165,76,112,.3);
 $vermillon: #d59ad4;
 $orange: #ea7a17;
 $light-green: #27be95;
@@ -111,4 +112,4 @@ $x-small-screen: 20em; // 320
 $small-screen:   30em; // 480
 $medium-screen:  40em; // 640
 $large-screen:   60em; // 960
-$xlarge-screen:  76em; // 1024
+$xlarge-screen:  80em; // 1280
