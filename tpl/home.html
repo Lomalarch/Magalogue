@@ -3,7 +3,7 @@
 </tpl:Block>
 <tpl:Block name="main-content">
 
-	<h1 class="umi-home__title">Sélection du moment</h1>
+	<h1 class="home__title">Sélection du moment</h1>
 	<section id="topshelf">
         <tpl:Entries selected="1">
             <div class="slider-thumb">
@@ -47,7 +47,7 @@
 	<section id="lastnews">
         <tpl:Categories>
             <tpl:Entries lastn="1">
-                <div class="post umi-home {{tpl:EntryIfOdd}}">
+                <div class="post home {{tpl:EntryIfOdd}}">
                     <tpl:EntryIf has_featured_media="1">
                         <!-- # Featured media -->
                         <tpl:FeaturedMedia>
@@ -85,10 +85,10 @@
             </tpl:Entries>
         </tpl:Categories>
 	</section>
-	<hr class="umi-home-separator" />
-<!-- #	<h1 class="umi-home__title">Et ailleurs…</h1>
+	<hr class="home-separator" />
+<!-- #	<h1 class="home__title">Et ailleurs…</h1>
 	<section class="bottomwidgets">
-		<h1 class="umi-home__title">Et ailleurs…</h1>
+		<h1 class="home__title">Et ailleurs…</h1>
 		{{tpl:Widgets type="custom"}}
 	</section>
  -->

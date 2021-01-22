@@ -1,7 +1,7 @@
 <?php
 # -- BEGIN LICENSE BLOCK ---------------------------------------
-# This file is part of Umi2017,
-# a theme adapted from Berlin for Dotclear
+# This file is part of Magalogue,
+# a theme for Dotclear
 #
 # Copyright (c) Noé Cendrier
 # Licensed under the GPL version 2.0 license.
@@ -9,6 +9,8 @@
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 #
 # -- END LICENSE BLOCK -----------------------------------------
+namespace themes\magalogue;
+
 if (!defined('DC_RC_PATH')) { return; }
 
 l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
@@ -16,10 +18,10 @@ l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
 
 $core->url->register('feed/imagesfeed','feed/imagesfeed','^feed/imagesfeed$',array('FeaturedImageFeed','imagesfeed'));
 $core->url->register('feed/selectedfeed','feed/selectedfeed','^feed/selectedfeed$',array('FeaturedImageFeed','selectedfeed'));
-$core->addBehavior('publicHeadContent',array('behaviorUmiTheme','publicHeadContent'));
-$core->addBehavior('publicEntryAfterContent',array('behaviorUmiTheme','publicEntryAfterContent'));
+$core->addBehavior('publicHeadContent',array('behaviorMagalogueTheme','publicHeadContent'));
+$core->addBehavior('publicEntryAfterContent',array('behaviorMagalogueTheme','publicEntryAfterContent'));
 
-class behaviorUmiTheme
+class behaviorMagalogueTheme
 {
 	public static function publicHeadContent()
 	{
