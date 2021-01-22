@@ -48,42 +48,6 @@ h6 {
     }
 }
 a {
-    color: $mauve;
-    &:link, &:visited {
-        border-bottom: 1px solid $mauve;
-    }
-    &:hover, &:active {
-        border-color: $mauve;
-    }
-}
-.univers-creatif a {
-    color: $light-blue;
-    &:link, &:visited {
-        border-bottom: 1px solid $light-blue;
-    }
-    &:hover, &:active {
-        border-color: $light-blue;
-    }
-}
-.puericulture a {
-    color: $light-mauve;
-    &:link, &:visited {
-        border-bottom: 1px solid $light-mauve;
-    }
-    &:hover, &:active {
-        border-color: $light-mauve;
-    }
-}
-.jeux-et-jouets a {
-    color: $vermillon;
-    &:link, &:visited {
-        border-bottom: 1px solid $vermillon;
-    }
-    &:hover, &:active {
-        border-color: $vermillon;
-    }
-}
-.colorier-et-jouer a {
     color: $dark-green;
     &:link, &:visited {
         border-bottom: 1px solid $dark-green;
@@ -92,33 +56,69 @@ a {
         border-color: $dark-green;
     }
 }
-.les-indispensables a {
-    color: $orange;
-    &:link, &:visited {
-        border-bottom: 1px solid $orange;
-    }
-    &:hover, &:active {
-        border-color: $orange;
-    }
-}
-.mode-enfants a {
-    color: $pale-blue;
-    &:link, &:visited {
-        border-bottom: 1px solid $pale-blue;
-    }
-    &:hover, &:active {
-        border-color: $pale-blue;
-    }
-}
-.decorer a {
-    color: $light-green;
-    &:link, &:visited {
-        border-bottom: 1px solid $light-green;
-    }
-    &:hover, &:active {
-        border-color: $light-green;
-    }
-}
+// .univers-creatif a {
+//     color: $light-blue;
+//     &:link, &:visited {
+//         border-bottom: 1px solid $light-blue;
+//     }
+//     &:hover, &:active {
+//         border-color: $light-blue;
+//     }
+// }
+// .puericulture a {
+//     color: $light-green;
+//     &:link, &:visited {
+//         border-bottom: 1px solid $light-green;
+//     }
+//     &:hover, &:active {
+//         border-color: $light-green;
+//     }
+// }
+// .jeux-et-jouets a {
+//     color: $vermillon;
+//     &:link, &:visited {
+//         border-bottom: 1px solid $vermillon;
+//     }
+//     &:hover, &:active {
+//         border-color: $vermillon;
+//     }
+// }
+// .colorier-et-jouer a {
+//     color: $dark-green;
+//     &:link, &:visited {
+//         border-bottom: 1px solid $dark-green;
+//     }
+//     &:hover, &:active {
+//         border-color: $dark-green;
+//     }
+// }
+// .les-indispensables a {
+//     color: $orange;
+//     &:link, &:visited {
+//         border-bottom: 1px solid $orange;
+//     }
+//     &:hover, &:active {
+//         border-color: $orange;
+//     }
+// }
+// .mode-enfants a {
+//     color: $pale-blue;
+//     &:link, &:visited {
+//         border-bottom: 1px solid $pale-blue;
+//     }
+//     &:hover, &:active {
+//         border-color: $pale-blue;
+//     }
+// }
+// .decorer a {
+//     color: $light-green;
+//     &:link, &:visited {
+//         border-bottom: 1px solid $light-green;
+//     }
+//     &:hover, &:active {
+//         border-color: $light-green;
+//     }
+// }
 a {
     // color: $link;
     text-decoration: none;

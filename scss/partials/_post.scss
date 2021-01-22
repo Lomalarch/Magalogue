@@ -33,6 +33,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: scut-em(12,14);
+    width: 100%;
 }
 .post div.image, .related-entry .featured-media {
     height: 264px;
@@ -60,9 +61,14 @@
     // position: relative;
     // top: -5em;
     margin: -5em 1em 2em;
-    padding: 1em 4em 0;
     background-color: $white;
     position: relative;
+}
+.post-premices {
+    padding: 1em 4em 0;
+}
+.related-contents {
+    padding: 1em 2em 0;
 }
 .post-meta {
     text-align: center;
@@ -92,38 +98,38 @@
         line-height: 2;
     }
 }
-.cuisine .post-cat a:link, a:visited {
-    border-bottom-color: $mauve;
-}
-.univers-creatif  .post-cat a:link, a:visited {
-    border-bottom-color: $light-blue;
-}
-.puericulture  .post-cat a:link, a:visited {
-    border-bottom-color: $light-mauve;
-}
-.mode-enfants  .post-cat a:link, a:visited {
-    border-bottom-color: $pale-blue;
-}
-.decorer  .post-cat a:link, a:visited {
-    border-bottom-color: $light-green;
-}
-.colorier-et-jouer .post-cat a:link, a:visited {
-    border-bottom-color: $dark-green;
-}
-.les-indispensables .post-cat a:link, a:visited {
-    border-bottom-color: $orange;
-}
-.jeux-et-jouets .post-cat a:link, a:visited {
-    border-bottom-color: $vermillon;
-}
+// .cuisine .post-cat a:link, a:visited {
+//     border-bottom-color: $dark-green;
+// }
+// .univers-creatif  .post-cat a:link, a:visited {
+//     border-bottom-color: $light-blue;
+// }
+// .puericulture  .post-cat a:link, a:visited {
+//     border-bottom-color: $light-mauve;
+// }
+// .mode-enfants  .post-cat a:link, a:visited {
+//     border-bottom-color: $pale-blue;
+// }
+// .decorer  .post-cat a:link, a:visited {
+//     border-bottom-color: $light-green;
+// }
+// .colorier-et-jouer .post-cat a:link, a:visited {
+//     border-bottom-color: $dark-green;
+// }
+// .les-indispensables .post-cat a:link, a:visited {
+//     border-bottom-color: $orange;
+// }
+// .jeux-et-jouets .post-cat a:link, a:visited {
+//     border-bottom-color: $vermillon;
+// }
 .post-tags-list {
     @include inline-block-list-container;
     margin: 2.5em 0 3.5em;
 }
-.cuisine .post-tags-item {
-    background-color: $mauve;
+.post-tags-item {
+    background-color: $dark-green;
 }
-.univers-creatif .post-tags-item {
+/* .univers-creatif .post-tags-item {
     background-color: $light-blue;
 }
 .puericulture .post-tags-item {
@@ -143,13 +149,14 @@
 }
 .jeux-et-jouets .post-tags-item {
     background-color: $vermillon;
-}
+} */
 .post-tags-item {
     @include inline-block-list-item();
     // vertical-align: top;
     // a:after { content: ","}
     // &:last-child a:after { content: ""}
-    padding: 1px 5px;
+    padding: 1px 10px;
+    border-radius: 5px;
     // background-color: $mauve;
     margin: 0 .25em 1em;
     a {
@@ -201,7 +208,7 @@
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: .15rem;
-        border: 1px solid $mauve;
+        border: 1px solid $dark-green;
     }
 }
 .footnotes {

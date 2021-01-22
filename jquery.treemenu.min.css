@@ -1,0 +1,1 @@
+.treemenu li{list-style:none}.treemenu .toggler{cursor:pointer;display:block;float:right;}.treemenu /* .toggler:before{display:inline-block;margin-right:5px}li.tree-empty>.toggler{opacity:.3;cursor:default} *//* li.tree-empty>.toggler:before{content:"\2212"} */li.tree-closed>.toggler:before{content:"\2228"}li.tree-opened>.toggler:before{content:"\2227"}

@@ -1,51 +1,51 @@
 .sidebar {
-    color: $mauve;
-    a:link, a:visited {
-        color: $mauve;
-     }
-}
-.univers-creatif .sidebar {
-    color: $light-blue;
-    a:link, a:visited {
-        color: $light-blue;
-   }
-}
-.puericulture .sidebar {
-    color: $light-mauve;
-    a:link, a:visited {
-        color: $light-mauve;
-   }
-}
-.decorer .sidebar {
-    color: $light-green;
-    a:link, a:visited {
-        color: $light-green;
-   }
-}
-.colorier-et-jouer .sidebar {
     color: $dark-green;
     a:link, a:visited {
         color: $dark-green;
-   }
+     }
 }
-.les-indispensables .sidebar {
-    color: $orange;
-    a:link, a:visited {
-        color: $orange;
-   }
-}
-.jeux-et-jouets .sidebar {
-    color: $vermillon;
-    a:link, a:visited {
-        color: $vermillon;
-   }
-}
-.mode-enfants .sidebar {
-    color: $pale-blue;
-    a:link, a:visited {
-        color: $pale-blue;
-   }
-}
+// .univers-creatif .sidebar {
+//     color: $light-blue;
+//     a:link, a:visited {
+//         color: $light-blue;
+//    }
+// }
+// .puericulture .sidebar {
+//     color: $light-mauve;
+//     a:link, a:visited {
+//         color: $light-mauve;
+//    }
+// }
+// .decorer .sidebar {
+//     color: $light-green;
+//     a:link, a:visited {
+//         color: $light-green;
+//    }
+// }
+// .colorier-et-jouer .sidebar {
+//     color: $dark-green;
+//     a:link, a:visited {
+//         color: $dark-green;
+//    }
+// }
+// .les-indispensables .sidebar {
+//     color: $orange;
+//     a:link, a:visited {
+//         color: $orange;
+//    }
+// }
+// .jeux-et-jouets .sidebar {
+//     color: $vermillon;
+//     a:link, a:visited {
+//         color: $vermillon;
+//    }
+// }
+// .mode-enfants .sidebar {
+//     color: $pale-blue;
+//     a:link, a:visited {
+//         color: $pale-blue;
+//    }
+// }
 .sidebar {
     @include pie-clearfix;
     padding-bottom: 2em;
@@ -130,7 +130,7 @@ a.site-title__link:hover {
     border: $dark-footer 1px solid;
 }
 .blognav__widgets .categories {
-    border: $mauve 1px solid;
+    border: $dark-green 1px solid;
 }
 .blognav__widgets {
     padding: 2em 0 1em;
@@ -223,9 +223,9 @@ a.site-title__link:hover {
     h4.ui-accordion-header-active {
         background: transparent url(img/fold-arrow.png) no-repeat center right;
     }
-    h4.ui-accordion-header-collapsed, ul ul {
+    h4.ui-accordion-header-collapsed, ul ul, li.tree-closed {
         padding-bottom: 5px;
-        border-bottom: 1px solid $light-mauve;
+        border-bottom: 1px solid $light-green;
     }
     li {
         font-size: 1.1em;
@@ -236,6 +236,7 @@ a.site-title__link:hover {
         ul li {
             font-style: italic;
             font-size: .9em;
+            padding-left: .5em;
             // border-bottom: none;
             // font-size: .75em;
         }
@@ -243,36 +244,36 @@ a.site-title__link:hover {
 }
 .category-current {
     // margin-left: -2em;
-    background-color: $mauve;
-}
-.univers-creatif .category-current {
-    // margin-left: -2em;
-    background-color: $light-blue;
-}
-.puericulture .category-current {
-    // margin-left: -2em;
-    background-color: $light-mauve;
-}
-.decorer .category-current {
-    // margin-left: -2em;
-    background-color: $light-green;
-}
-.colorier-et-jouer .category-current {
-    // margin-left: -2em;
     background-color: $dark-green;
 }
-.les-indispensables .category-current {
-    // margin-left: -2em;
-    background-color: $orange;
-}
-.jeux-et-jouets .category-current {
-    // margin-left: -2em;
-    background-color: $vermillon;
-}
-.mode-enfants .category-current {
-    // margin-left: -2em;
-    background-color: $pale-blue;
-}
+// .univers-creatif .category-current {
+//     // margin-left: -2em;
+//     background-color: $light-blue;
+// }
+// .puericulture .category-current {
+//     // margin-left: -2em;
+//     background-color: $light-mauve;
+// }
+// .decorer .category-current {
+//     // margin-left: -2em;
+//     background-color: $light-green;
+// }
+// .colorier-et-jouer .category-current {
+//     // margin-left: -2em;
+//     background-color: $dark-green;
+// }
+// .les-indispensables .category-current {
+//     // margin-left: -2em;
+//     background-color: $orange;
+// }
+// .jeux-et-jouets .category-current {
+//     // margin-left: -2em;
+//     background-color: $vermillon;
+// }
+// .mode-enfants .category-current {
+//     // margin-left: -2em;
+//     background-color: $pale-blue;
+// }
 .sidebar .category-current {
     // margin-left: -2em;
     // background-color: $mauve;
@@ -298,7 +299,7 @@ ul.tags {
     line-height: 1.1;
 }
 li.tag-current {
-    background: $light-mauve;
+    background: $light-green;
 }
 .tag0 { font-size: 100%; }
 .tag10 { font-size: 105%; }

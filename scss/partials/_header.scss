@@ -129,7 +129,7 @@
     input {
         border: none;
         background: transparent;
-        padding: 8px 0;
+        padding: 5px 0;
         color: $white;
     }
     input#q {
@@ -155,37 +155,37 @@
 }
 #search-small {
     @include zen-grid-item(4,2);
-    background-color: #bebebe;
+    background-color: $dark-green;
     border-radius: 15px;
     margin-top: 10px;
     font-size: .95em;
-    .univers-creatif & {
-    background-color: $light-blue;        
-    }
-    .cuisine & {
-    background-color: $mauve;        
-    }
-    .puericulture & {
-    background-color: $light-mauve;        
-    }
-    .decorer & {
-    background-color: $light-green;        
-    }
-    .colorier-et-jouer & {
-    background-color: $dark-green;        
-    }
-    .les-indispensables & {
-    background-color: $orange;        
-    }
-    .jeux-et-jouets & {
-    background-color: $vermillon;        
-    }
-    .mode-enfants & {
-    background-color: $vermillon;        
-    }
-    .accueil & {
-    background-color: $dark-footer;        
-    }
+    // .univers-creatif & {
+    // background-color: $light-blue;        
+    // }
+    // .cuisine & {
+    // background-color: $mauve;        
+    // }
+    // .puericulture & {
+    // background-color: $light-mauve;        
+    // }
+    // .decorer & {
+    // background-color: $light-green;        
+    // }
+    // .colorier-et-jouer & {
+    // background-color: $dark-green;        
+    // }
+    // .les-indispensables & {
+    // background-color: $orange;        
+    // }
+    // .jeux-et-jouets & {
+    // background-color: $vermillon;        
+    // }
+    // .mode-enfants & {
+    // background-color: $vermillon;        
+    // }
+    // .accueil & {
+    // background-color: $dark-footer;        
+    // }
    fieldset {
         // padding: 0 0 0 25px;
         p {
@@ -298,66 +298,66 @@
             display: block;
             }
         }
-    .cuisine & li.active {
-        color: $mauve;
-        a:link,
-        a:visited {
-            color: $mauve;
-        }
-    }
-    .univers-creatif & li.active {
-        color: $light-blue;
-        a:link,
-        a:visited {
-            color: $light-blue;
-        }
-    }
-    .puericulture & li.active {
-        color: $light-mauve;
-        a:link,
-        a:visited {
-            color: $light-mauve;
-        }
-    }
-     .decorer & li.active {
-        color: $light-green;
-        a:link,
-        a:visited {
-            color: $light-green;
-        }
-    }
-      .colorier-et-jouer & li.active {
+    li.active {
         color: $dark-green;
         a:link,
         a:visited {
             color: $dark-green;
         }
     }
-      .les-indispensables & li.active {
-        color: $orange;
-        a:link,
-        a:visited {
-            color: $orange;
-        }
-    }
-      .jeux-et-jouets & li.active {
-        color: $vermillon;
-        a:link,
-        a:visited {
-            color: $vermillon;
-        }
-    }
-      .mode-enfants & li.active {
-        color: $pale-blue;
-        a:link,
-        a:visited {
-            color: $pale-blue;
-        }
-    }
+    // .univers-creatif & li.active {
+    //     color: $light-blue;
+    //     a:link,
+    //     a:visited {
+    //         color: $light-blue;
+    //     }
+    // }
+    // .puericulture & li.active {
+    //     color: $light-mauve;
+    //     a:link,
+    //     a:visited {
+    //         color: $light-mauve;
+    //     }
+    // }
+    //  .decorer & li.active {
+    //     color: $light-green;
+    //     a:link,
+    //     a:visited {
+    //         color: $light-green;
+    //     }
+    // }
+    //   .colorier-et-jouer & li.active {
+    //     color: $dark-green;
+    //     a:link,
+    //     a:visited {
+    //         color: $dark-green;
+    //     }
+    // }
+    //   .les-indispensables & li.active {
+    //     color: $orange;
+    //     a:link,
+    //     a:visited {
+    //         color: $orange;
+    //     }
+    // }
+    //   .jeux-et-jouets & li.active {
+    //     color: $vermillon;
+    //     a:link,
+    //     a:visited {
+    //         color: $vermillon;
+    //     }
+    // }
+    //   .mode-enfants & li.active {
+    //     color: $pale-blue;
+    //     a:link,
+    //     a:visited {
+    //         color: $pale-blue;
+    //     }
+    // }
     li.active {
         // color: $mauve;
         font-style: italic;
-        border-bottom: 2px solid #aaa6ff;
+        border-bottom: 2px solid $dark-green;
         // a:link,
         // a:visited {
         //     color: $mauve;
@@ -372,10 +372,11 @@
         color: $white;
     }
     li:hover {
-        background-color: #aaa6ff;
+        background-color: $dark-green;
         color: $white;
         transition: .3s;
-        a:link {
+        a:link,
+        a:visited {
             color: $white;
         }
     }
@@ -386,114 +387,114 @@
 }
 /* Si js est actif, un bouton pour afficher/masquer le menu est créé */
 
-.univers-creatif #hamburger {
-    background-color: $light-blue;
-    border: 2px solid $light-blue;
-    &:visited {
-        background-color: $light-blue;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($light-blue, 20%);
-        border-color: $light-blue;
-    }
-}
-.cuisine #hamburger {
-    background-color: $mauve;
-    border: 2px solid $mauve;
-    &:visited {
-        background-color: $mauve;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($mauve, 20%);
-        border-color: $mauve;
-    }
-}
-.puericulture #hamburger {
-    background-color: $light-mauve;
-    border: 2px solid $light-mauve;
-    &:visited {
-        background-color: $light-mauve;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($light-mauve, 20%);
-        border-color: $light-mauve;
-    }
-}
-.decorer #hamburger {
-    background-color: $light-green;
-    border: 2px solid $light-green;
-    &:visited {
-        background-color: $light-green;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($light-green, 20%);
-        border-color: $light-green;
-    }
-}
-.colorier-et-jouer #hamburger {
-    background-color: $dark-green;
-    border: 2px solid $dark-green;
-    &:visited {
-        background-color: $dark-green;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($dark-green, 20%);
-        border-color: $dark-green;
-    }
-}
-.les-indispensables #hamburger {
-    background-color: $orange;
-    border: 2px solid $orange;
-    &:visited {
-        background-color: $orange;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($orange, 20%);
-        border-color: $orange;
-    }
-}
-.jeux-et-jouets #hamburger {
-    background-color: $vermillon;
-    border: 2px solid $vermillon;
-    &:visited {
-        background-color: $vermillon;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($vermillon, 20%);
-        border-color: $vermillon;
-    }
-}
-.mode-enfants #hamburger {
-    background-color: $pale-blue;
-    border: 2px solid $pale-blue;
-    &:visited {
-        background-color: $pale-blue;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($pale-blue, 20%);
-        border-color: $pale-blue;
-    }
-}
-.accueil #hamburger {
-    background-color: $dark-footer;
-    border: 2px solid $dark-footer;
-    &:visited {
-        background-color: $dark-footer;
-    }
-    &:focus,
-    &:hover {
-        background-color: shade($dark-footer, 20%);
-        border-color: $dark-footer;
-    }
-}
+// .univers-creatif #hamburger {
+//     background-color: $light-blue;
+//     border: 2px solid $light-blue;
+//     &:visited {
+//         background-color: $light-blue;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($light-blue, 20%);
+//         border-color: $light-blue;
+//     }
+// }
+// .cuisine #hamburger {
+//     background-color: $dark-green;
+//     border: 2px solid $dark-green;
+//     &:visited {
+//         background-color: $dark-green;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($dark-green, 20%);
+//         border-color: $dark-green;
+//     }
+// }
+// .puericulture #hamburger {
+//     background-color: $light-mauve;
+//     border: 2px solid $light-mauve;
+//     &:visited {
+//         background-color: $light-mauve;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($light-mauve, 20%);
+//         border-color: $light-mauve;
+//     }
+// }
+// .decorer #hamburger {
+//     background-color: $light-green;
+//     border: 2px solid $light-green;
+//     &:visited {
+//         background-color: $light-green;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($light-green, 20%);
+//         border-color: $light-green;
+//     }
+// }
+// .colorier-et-jouer #hamburger {
+//     background-color: $dark-green;
+//     border: 2px solid $dark-green;
+//     &:visited {
+//         background-color: $dark-green;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($dark-green, 20%);
+//         border-color: $dark-green;
+//     }
+// }
+// .les-indispensables #hamburger {
+//     background-color: $orange;
+//     border: 2px solid $orange;
+//     &:visited {
+//         background-color: $orange;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($orange, 20%);
+//         border-color: $orange;
+//     }
+// }
+// .jeux-et-jouets #hamburger {
+//     background-color: $vermillon;
+//     border: 2px solid $vermillon;
+//     &:visited {
+//         background-color: $vermillon;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($vermillon, 20%);
+//         border-color: $vermillon;
+//     }
+// }
+// .mode-enfants #hamburger {
+//     background-color: $pale-blue;
+//     border: 2px solid $pale-blue;
+//     &:visited {
+//         background-color: $pale-blue;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($pale-blue, 20%);
+//         border-color: $pale-blue;
+//     }
+// }
+// .accueil #hamburger {
+//     background-color: $dark-footer;
+//     border: 2px solid $dark-footer;
+//     &:visited {
+//         background-color: $dark-footer;
+//     }
+//     &:focus,
+//     &:hover {
+//         background-color: shade($dark-footer, 20%);
+//         border-color: $dark-footer;
+//     }
+// }
 #hamburger {
     position: absolute;
     top: 10px;

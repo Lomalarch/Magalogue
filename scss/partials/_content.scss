@@ -58,30 +58,30 @@
         font-size: scut-em(20,14);
         text-align: center;
         margin: 1em 0;
-        .cuisine & {
-          background-color: $mauve;
-        }
-        .univers-creatif & {
-          background-color: $light-blue;
-        }
-        .puericulture & {
-          background-color: $light-mauve;
-        }
-        .mode-enfants & {
-          background-color: $pale-blue;
-        }
-        .decorer & {
-          background-color: $light-green;
-        }
-        .colorier-et-jouer & {
-          background-color: $dark-green;
-        }
-        .les-indispensables & {
-          background-color: $orange;
-        }
-        .jeux-et-jouets & {
-          background-color: $vermillon;
-        }
+        // .cuisine & {
+        //   background-color: $dark-green;
+        // }
+        // .univers-creatif & {
+        //   background-color: $light-blue;
+        // }
+        // .puericulture & {
+        //   background-color: $light-mauve;
+        // }
+        // .mode-enfants & {
+        //   background-color: $pale-blue;
+        // }
+        // .decorer & {
+        //   background-color: $light-green;
+        // }
+        // .colorier-et-jouer & {
+        //   background-color: $dark-green;
+        // }
+        // .les-indispensables & {
+        //   background-color: $orange;
+        // }
+        // .jeux-et-jouets & {
+        //   background-color: $vermillon;
+        // }
 
         a {color: $white; }
     }
@@ -107,6 +107,10 @@
     margin-top: 2em;
     h3 { font-weight: bold;}
 }
+.content-inner {
+  display: flex;
+  flex-wrap: wrap;
+} 
 #content {
   margin-right: .25em;
 }
@@ -118,7 +122,7 @@
     bottom: 0;
     right:.5em;
     // width: 10em;
-    padding: .25em 22px .25em 8px;
+    padding: .25em 8px;
     // border: 1px solid $gray-dark;
     // border-radius: .25em;
     // background-color: $white;
@@ -126,11 +130,17 @@
     font-size: .975em;
     text-transform: uppercase;
     text-align:center;
+    background-color: #ccc;
     a, a:link, a:hover, a:active {
         background: transparent;
         border: none;
         font-weight: bold;
         color: $gray-dark;
+    }
+    ::after {
+        content: " \2227";
+        color: $dark-green;
+        font-size: 1.3em;
     }
 }
 /*Fil d'Ariane*/

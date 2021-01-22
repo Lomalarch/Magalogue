@@ -86,7 +86,7 @@ $gray-very-light: tint($gray, 85%);
 
 $primary-color: $gray-very-dark;            // Texte courant
 $secondary-color: $blue;                    // Titres
-$link: $mauve;                                // Liens
+$link: $dark-green;                                // Liens
 $button-base: $dark-blue-green;             // Boutons
 $button-dark: shade($button-base, 10%);
 $button-light: tint($button-base, 10%);

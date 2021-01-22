@@ -50,7 +50,8 @@ class behaviorUmiTheme
 		if ($core->url->type == 'post')
 		{
 
-			$s =& $core->blog->settings->relatedEntries;
+			if (isset($core->blog->settings->relatedEntries)) {
+				$s = &$core->blog->settings->relatedEntries;
 
 			if (!$s->relatedEntries_enabled) {
 				return;
@@ -120,13 +121,14 @@ class behaviorUmiTheme
 					$ret .= '<div class="related-contents">'."\n";
 					$ret .= '<p class="related-category"><a href="'.$rs->getCategoryURL().'">'.$rs->cat_title.'</a></p>'."\n";
 					$ret .= '<p class="related-title"><a href="'.$rs->getURL().'">'.$rs->post_title.'</a></p>'."\n";
-					$ret .= '<p class="post-read-it"><a href="'.$rs->getURL().'" title="Lire '.$rs->post_title.'"><img src="'.$core->blog->settings->system->themes_url.'/'.$core->blog->settings->system->theme.'/img/'.$core->blog->id.'/read-it.png" alt="Lire la suite" /></a></p>'."\n";
+					$ret .= '<p class="post-read-it"><a href="'.$rs->getURL().'" title="Lire '.$rs->post_title.'"><span class="button">Lire la suite</span></a></p>'."\n";
 					$ret .= '</div></div>';
 					$count++;
 				}
 				// $ret .= '</div>';
 				echo $ret;
 			}
+		}
 		}
 	}
 }
