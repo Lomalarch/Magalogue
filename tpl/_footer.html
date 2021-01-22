@@ -1,12 +1,12 @@
 <p id="gotop"><a href="#top">{{tpl:lang Page top}}</a></p>
 
 <footer class="footer" id="footer" role="contentinfo">
-	<!-- # <tpl:IfWidgets type="custom">
+	<tpl:IfWidgets type="custom">
 		<div class="widgets footer__widgets" id="blogcustom">
 	        <h2 class="blogcustom__title">{{tpl:lang Blog info}}</h2>
 			{{tpl:Widgets type="custom"}}
-		</div> <!-- # End #custom widgets
-	</tpl:IfWidgets> -->
+		</div> <!-- # End #custom widgets -->
+	</tpl:IfWidgets>
 
 	{{tpl:SysBehavior behavior="publicInsideFooter"}}
 	<p class="credits">{{tpl:SysPoweredBy}} – design <a href="http://www.noecendrier.fr/" title="Webbidouilleur et comédien">Noé Cendrier</a>, Julien Jacoby</p>
@@ -16,39 +16,44 @@
 
 </footer>
 {{tpl:SysBehavior behavior="publicFooterContent"}}
-<script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/jquery-ui.js"></script>
-<script type="text/javascript">
-	if ($("#blognav .categories li.category-current")[0]){
-		var c = -1;
-		$("#blognav .category-current").parent().prev().addClass("category-current-below");
-		$(".categories h3").each(function(){
-			c++;
-			if ($(this).hasClass("category-current-below")) {
-				return false;
-			}
-		});
-	}
-	else {
-		var c = 0;
-	}
-	// $(".category-current").parent().prev().css("category-current-below");
-	// while ($(".categories h3")) {
-	// 	c++;
-	// 	// if ($("li.category-current") == true) {
-	// 	// 	break;
-	// 	// }
+<script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/jquery.treemenu.js"></script>
+<script type="text/javascript">//<![CDATA[
+	// var c = 0;
+	// if ($(".categories li.category-current")[0]){
+	// 	$(".category-current").parent().addClass("category-current-below");
+	// 	$(".categories ul:has(ul)").each(function(){
+	// 		c++;
+	// 		if ($(this).hasClass("category-current-below")) {
+	// 			return false;
+	// 		}
+	// 	});
 	// }
-
-	$(function() {
-		$(".categories").accordion({
-			header: "h3",
-			heightStyle: "content",
-			collapsible: "true",
-			active: c
+	// $(function() {
+	// 	// $(".categories li:has(ul) > *").wrapAll('<div></div>');
+	// 	//$(".categories li:has(ul) > h4 ~ *").wrapAll('<div></div>');
+	// 	$(".categories li:has(ul) > a").before('<h4>Déplier</h4>');
+	// 	$(".categories li > h4 ~ *").wrapAll('<div></div>');
+	// 	$(".categories").accordion({
+	// 		header: "li:has(ul) > h4",
+	// 		heightStyle: "content",
+	// 		collapsible: true,
+	// 		icons: false,
+	// 		active: c
+	// 	});
+	// 	$(".categories li:has(ul) >  a").click(function() {
+	// 		window.location($(this).attr("href"));
+	// 	});
+	// });
+	// $(".category-current").parent().prev().addClass("category-current-below");
+	// // $(".post-tags-item").parent().css("background-color","yellow");
+	$(function(){
+        $(".categories > ul").treemenu({
+			activeSelector: 'category-current',
+			openActive: true,
+			closeOther: true,
+			delay: 300
 		});
-	});
-	$(".category-current").parent().prev().addClass("category-current-below");
-	// $(".post-tags-item").parent().css("background-color","yellow");
-</script>
+    });
+//]]></script>
 
 {{tpl:include src="user_footer.html"}}

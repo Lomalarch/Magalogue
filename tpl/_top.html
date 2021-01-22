@@ -7,7 +7,7 @@
 			</ul>
 		</nav>
 		<header class="header-small">
-			<p class="UmiHomeLink"><a href="/"><img src="{{tpl:BlogThemeURL}}/img/umi_logo_small.png" alt="Un Max d’idées" /></a></p>
+			<p class="UmiHomeLink"><a href="{{tpl:BlogURL}}"><img src="{{tpl:BlogThemeURL}}/img/MagalogueBanner.png" alt="{{tpl:BlogName}}" /></a></p>
     <div id="search-small">
       <form method="get" action="{{tpl:BlogURL}}">
         <fieldset>
@@ -20,12 +20,7 @@
     <div class="header__nav-small">
 			{{tpl:SimpleMenu class="nav"}}
 			<div class="follow-us-small">
-				<ul>
-					<li><a href="https://www.facebook.com/Un-max-did%C3%A9es-707087559316235/" title="Abonnez-vous à notre page Facebook"><img src="{{tpl:BlogThemeURL}}/img/fb-link.png" alt="Facebook" /></a></li>
-					<li><a href="https://twitter.com/unmaxdidees_com" title="Suivez-nous sur Twitter"><img src="{{tpl:BlogThemeURL}}/img/twitter-link.png" alt="Twitter" /></a></li>
-					<li><a href="https://fr.pinterest.com/unmaxdidees/" title="Épinglez-nous sur Pinterest"><img src="{{tpl:BlogThemeURL}}/img/pinterest-link.png" alt="Pinterest" /></a></li>
-					<li><a href="http://www.unmaxdidees.com/?multiBlogFeedPosts" title="Abonnez-vous au fil RSS"><img src="{{tpl:BlogThemeURL}}/img/rss-link.png" alt="RSS" /></a></li>
-				</ul>
+				{{tpl:MySocialMedia}}
 			</div>
 	<p class="site-baseline-small">{{tpl:BlogDescription}}</p>
 </div>	
@@ -45,15 +40,10 @@
 
 		<div class="header-band">
 			<div class="follow-us">
-				<ul>
-					<li><a href="https://www.facebook.com/Un-max-did%C3%A9es-707087559316235/" title="Abonnez-vous à notre page Facebook"><img src="{{tpl:BlogThemeURL}}/img/fb-link.png" alt="Facebook" /></a></li>
-					<li><a href="https://twitter.com/unmaxdidees_com" title="Suivez-nous sur Twitter"><img src="{{tpl:BlogThemeURL}}/img/twitter-link.png" alt="Twitter" /></a></li>
-					<li><a href="https://fr.pinterest.com/unmaxdidees/" title="Épinglez-nous sur Pinterest"><img src="{{tpl:BlogThemeURL}}/img/pinterest-link.png" alt="Pinterest" /></a></li>
-					<li><a href="{{tpl:BlogURL}}feed/atom" title="Abonnez-vous au fil RSS"><img src="{{tpl:BlogThemeURL}}/img/rss-link.png" alt="RSS" /></a></li>
-				</ul>
+				{{tpl:MySocialMedia}}
 			</div>
 			<div class="banner" role="banner">
-				<p class="HomeLink"><a href="/">{{tpl:BlogName}}</a></p>
+				<p class="HomeLink"><a href="{{tpl:BlogURL}}"><img src="{{tpl:BlogThemeURL}}/img/MagalogueBanner.png" alt="{{tpl:BlogName}}" /></a></p>
 			</div>
 			<tpl:Widget id="search">
 			<setting name="title"></setting>

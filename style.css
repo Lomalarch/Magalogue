@@ -190,22 +190,26 @@ h1, h2, h3, h4, h5, h6 {
   width: 1px; }
 
 /*
-* Scut, a collection of Sass utilities to ease and improve our implementations of common style-code patterns.
-* v0.8.0
+* Scut, a collection of Sass utilities
+* to ease and improve our implementations of common style-code patterns.
+* v1.4.0
 * Docs at http://davidtheclark.github.io/scut
 */
 @font-face {
   font-family: "Lato";
-  src: url('fonts/Lato-Regular.ttf?1539940374') format('truetype'); }
+  src: url('fonts/lato-regular-webfont.woff2?1610701134') format('woff2'); }
 @font-face {
   font-family: "playfair-display";
-  src: url('fonts/PlayfairDisplay-Regular.otf?1539940374') format('opentype'); }
+  src: url('fonts/playfairdisplay-regular-webfont.woff2?1610701898') format('woff2'); }
+@font-face {
+  font-family: "slick";
+  src: url('fonts/slick.woff?1539940375') format('woff'); }
 /** --------------------------------------------------
     Common rules
 --------------------------------------------------- */
 /* Typographie */
 body {
-  font-size: .8em;
+  font-size: 1em;
   line-height: 1.5;
   font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
@@ -247,61 +251,12 @@ h6 {
   .accueil a:hover, .accueil a:active {
     border-color: #383648; }
 
-.cuisine a {
-  color: #a54c70; }
-  .cuisine a:link, .cuisine a:visited {
-    border-bottom: 1px solid #a54c70; }
-  .cuisine a:hover, .cuisine a:active {
-    border-color: #a54c70; }
-
-.univers-creatif a {
-  color: #00a0d3; }
-  .univers-creatif a:link, .univers-creatif a:visited {
-    border-bottom: 1px solid #00a0d3; }
-  .univers-creatif a:hover, .univers-creatif a:active {
-    border-color: #00a0d3; }
-
-.puericulture a {
-  color: #b397ce; }
-  .puericulture a:link, .puericulture a:visited {
-    border-bottom: 1px solid #b397ce; }
-  .puericulture a:hover, .puericulture a:active {
-    border-color: #b397ce; }
-
-.jeux-et-jouets a {
-  color: #d59ad4; }
-  .jeux-et-jouets a:link, .jeux-et-jouets a:visited {
-    border-bottom: 1px solid #d59ad4; }
-  .jeux-et-jouets a:hover, .jeux-et-jouets a:active {
-    border-color: #d59ad4; }
-
-.colorier-et-jouer a {
+a {
   color: #008000; }
-  .colorier-et-jouer a:link, .colorier-et-jouer a:visited {
+  a:link, a:visited {
     border-bottom: 1px solid #008000; }
-  .colorier-et-jouer a:hover, .colorier-et-jouer a:active {
+  a:hover, a:active {
     border-color: #008000; }
-
-.les-indispensables a {
-  color: #ea7a17; }
-  .les-indispensables a:link, .les-indispensables a:visited {
-    border-bottom: 1px solid #ea7a17; }
-  .les-indispensables a:hover, .les-indispensables a:active {
-    border-color: #ea7a17; }
-
-.mode-enfants a {
-  color: #7bb4f0; }
-  .mode-enfants a:link, .mode-enfants a:visited {
-    border-bottom: 1px solid #7bb4f0; }
-  .mode-enfants a:hover, .mode-enfants a:active {
-    border-color: #7bb4f0; }
-
-.decorer a {
-  color: #27be95; }
-  .decorer a:link, .decorer a:visited {
-    border-bottom: 1px solid #27be95; }
-  .decorer a:hover, .decorer a:active {
-    border-color: #27be95; }
 
 a {
   text-decoration: none;
@@ -451,9 +406,9 @@ body {
 @media all and (max-width: 30em) {
   #main {
     padding: .5em; } }
-@media screen and (min-width: 76.1em) and (max-width: 110em) {
+@media screen and (min-width: 80.1em) and (max-width: 110em) {
   #page, #bottomlinks, .header-band {
-    max-width: 76em; }
+    max-width: 61.25em; }
 
   #main {
     float: left;
@@ -480,11 +435,8 @@ body {
   .blognav__widgets, .blogextra__widgets {
     margin-left: 1.25em; } }
 @media screen and (min-width: 110.1em) {
-  body {
-    font-size: .8em; }
-
   #page, #bottomlinks, .header-band {
-    max-width: 76em; }
+    max-width: 61.25em; }
 
   /*.header {
       max-width: zen-grid-item-width(8);
@@ -517,10 +469,10 @@ body {
           display: inline-block;
           vertical-align: top;
       }*/ }
-@media screen and (min-width: 76.1em) {
+@media screen and (min-width: 80.1em) {
   #topcontainer-small {
     display: none; } }
-@media all and (max-width: 76em) {
+@media all and (max-width: 80em) {
   #topcontainer {
     display: none; }
 
@@ -531,11 +483,11 @@ body {
       width: 30%; } }
 #balloon {
   position: absolute;
-  top: 0;
+  top: 16px;
   left: 50%;
   max-width: 72em;
   width: 72em;
-  margin-left: -36em;
+  margin-left: -43em;
   height: 165px;
   background: transparent url(img/ballon.png) no-repeat top right; }
 
@@ -554,7 +506,7 @@ body {
 
 .header a:hover,
 .header a:focus {
-  color: #a54c70;
+  color: #008000;
   border-bottom-color: transparent; }
 
 .header-band {
@@ -656,32 +608,31 @@ body {
   box-sizing: border-box;
   word-wrap: break-word;
   background: transparent url(img/search-form.png) no-repeat;
-  margin-top: 40px; }
-  #search fieldset {
-    padding: 0 0 0 25px; }
-    #search fieldset p {
-      margin: 0; }
-    #search fieldset input {
-      border: none;
-      background: transparent;
-      padding: 8px 0;
-      color: #fff; }
-    #search fieldset input#q {
-      width: 155px;
-      padding-left: 1.1em; }
-    #search fieldset #q::-webkit-input-placeholder {
-      /* Chrome/Opera/Safari */
-      font-style: italic; }
-    #search fieldset #q::-moz-placeholder {
-      /* Firefox 19+ */
-      font-style: italic;
-      opacity: 1; }
-    #search fieldset #q:-ms-input-placeholder {
-      /* IE 10+ */
-      font-style: italic; }
-    #search fieldset input[type="submit"] {
-      text-transform: uppercase;
-      font-weight: bold; }
+  margin-top: 40px;
+  padding: 0 0 0 25px; }
+  #search p {
+    margin: 0; }
+  #search input {
+    border: none;
+    background: transparent;
+    padding: 5px 0;
+    color: #fff; }
+  #search input#q {
+    width: 155px;
+    padding-left: 1.1em; }
+  #search #q::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-style: italic; }
+  #search #q::-moz-placeholder {
+    /* Firefox 19+ */
+    font-style: italic;
+    opacity: 1; }
+  #search #q:-ms-input-placeholder {
+    /* IE 10+ */
+    font-style: italic; }
+  #search input[type="submit"] {
+    text-transform: uppercase;
+    font-weight: bold; }
 
 #search-small {
   float: left;
@@ -693,28 +644,10 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
-  background-color: #bebebe;
+  background-color: #008000;
   border-radius: 15px;
   margin-top: 10px;
   font-size: .95em; }
-  .univers-creatif #search-small {
-    background-color: #00a0d3; }
-  .cuisine #search-small {
-    background-color: #a54c70; }
-  .puericulture #search-small {
-    background-color: #b397ce; }
-  .decorer #search-small {
-    background-color: #27be95; }
-  .colorier-et-jouer #search-small {
-    background-color: #008000; }
-  .les-indispensables #search-small {
-    background-color: #ea7a17; }
-  .jeux-et-jouets #search-small {
-    background-color: #d59ad4; }
-  .mode-enfants #search-small {
-    background-color: #d59ad4; }
-  .accueil #search-small {
-    background-color: #383648; }
   #search-small fieldset p {
     margin: 0;
     text-align: right; }
@@ -744,10 +677,9 @@ body {
 .site-baseline, .site-baseline-small {
   font-style: italic;
   font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0.5em;
+  margin: 0 auto;
   color: #fff;
-  background-color: #5fd2dc;
+  background-color: #383648;
   text-align: center;
   padding: 1em 0; }
 
@@ -783,57 +715,15 @@ body {
       font-family: playfair-display, "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
       font-style: italic;
       display: block; }
-  .cuisine .header__nav li.active, .cuisine .header__nav-small li.active {
-    color: #a54c70; }
-    .cuisine .header__nav li.active a:link,
-    .cuisine .header__nav li.active a:visited, .cuisine .header__nav-small li.active a:link,
-    .cuisine .header__nav-small li.active a:visited {
-      color: #a54c70; }
-  .univers-creatif .header__nav li.active, .univers-creatif .header__nav-small li.active {
-    color: #00a0d3; }
-    .univers-creatif .header__nav li.active a:link,
-    .univers-creatif .header__nav li.active a:visited, .univers-creatif .header__nav-small li.active a:link,
-    .univers-creatif .header__nav-small li.active a:visited {
-      color: #00a0d3; }
-  .puericulture .header__nav li.active, .puericulture .header__nav-small li.active {
-    color: #b397ce; }
-    .puericulture .header__nav li.active a:link,
-    .puericulture .header__nav li.active a:visited, .puericulture .header__nav-small li.active a:link,
-    .puericulture .header__nav-small li.active a:visited {
-      color: #b397ce; }
-  .decorer .header__nav li.active, .decorer .header__nav-small li.active {
-    color: #27be95; }
-    .decorer .header__nav li.active a:link,
-    .decorer .header__nav li.active a:visited, .decorer .header__nav-small li.active a:link,
-    .decorer .header__nav-small li.active a:visited {
-      color: #27be95; }
-  .colorier-et-jouer .header__nav li.active, .colorier-et-jouer .header__nav-small li.active {
+  .header__nav li.active, .header__nav-small li.active {
     color: #008000; }
-    .colorier-et-jouer .header__nav li.active a:link,
-    .colorier-et-jouer .header__nav li.active a:visited, .colorier-et-jouer .header__nav-small li.active a:link,
-    .colorier-et-jouer .header__nav-small li.active a:visited {
+    .header__nav li.active a:link,
+    .header__nav li.active a:visited, .header__nav-small li.active a:link,
+    .header__nav-small li.active a:visited {
       color: #008000; }
-  .les-indispensables .header__nav li.active, .les-indispensables .header__nav-small li.active {
-    color: #ea7a17; }
-    .les-indispensables .header__nav li.active a:link,
-    .les-indispensables .header__nav li.active a:visited, .les-indispensables .header__nav-small li.active a:link,
-    .les-indispensables .header__nav-small li.active a:visited {
-      color: #ea7a17; }
-  .jeux-et-jouets .header__nav li.active, .jeux-et-jouets .header__nav-small li.active {
-    color: #d59ad4; }
-    .jeux-et-jouets .header__nav li.active a:link,
-    .jeux-et-jouets .header__nav li.active a:visited, .jeux-et-jouets .header__nav-small li.active a:link,
-    .jeux-et-jouets .header__nav-small li.active a:visited {
-      color: #d59ad4; }
-  .mode-enfants .header__nav li.active, .mode-enfants .header__nav-small li.active {
-    color: #7bb4f0; }
-    .mode-enfants .header__nav li.active a:link,
-    .mode-enfants .header__nav li.active a:visited, .mode-enfants .header__nav-small li.active a:link,
-    .mode-enfants .header__nav-small li.active a:visited {
-      color: #7bb4f0; }
   .header__nav li.active, .header__nav-small li.active {
     font-style: italic;
-    border-bottom: 2px solid #aaa6ff; }
+    border-bottom: 2px solid #008000; }
   .header__nav li a:link,
   .header__nav li a:visited, .header__nav-small li a:link,
   .header__nav-small li a:visited {
@@ -841,10 +731,12 @@ body {
   .header__nav li a:hover, .header__nav-small li a:hover {
     color: #fff; }
   .header__nav li:hover, .header__nav-small li:hover {
-    background-color: #aaa6ff;
+    background-color: #008000;
     color: #fff;
     transition: .3s; }
-    .header__nav li:hover a:link, .header__nav-small li:hover a:link {
+    .header__nav li:hover a:link,
+    .header__nav li:hover a:visited, .header__nav-small li:hover a:link,
+    .header__nav-small li:hover a:visited {
       color: #fff; }
 
 .header__nav-small {
@@ -852,87 +744,6 @@ body {
   overflow-y: auto; }
 
 /* Si js est actif, un bouton pour afficher/masquer le menu est créé */
-.univers-creatif #hamburger {
-  background-color: #00a0d3;
-  border: 2px solid #00a0d3; }
-  .univers-creatif #hamburger:visited {
-    background-color: #00a0d3; }
-  .univers-creatif #hamburger:focus, .univers-creatif #hamburger:hover {
-    background-color: #0080a9;
-    border-color: #00a0d3; }
-
-.cuisine #hamburger {
-  background-color: #a54c70;
-  border: 2px solid #a54c70; }
-  .cuisine #hamburger:visited {
-    background-color: #a54c70; }
-  .cuisine #hamburger:focus, .cuisine #hamburger:hover {
-    background-color: #843d5a;
-    border-color: #a54c70; }
-
-.puericulture #hamburger {
-  background-color: #b397ce;
-  border: 2px solid #b397ce; }
-  .puericulture #hamburger:visited {
-    background-color: #b397ce; }
-  .puericulture #hamburger:focus, .puericulture #hamburger:hover {
-    background-color: #8f79a5;
-    border-color: #b397ce; }
-
-.decorer #hamburger {
-  background-color: #27be95;
-  border: 2px solid #27be95; }
-  .decorer #hamburger:visited {
-    background-color: #27be95; }
-  .decorer #hamburger:focus, .decorer #hamburger:hover {
-    background-color: #1f9877;
-    border-color: #27be95; }
-
-.colorier-et-jouer #hamburger {
-  background-color: #008000;
-  border: 2px solid #008000; }
-  .colorier-et-jouer #hamburger:visited {
-    background-color: #008000; }
-  .colorier-et-jouer #hamburger:focus, .colorier-et-jouer #hamburger:hover {
-    background-color: #006600;
-    border-color: #008000; }
-
-.les-indispensables #hamburger {
-  background-color: #ea7a17;
-  border: 2px solid #ea7a17; }
-  .les-indispensables #hamburger:visited {
-    background-color: #ea7a17; }
-  .les-indispensables #hamburger:focus, .les-indispensables #hamburger:hover {
-    background-color: #bb6212;
-    border-color: #ea7a17; }
-
-.jeux-et-jouets #hamburger {
-  background-color: #d59ad4;
-  border: 2px solid #d59ad4; }
-  .jeux-et-jouets #hamburger:visited {
-    background-color: #d59ad4; }
-  .jeux-et-jouets #hamburger:focus, .jeux-et-jouets #hamburger:hover {
-    background-color: #aa7baa;
-    border-color: #d59ad4; }
-
-.mode-enfants #hamburger {
-  background-color: #7bb4f0;
-  border: 2px solid #7bb4f0; }
-  .mode-enfants #hamburger:visited {
-    background-color: #7bb4f0; }
-  .mode-enfants #hamburger:focus, .mode-enfants #hamburger:hover {
-    background-color: #6290c0;
-    border-color: #7bb4f0; }
-
-.accueil #hamburger {
-  background-color: #383648;
-  border: 2px solid #383648; }
-  .accueil #hamburger:visited {
-    background-color: #383648; }
-  .accueil #hamburger:focus, .accueil #hamburger:hover {
-    background-color: #2d2b3a;
-    border-color: #383648; }
-
 #hamburger {
   position: absolute;
   top: 10px;
@@ -987,7 +798,6 @@ body {
 
 .footer__widgets {
   padding: 1em;
-  background-color: #fff;
   text-align: center;
   line-height: 2; }
 
@@ -1065,44 +875,9 @@ body {
   margin: 3.7em auto; }
 
 .sidebar {
-  color: #a54c70; }
-  .sidebar a:link, .sidebar a:visited {
-    color: #a54c70; }
-
-.univers-creatif .sidebar {
-  color: #00a0d3; }
-  .univers-creatif .sidebar a:link, .univers-creatif .sidebar a:visited {
-    color: #00a0d3; }
-
-.puericulture .sidebar {
-  color: #b397ce; }
-  .puericulture .sidebar a:link, .puericulture .sidebar a:visited {
-    color: #b397ce; }
-
-.decorer .sidebar {
-  color: #27be95; }
-  .decorer .sidebar a:link, .decorer .sidebar a:visited {
-    color: #27be95; }
-
-.colorier-et-jouer .sidebar {
   color: #008000; }
-  .colorier-et-jouer .sidebar a:link, .colorier-et-jouer .sidebar a:visited {
+  .sidebar a:link, .sidebar a:visited {
     color: #008000; }
-
-.les-indispensables .sidebar {
-  color: #ea7a17; }
-  .les-indispensables .sidebar a:link, .les-indispensables .sidebar a:visited {
-    color: #ea7a17; }
-
-.jeux-et-jouets .sidebar {
-  color: #d59ad4; }
-  .jeux-et-jouets .sidebar a:link, .jeux-et-jouets .sidebar a:visited {
-    color: #d59ad4; }
-
-.mode-enfants .sidebar {
-  color: #7bb4f0; }
-  .mode-enfants .sidebar a:link, .mode-enfants .sidebar a:visited {
-    color: #7bb4f0; }
 
 .sidebar {
   padding-bottom: 2em;
@@ -1113,16 +888,6 @@ body {
     clear: both; }
   .sidebar a:link, .sidebar a:visited {
     border: none; }
-
-.site-title {
-  position: relative;
-  top: 1.5em;
-  height: 35px;
-  text-align: center;
-  font-size: .9em;
-  background: transparent url(img/CartoucheTitre.png) no-repeat center;
-  padding: 10px 0 0 5px;
-  margin-left: 15px; }
 
 a.site-title__link,
 a.site-title__link:link,
@@ -1193,35 +958,14 @@ a.site-title__link:hover {
 .accueil .blognav__widgets {
   border: #383648 1px solid; }
 
-.blognav__widgets {
-  border: #a54c70 1px solid; }
-
-.univers-creatif .blognav__widgets {
-  border: #00a0d3 1px solid; }
-
-.puericulture .blognav__widgets {
-  border: #b397ce 1px solid; }
-
-.decorer .blognav__widgets {
-  border: #27be95 1px solid; }
-
-.colorier-et-jouer .blognav__widgets {
+.blognav__widgets .categories {
   border: #008000 1px solid; }
-
-.les-indispensables .blognav__widgets {
-  border: #ea7a17 1px solid; }
-
-.jeux-et-jouets .blognav__widgets {
-  border: #d59ad4 1px solid; }
-
-.mode-enfants .blognav__widgets {
-  border: #7bb4f0 1px solid; }
 
 .blognav__widgets {
   padding: 2em 0 1em; }
 
 .blognav__widgets, .blogextra__widgets {
-  margin-left: 1.25em; }
+  margin-left: .75em; }
   .blognav__widgets ul, .blogextra__widgets ul {
     margin: 0;
     padding: 0; }
@@ -1235,74 +979,78 @@ a.site-title__link:hover {
 #q {
   width: 75%; }
 
-.accueil .categories nav li {
-  border-bottom: 1px solid #383648;
-  font-size: 1.25em;
-  font-weight: normal;
-  padding: 0 15px .5em 0;
-  margin-bottom: .5em;
-  font-style: normal; }
-
-.categories h3.ui-accordion-header-collapsed, .cuisine .categories ul {
-  border-bottom: 1px solid #a54c70; }
-
-.univers-creatif .categories h3.ui-accordion-header-collapsed, .univers-creatif .categories ul {
-  border-bottom: 1px solid #00a0d3; }
-
+/* .accueil .categories nav li {
+        border-bottom: 1px solid $dark-footer;
+        font-size: 1.25em;
+        font-weight: normal;
+        padding: 0 15px .5em 0;
+        margin-bottom: .5em;
+        font-style: normal;
+} */
+/* .categories h4.ui-accordion-header-collapsed, .categories ul ul {
+        border-bottom: 1px solid $light-mauve;
+} */
+/* .univers-creatif .categories h3.ui-accordion-header-collapsed, .univers-creatif .categories ul {
+        border-bottom: 1px solid $light-blue;
+}
 .puericulture .categories h3.ui-accordion-header-collapsed, .puericulture .categories ul {
-  border-bottom: 1px solid #b397ce; }
-
+        border-bottom: 1px solid $light-mauve;
+}
 .decorer .categories h3.ui-accordion-header-collapsed, .decorer .categories ul {
-  border-bottom: 1px solid #27be95; }
-
+        border-bottom: 1px solid $light-green;
+}
 .colorier-et-jouer .categories h3.ui-accordion-header-collapsed, .colorier-et-jouer .categories ul {
-  border-bottom: 1px solid #008000; }
-
+        border-bottom: 1px solid $dark-green;
+}
 .les-indispensables .categories h3.ui-accordion-header-collapsed, .les-indispensables .categories ul {
-  border-bottom: 1px solid #ea7a17; }
-
+        border-bottom: 1px solid $orange;
+}
 .jeux-et-jouets .categories h3.ui-accordion-header-collapsed, .jeux-et-jouets .categories ul {
-  border-bottom: 1px solid #d59ad4; }
-
+        border-bottom: 1px solid $vermillon;
+}
 .mode-enfants .categories h3.ui-accordion-header-collapsed, .mode-enfants .categories ul {
-  border-bottom: 1px solid #7bb4f0; }
-
+        border-bottom: 1px solid $pale-blue;
+} */
 .categories {
-  padding: 0 2em; }
+  padding: 0 2em;
+  margin-top: 1em;
+  /* .ui-accordion a {
+      display:block;
+  } */ }
   .categories h3 {
     font-size: 1.25em;
+    text-transform: uppercase;
+    color: #fff;
     font-weight: normal;
-    padding: 0 15px .5em 0;
-    margin-bottom: .1em; }
+    position: relative;
+    top: -30px;
+    height: 35px;
+    text-align: center;
+    background: transparent url(img/CartoucheTitre.png) no-repeat center;
+    padding-top: 6px;
+    margin: auto 0 -30px 0; }
+  .categories h4 {
+    margin: 0; }
+  .categories h4.ui-accordion-header-collapsed {
+    background: transparent url(img/unfold-arrow.png) no-repeat center right; }
+  .categories h4.ui-accordion-header-active {
+    background: transparent url(img/fold-arrow.png) no-repeat center right; }
+  .categories h4.ui-accordion-header-collapsed, .categories ul ul, .categories li.tree-closed {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #27be95; }
   .categories li {
-    font-style: italic;
-    font-size: .9em; }
-    .categories li li {
-      border-bottom: none; }
+    font-size: 1.1em;
+    font-style: normal;
+    font-weight: bold;
+    /*         font-style: italic;
+            font-size: .9em; */ }
+    .categories li ul li {
+      font-style: italic;
+      font-size: .9em;
+      padding-left: .5em; }
 
 .category-current {
-  background-color: #a54c70; }
-
-.univers-creatif .category-current {
-  background-color: #00a0d3; }
-
-.puericulture .category-current {
-  background-color: #b397ce; }
-
-.decorer .category-current {
-  background-color: #27be95; }
-
-.colorier-et-jouer .category-current {
   background-color: #008000; }
-
-.les-indispensables .category-current {
-  background-color: #ea7a17; }
-
-.jeux-et-jouets .category-current {
-  background-color: #d59ad4; }
-
-.mode-enfants .category-current {
-  background-color: #7bb4f0; }
 
 .sidebar .category-current {
   color: white; }
@@ -1326,7 +1074,7 @@ ul.tags {
   line-height: 1.1; }
 
 li.tag-current {
-  background: yellow; }
+  background: #27be95; }
 
 .tag0 {
   font-size: 100%; }
@@ -1385,7 +1133,7 @@ li.tag-current {
   .blognav__widgets .widget, .blogextra__widgets .widget {
     width: 50%;
     float: left; } }
-@media screen and (min-width: 60.1em) and (max-width: 76em) {
+@media screen and (min-width: 60.1em) and (max-width: 80em) {
   .blognav__widgets .widget, .blogextra__widgets .widget {
     width: 33.33%;
     float: left; } }
@@ -1428,22 +1176,6 @@ li.tag-current {
     font-size: 1.4285714em;
     text-align: center;
     margin: 1em 0; }
-    .cuisine #content-info h2 {
-      background-color: #a54c70; }
-    .univers-creatif #content-info h2 {
-      background-color: #00a0d3; }
-    .puericulture #content-info h2 {
-      background-color: #b397ce; }
-    .mode-enfants #content-info h2 {
-      background-color: #7bb4f0; }
-    .decorer #content-info h2 {
-      background-color: #27be95; }
-    .colorier-et-jouer #content-info h2 {
-      background-color: #008000; }
-    .les-indispensables #content-info h2 {
-      background-color: #ea7a17; }
-    .jeux-et-jouets #content-info h2 {
-      background-color: #d59ad4; }
     #content-info h2 a {
       color: #fff; }
   #content-info h3 {
@@ -1465,22 +1197,34 @@ li.tag-current {
   .content-info__sub-cat h3 {
     font-weight: bold; }
 
+.content-inner {
+  display: flex;
+  flex-wrap: wrap; }
+
+#content {
+  margin-right: .25em; }
+
 #gotop {
   display: none;
   z-index: 1000;
   position: fixed;
   bottom: 0;
   right: .5em;
-  padding: .25em 22px .25em 8px;
+  padding: .25em 8px;
   color: #333;
   font-size: .975em;
   text-transform: uppercase;
-  text-align: center; }
+  text-align: center;
+  background-color: #ccc; }
   #gotop a, #gotop a:link, #gotop a:hover, #gotop a:active {
     background: transparent;
     border: none;
     font-weight: bold;
     color: #636363; }
+  #gotop ::after {
+    content: " \2227";
+    color: #008000;
+    font-size: 1.3em; }
 
 /*Fil d'Ariane*/
 .breadcrumb {
@@ -1520,7 +1264,6 @@ h3.related-entries {
 
   .post.odd, .related-entry.odd {
     float: left;
-    margin-right: 2%;
     clear: both; }
 
   .dc-post .post div.image {
@@ -1537,7 +1280,8 @@ h3.related-entries {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 0.8571429em; }
+  margin-bottom: 0.8571429em;
+  width: 100%; }
 
 .post div.image, .related-entry .featured-media {
   height: 264px;
@@ -1559,9 +1303,14 @@ h3.related-entries {
 
 .post-premices, .related-contents {
   margin: -5em 1em 2em;
-  padding: 1em 4em 0;
   background-color: #fff;
   position: relative; }
+
+.post-premices {
+  padding: 1em 4em 0; }
+
+.related-contents {
+  padding: 1em 2em 0; }
 
 .post-meta {
   text-align: center;
@@ -1586,30 +1335,6 @@ h3.related-entries {
     padding-bottom: .25em;
     line-height: 2; }
 
-.cuisine .post-cat a:link, a:visited {
-  border-bottom-color: #a54c70; }
-
-.univers-creatif .post-cat a:link, a:visited {
-  border-bottom-color: #00a0d3; }
-
-.puericulture .post-cat a:link, a:visited {
-  border-bottom-color: #b397ce; }
-
-.mode-enfants .post-cat a:link, a:visited {
-  border-bottom-color: #7bb4f0; }
-
-.decorer .post-cat a:link, a:visited {
-  border-bottom-color: #27be95; }
-
-.colorier-et-jouer .post-cat a:link, a:visited {
-  border-bottom-color: #008000; }
-
-.les-indispensables .post-cat a:link, a:visited {
-  border-bottom-color: #ea7a17; }
-
-.jeux-et-jouets .post-cat a:link, a:visited {
-  border-bottom-color: #d59ad4; }
-
 .post-tags-list {
   margin: 0;
   padding: 0;
@@ -1617,30 +1342,30 @@ h3.related-entries {
   overflow: hidden;
   margin: 2.5em 0 3.5em; }
 
-.cuisine .post-tags-item {
-  background-color: #a54c70; }
-
-.univers-creatif .post-tags-item {
-  background-color: #00a0d3; }
-
-.puericulture .post-tags-item {
-  background-color: #b397ce; }
-
-.mode-enfants .post-tags-item {
-  background-color: #7bb4f0; }
-
-.decorer .post-tags-item {
-  background-color: #27be95; }
-
-.colorier-et-jouer .post-tags-item {
+.post-tags-item {
   background-color: #008000; }
 
+/* .univers-creatif .post-tags-item {
+    background-color: $light-blue;
+}
+.puericulture .post-tags-item {
+    background-color: $light-mauve;
+}
+.mode-enfants .post-tags-item {
+    background-color: $pale-blue;
+}
+.decorer .post-tags-item {
+    background-color: $light-green;
+}
+.colorier-et-jouer .post-tags-item {
+    background-color: $dark-green;
+}
 .les-indispensables .post-tags-item {
-  background-color: #ea7a17; }
-
+    background-color: $orange;
+}
 .jeux-et-jouets .post-tags-item {
-  background-color: #d59ad4; }
-
+    background-color: $vermillon;
+} */
 .post-tags-item {
   list-style-image: none;
   list-style-type: none;
@@ -1648,7 +1373,8 @@ h3.related-entries {
   display: inline-block;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 1px 5px;
+  padding: 1px 10px;
+  border-radius: 5px;
   margin: 0 .25em 1em; }
   .post-tags-item a {
     color: #fff;
@@ -1684,9 +1410,17 @@ h3.related-entries {
   border: none; }
 
 .post-read-it {
+  margin-top: 2.5em;
   text-align: center; }
   .post-read-it a, .post-read-it a:link, .post-read-it a:visited {
-    border: none; }
+    border: none;
+    color: #000; }
+  .post-read-it .button {
+    padding: 5px 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: .15rem;
+    border: 1px solid #008000; }
 
 .footnotes {
   font-size: 0.875em;
@@ -1801,7 +1535,7 @@ h3.related-entries {
   margin-bottom: 2em; }
 
 .error {
-  background-color: #a54c70;
+  background-color: #008000;
   color: #fff;
   padding: .25em .5em; }
 
@@ -1925,7 +1659,7 @@ button.submit:active, button.preview:active {
   font-style: italic;
   font-weight: normal;
   text-transform: lowercase;
-  color: #267daf; }
+  color: #008000; }
 
 .arch-block h4 {
   font-weight: bold;
@@ -2043,6 +1777,108 @@ button.submit:active, button.preview:active {
   margin-left: 2em;
   margin-top: .5em; }
 
+hr.umi-home-separator {
+  border-top: 1px double #cdcdcd;
+  border-bottom: 1px double #cdcdcd;
+  height: 5px;
+  clear: both;
+  background: transparent; }
+
+.dc-home #main {
+  float: none;
+  width: 100%;
+  margin: 0;
+  padding: 0; }
+
+.dc-home .slider-thumb .image img {
+  width: 100%;
+  max-width: 100%; }
+
+.dc-home .slider-thumb .image {
+  height: 440px;
+  overflow: hidden; }
+  @media screen and (max-width: 40em) {
+    .dc-home .slider-thumb .image {
+      height: 193px; } }
+
+.dc-home .slider-thumb .post-premices {
+  margin: 2em 1em 2em;
+  padding: 1em 3em;
+  background-color: #fff;
+  position: absolute;
+  width: 33%;
+  top: 132px;
+  left: 73px; }
+  @media screen and (max-width: 40em) {
+    .dc-home .slider-thumb .post-premices {
+      margin: 0;
+      top: 5%;
+      left: 5%;
+      width: 50%;
+      padding: 1em 15px; }
+      .dc-home .slider-thumb .post-premices .post-title {
+        font-size: 1.25em; }
+      .dc-home .slider-thumb .post-premices .post-cat {
+        margin-bottom: .5em; } }
+
+.dc-home .slider-thumb {
+  position: relative; }
+
+.dc-home .slick-dots {
+  bottom: 15px; }
+  .dc-home .slick-dots li button::before {
+    color: #fff;
+    font-size: 15px;
+    opacity: 100%; }
+  .dc-home .slick-dots li.slick-active button::before {
+    color: #008000; }
+
+.dc-home #lastnews {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+@media screen and (min-width: 80.1em) {
+  .dc-home .post {
+    /* float: left; */
+    width: 32%;
+    /* margin-right: 2%; */ }
+
+  .dc-home .post.line-end {
+    float: right;
+    margin-right: 0; }
+
+  .dc-home .post.odd {
+    clear: none; } }
+.dc-home #lastnews .post-premices {
+  padding: 1em 1.3em; }
+
+#lastnews .post-title {
+  font-size: 1.35em; }
+
+#lastnews .post-cat {
+  margin: 0 0 1em; }
+
+.section-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1em;
+  background: transparent url(img/gray-line.png) repeat-x center;
+  color: #444;
+  letter-spacing: 2px; }
+
+.section-title span {
+  background: white;
+  padding: 0 50px; }
+
+.bottomwidgets {
+  margin-top: 2em; }
+
+.bottomwidget {
+  float: left;
+  width: 48.5%;
+  margin-right: 1%; }
+
 /** --------------------------------------------------
     Modules
 --------------------------------------------------- */
@@ -2053,7 +1889,7 @@ button.submit:active, button.preview:active {
 .sidebar, #main {
   transition: all 0.3s linear; }
 
-@media screen and (max-width: 76em) {
+@media screen and (max-width: 80em) {
   #offcanvas-on,
   #offcanvas-off {
     position: absolute;

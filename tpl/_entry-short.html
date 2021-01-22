@@ -1,10 +1,10 @@
+		<!-- # New day date -->
+		<tpl:DateHeader>
+			<p class="post-day-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate}}</time></p>
+		</tpl:DateHeader>
 <article id="p{{tpl:EntryID}}" class="post short {{tpl:EntryIfOdd}} {{tpl:EntryIfFirst}}" lang="{{tpl:EntryLang}}" role="article">
 
 	<header>
-		<!-- # New day date
-		<tpl:DateHeader>
-			<p class="post-day-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate}}</time></p>
-		</tpl:DateHeader> -->
 
 		<tpl:EntryIf has_featured_media="1">
 		<!-- # Featured media -->
@@ -42,7 +42,7 @@
 		</tpl:EntryIf>
 
 			<h2 class="post-title"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
-			<!-- # <p class="post-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate}}</time></p> -->
+			<p class="post-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate}}</time></p>
 		</div>
 	</header>
 
@@ -63,7 +63,7 @@
 	<tpl:EntryIf extended="0"> -->
 	<div class="post-content">
 	<!-- # <tpl:EntryIfContentCut encode_html="1" remove_html="1" cut_string="300"> -->
-		<p class="post-read-it"><a href="{{tpl:EntryURL}}" title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}"><img src="{{tpl:BlogThemeURL}}/img/{{tpl:BlogID}}/read-it.png" alt="{{tpl:lang Continue reading}}" /></a></p>
+		<p class="post-read-it"><span class="button"><a href="{{tpl:EntryURL}}" title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:lang Continue reading}}</span></a></p>
 	<!-- # </tpl:EntryIfContentCut> -->
 	</div>
 	<!-- # </tpl:EntryIf> -->

@@ -29,7 +29,7 @@
 
 	<div class="content-inner">
 
-		<!-- # <article id="time-criteria"> # entries sorted by date
+		<article id="time-criteria"> <!-- # entries sorted by date -->
 			<div id="arch-by-year" class="arch-block arch-by-year">
 				<h3>{{tpl:lang By date}}</h3>
 				<p class="fromto">{{tpl:lang FromDay}} <tpl:Entries no_content="1" order="asc" lastn="1"><a href="{{tpl:EntryURL}}"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate format="%e %B %Y"}}</time></a></tpl:Entries> {{tpl:lang toDay}} <tpl:Entries no_content="1" order="desc" lastn="1"><a href="{{tpl:EntryURL}}"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate format="%e %B %Y"}}</time></a></tpl:Entries></p>
@@ -47,7 +47,7 @@
 					</tpl:ArchivesYearFooter>
 				</tpl:Archives>
 			</div>
-		</article> -->
+		</article>
 
 		<article id="other-criteria"><!-- # entries sorted by others criterias -->
 			<tpl:Categories level="1">
