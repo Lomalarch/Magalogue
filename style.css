@@ -197,10 +197,10 @@ h1, h2, h3, h4, h5, h6 {
 */
 @font-face {
   font-family: "Lato";
-  src: url('fonts/lato-regular-webfont.woff2?1610701134') format('woff2'); }
+  src: url('fonts/lato-regular-webfont.woff2?1611304610') format('woff2'); }
 @font-face {
   font-family: "playfair-display";
-  src: url('fonts/playfairdisplay-regular-webfont.woff2?1610701898') format('woff2'); }
+  src: url('fonts/playfairdisplay-regular-webfont.woff2?1611304610') format('woff2'); }
 @font-face {
   font-family: "slick";
   src: url('fonts/slick.woff?1539940375') format('woff'); }
@@ -478,7 +478,7 @@ body {
 
   #topcontainer-small {
     min-height: 55px; }
-    #topcontainer-small .UmiHomeLink {
+    #topcontainer-small .HomeLink {
       float: left;
       width: 30%; } }
 #balloon {
@@ -870,7 +870,7 @@ body {
   font-weight: normal;
   width: 100%; }
 
-.UmiHomeLink.bottom {
+.HomeLink.bottom {
   text-align: center;
   margin: 3.7em auto; }
 
@@ -905,7 +905,7 @@ a.site-title__link:hover {
 
 .blognav__title,
 .blogextra__title,
-.umi-home__title {
+.home__title {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -1777,7 +1777,7 @@ button.submit:active, button.preview:active {
   margin-left: 2em;
   margin-top: .5em; }
 
-hr.umi-home-separator {
+hr.home-separator {
   border-top: 1px double #cdcdcd;
   border-bottom: 1px double #cdcdcd;
   height: 5px;
