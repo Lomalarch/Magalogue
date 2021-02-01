@@ -23,27 +23,11 @@
         border: none;
     }
 }
-// .prev {
-//     @include replace-text(inline-image('icon_prev.png'));
-// }
-// .next {
-//     @include replace-text(inline-image('icon_next.png'));
-// }
 .prev, .next {
-    // vertical-align: middle;
-    // width: 2.5em;
-    // height: 2.5em;
     display: inline-block;
-    // border-radius: 50%;
-    // border: 1px solid $gray-medium;
-    // background-color: $gray-light;
-    //     &:hover, &:focus {
-    //         border-width: 3px;
-    //     }
 }
 /* *** content info *** */
 #content-info {
-    // margin-bottom: 4em;
     border-bottom: 1px solid $gray-medium;
     padding: 0;
     font-size: scut-em(16);
@@ -53,36 +37,10 @@
         vertical-align: top;
         padding: .5em .75em;
         border-radius: .5em;
-        // background-color: $secondary-color;
         color: $white;
         font-size: scut-em(20,14);
         text-align: center;
         margin: 1em 0;
-        // .cuisine & {
-        //   background-color: $dark-green;
-        // }
-        // .univers-creatif & {
-        //   background-color: $light-blue;
-        // }
-        // .puericulture & {
-        //   background-color: $light-mauve;
-        // }
-        // .mode-enfants & {
-        //   background-color: $pale-blue;
-        // }
-        // .decorer & {
-        //   background-color: $light-green;
-        // }
-        // .colorier-et-jouer & {
-        //   background-color: $dark-green;
-        // }
-        // .les-indispensables & {
-        //   background-color: $orange;
-        // }
-        // .jeux-et-jouets & {
-        //   background-color: $vermillon;
-        // }
-
         a {color: $white; }
     }
     h3 {
@@ -121,11 +79,7 @@
     position:fixed;
     bottom: 0;
     right:.5em;
-    // width: 10em;
     padding: .25em 8px;
-    // border: 1px solid $gray-dark;
-    // border-radius: .25em;
-    // background-color: $white;
     color:#333;
     font-size: .975em;
     text-transform: uppercase;

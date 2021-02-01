@@ -65,10 +65,7 @@ hr.home-separator {
 }
 @media screen and(min-width: ($xlarge-screen +.1em)) {
   .dc-home .post {
-    /* float: left; */
     width: 32%;
-    //flex-shrink: 0;
-    /* margin-right: 2%; */
   }
   .dc-home .post.line-end {
     float: right;

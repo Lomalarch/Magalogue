@@ -8,8 +8,6 @@
         display: none;
     }
     #topcontainer-small {
-        // background: $gray-medium;
-        // background: linear-gradient($gray-medium, $white);
         min-height: 55px;
         .HomeLink {
             float: left;
@@ -26,7 +24,6 @@
     margin-left: -43em;
     height: 165px;
     background: transparent url(img/ballon.png) no-repeat top right;
-    // z-index: 2;
 }
 .header-small {
     position: fixed;
@@ -39,7 +36,6 @@
 .header a:visited,
 .header-small a:link,
 .header-small a:visited {
-    // color: $primary-color;
     border-bottom-color: transparent;
 }
 .header a:hover,
@@ -57,16 +53,6 @@
     /* text-align: right;*/
     li {
         @include inline-block-list-item(.5em);
-        /* font-size: scut-em(12);
-        line-height: 1;
-        padding-bottom: .5em;
-        a:link, a:visited {
-            color: $gray-dark;
-            }
-        a:hover, a:focus {
-            background-color: $gray-light;
-            color: $link;
-            } */
     }
 }
 .header {
@@ -96,7 +82,6 @@
 }
 .follow-us-small {
 
-     // @include zen-grid-item(5,3);
      padding-bottom: 15px;
      text-align: center;
      padding-left: 3em;
@@ -134,7 +119,6 @@
     }
     input#q {
         width: 155px;
-        // font-style: italic;
         padding-left: 1.1em;
     }
     #q::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -159,35 +143,7 @@
     border-radius: 15px;
     margin-top: 10px;
     font-size: .95em;
-    // .univers-creatif & {
-    // background-color: $light-blue;        
-    // }
-    // .cuisine & {
-    // background-color: $mauve;        
-    // }
-    // .puericulture & {
-    // background-color: $light-mauve;        
-    // }
-    // .decorer & {
-    // background-color: $light-green;        
-    // }
-    // .colorier-et-jouer & {
-    // background-color: $dark-green;        
-    // }
-    // .les-indispensables & {
-    // background-color: $orange;        
-    // }
-    // .jeux-et-jouets & {
-    // background-color: $vermillon;        
-    // }
-    // .mode-enfants & {
-    // background-color: $vermillon;        
-    // }
-    // .accueil & {
-    // background-color: $dark-footer;        
-    // }
    fieldset {
-        // padding: 0 0 0 25px;
         p {
             margin: 0;
             text-align: right;
@@ -200,7 +156,6 @@
         }
         input#q {
             width: 73%;
-            // font-style: italic;
             padding-left: 5px;
         }
         #q::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -220,52 +175,11 @@
             padding-right: 5px;
         }
     }
-}// #toppub {
-//     clear:both;
-//     margin: 0 auto;
-//     background-color: $gray-light;
-//     text-align: center;
-//     padding: 5px 0 0;
-// }
-// .blogName {
-//     height: 0;
-// }
-// .site-title {
-//     position: relative;
-//     top: 1.75em;
-//     height: 35px;
-//     text-align: center;
-//     font-size: .9em;
-//     background: transparent url(img/CartoucheTitre.png) no-repeat center;
-//     padding: 10px 0 0 5px;
-// }
-// a.site-title__link,
-// a.site-title__link:link,
-// a.site-title__link:visited
-// a.site-title__link:hover {
-//     background-color: transparent;
-//     border-color: transparent;
-//     color: $white;
-// }
-// .site-title__text {
-//     color: $white;
-//     // color: rgba(120, 120, 120, 0.8);
-//     text-transform: uppercase;
-//     font-weight: normal;
-//     letter-spacing: 2px;
-//     // text-shadow: 1px 4px 6px $white, 0 0 0 $black, 1px 4px 6px $white;
-// }
-// .site-title__link:hover .site-title__text,
-// .site-title__link:focus .site-title__text,
-// .site-title__link:active .site-title__text {
-//     color: rgba(223, 48, 52, 0.8);
-// }
+}
 .site-baseline, .site-baseline-small {
-    // font-family: $sans-serif;
     font-style: italic;
     font-weight: bold;
     margin: 0 auto;
-    // margin-bottom: rhythm(.5, 24px);
     color: $white;
     background-color: $dark-footer;
     text-align: center;
@@ -281,9 +195,6 @@
 .header__nav, .header__nav-small {
     @include inline-block-list-container;
     clear: left;
-    // text-align: left;
-    // background: $gray-very-dark;
-    // background: $link;
     background-color: $white;
     li {
         @include inline-block-list-item(1.15em);
@@ -305,55 +216,6 @@
             color: $dark-green;
         }
     }
-    // .univers-creatif & li.active {
-    //     color: $light-blue;
-    //     a:link,
-    //     a:visited {
-    //         color: $light-blue;
-    //     }
-    // }
-    // .puericulture & li.active {
-    //     color: $light-mauve;
-    //     a:link,
-    //     a:visited {
-    //         color: $light-mauve;
-    //     }
-    // }
-    //  .decorer & li.active {
-    //     color: $light-green;
-    //     a:link,
-    //     a:visited {
-    //         color: $light-green;
-    //     }
-    // }
-    //   .colorier-et-jouer & li.active {
-    //     color: $dark-green;
-    //     a:link,
-    //     a:visited {
-    //         color: $dark-green;
-    //     }
-    // }
-    //   .les-indispensables & li.active {
-    //     color: $orange;
-    //     a:link,
-    //     a:visited {
-    //         color: $orange;
-    //     }
-    // }
-    //   .jeux-et-jouets & li.active {
-    //     color: $vermillon;
-    //     a:link,
-    //     a:visited {
-    //         color: $vermillon;
-    //     }
-    // }
-    //   .mode-enfants & li.active {
-    //     color: $pale-blue;
-    //     a:link,
-    //     a:visited {
-    //         color: $pale-blue;
-    //     }
-    // }
     li.active {
         // color: $mauve;
         font-style: italic;
@@ -387,114 +249,6 @@
 }
 /* Si js est actif, un bouton pour afficher/masquer le menu est créé */
 
-// .univers-creatif #hamburger {
-//     background-color: $light-blue;
-//     border: 2px solid $light-blue;
-//     &:visited {
-//         background-color: $light-blue;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($light-blue, 20%);
-//         border-color: $light-blue;
-//     }
-// }
-// .cuisine #hamburger {
-//     background-color: $dark-green;
-//     border: 2px solid $dark-green;
-//     &:visited {
-//         background-color: $dark-green;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($dark-green, 20%);
-//         border-color: $dark-green;
-//     }
-// }
-// .puericulture #hamburger {
-//     background-color: $light-mauve;
-//     border: 2px solid $light-mauve;
-//     &:visited {
-//         background-color: $light-mauve;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($light-mauve, 20%);
-//         border-color: $light-mauve;
-//     }
-// }
-// .decorer #hamburger {
-//     background-color: $light-green;
-//     border: 2px solid $light-green;
-//     &:visited {
-//         background-color: $light-green;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($light-green, 20%);
-//         border-color: $light-green;
-//     }
-// }
-// .colorier-et-jouer #hamburger {
-//     background-color: $dark-green;
-//     border: 2px solid $dark-green;
-//     &:visited {
-//         background-color: $dark-green;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($dark-green, 20%);
-//         border-color: $dark-green;
-//     }
-// }
-// .les-indispensables #hamburger {
-//     background-color: $orange;
-//     border: 2px solid $orange;
-//     &:visited {
-//         background-color: $orange;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($orange, 20%);
-//         border-color: $orange;
-//     }
-// }
-// .jeux-et-jouets #hamburger {
-//     background-color: $vermillon;
-//     border: 2px solid $vermillon;
-//     &:visited {
-//         background-color: $vermillon;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($vermillon, 20%);
-//         border-color: $vermillon;
-//     }
-// }
-// .mode-enfants #hamburger {
-//     background-color: $pale-blue;
-//     border: 2px solid $pale-blue;
-//     &:visited {
-//         background-color: $pale-blue;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($pale-blue, 20%);
-//         border-color: $pale-blue;
-//     }
-// }
-// .accueil #hamburger {
-//     background-color: $dark-footer;
-//     border: 2px solid $dark-footer;
-//     &:visited {
-//         background-color: $dark-footer;
-//     }
-//     &:focus,
-//     &:hover {
-//         background-color: shade($dark-footer, 20%);
-//         border-color: $dark-footer;
-//     }
-// }
 #hamburger {
     position: absolute;
     top: 10px;
@@ -506,15 +260,6 @@
     @include svg(icon_hamburger);
     height: 2.5em;
     width: 2.5em;
-    // border: 2px solid $link;
-    // &:visited {
-    //     background-color: $link;
-    // }
-    // &:focus,
-    // &:hover {
-    //     background-color: shade($link, 20%);
-    //     border-color: $link;
-    // }
     &.open {
     background-image: inline-image('icon_close.png');
     background-image: inline-image('icon_close.svg'), none;
@@ -545,10 +290,6 @@
     .site-baseline {
         display: none;
     }
-    // #hamburger {
-    //     top: 10px;
-    //     right: .5em;
-    // }
 }
 @media screen and (max-width: $medium-screen) {
     .site-title {

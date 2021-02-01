@@ -241,9 +241,6 @@ h6 {
   font-size: 1em;
   margin-bottom: 0; }
 
-/* h2, h3, h4, h5, h6 {
-    color: $secondary-color;
-} */
 .accueil a {
   color: #383648; }
   .accueil a:link, .accueil a:visited {
@@ -264,6 +261,7 @@ a {
   a:visited {
     border-bottom-style: dotted; }
   a:focus {
+    background-color: #008000;
     color: #fafafa; }
 
 hr {
@@ -528,17 +526,7 @@ body {
     vertical-align: middle;
     white-space: nowrap;
     padding-left: 0.5em;
-    padding-right: 0.5em;
-    /* font-size: scut-em(12);
-    line-height: 1;
-    padding-bottom: .5em;
-    a:link, a:visited {
-        color: $gray-dark;
-        }
-    a:hover, a:focus {
-        background-color: $gray-light;
-        color: $link;
-        } */ }
+    padding-right: 0.5em; }
 
 .header {
   border-bottom: 1px solid #dcdcdc;
@@ -979,44 +967,9 @@ a.site-title__link:hover {
 #q {
   width: 75%; }
 
-/* .accueil .categories nav li {
-        border-bottom: 1px solid $dark-footer;
-        font-size: 1.25em;
-        font-weight: normal;
-        padding: 0 15px .5em 0;
-        margin-bottom: .5em;
-        font-style: normal;
-} */
-/* .categories h4.ui-accordion-header-collapsed, .categories ul ul {
-        border-bottom: 1px solid $light-mauve;
-} */
-/* .univers-creatif .categories h3.ui-accordion-header-collapsed, .univers-creatif .categories ul {
-        border-bottom: 1px solid $light-blue;
-}
-.puericulture .categories h3.ui-accordion-header-collapsed, .puericulture .categories ul {
-        border-bottom: 1px solid $light-mauve;
-}
-.decorer .categories h3.ui-accordion-header-collapsed, .decorer .categories ul {
-        border-bottom: 1px solid $light-green;
-}
-.colorier-et-jouer .categories h3.ui-accordion-header-collapsed, .colorier-et-jouer .categories ul {
-        border-bottom: 1px solid $dark-green;
-}
-.les-indispensables .categories h3.ui-accordion-header-collapsed, .les-indispensables .categories ul {
-        border-bottom: 1px solid $orange;
-}
-.jeux-et-jouets .categories h3.ui-accordion-header-collapsed, .jeux-et-jouets .categories ul {
-        border-bottom: 1px solid $vermillon;
-}
-.mode-enfants .categories h3.ui-accordion-header-collapsed, .mode-enfants .categories ul {
-        border-bottom: 1px solid $pale-blue;
-} */
 .categories {
   padding: 0 2em;
-  margin-top: 1em;
-  /* .ui-accordion a {
-      display:block;
-  } */ }
+  margin-top: 1em; }
   .categories h3 {
     font-size: 1.25em;
     text-transform: uppercase;
@@ -1041,9 +994,7 @@ a.site-title__link:hover {
   .categories li {
     font-size: 1.1em;
     font-style: normal;
-    font-weight: bold;
-    /*         font-style: italic;
-            font-size: .9em; */ }
+    font-weight: bold; }
     .categories li ul li {
       font-style: italic;
       font-size: .9em;
@@ -1126,9 +1077,6 @@ li.tag-current {
 .extrasidepubcontainer {
   background-color: #f3f3f3; }
 
-/* .sidebar li:hover ul {
-    background-color: $gray-very-dark;
-} */
 @media screen and (min-width: 30.1em) and (max-width: 60em) {
   .blognav__widgets .widget, .blogextra__widgets .widget {
     width: 50%;
@@ -1345,27 +1293,6 @@ h3.related-entries {
 .post-tags-item {
   background-color: #008000; }
 
-/* .univers-creatif .post-tags-item {
-    background-color: $light-blue;
-}
-.puericulture .post-tags-item {
-    background-color: $light-mauve;
-}
-.mode-enfants .post-tags-item {
-    background-color: $pale-blue;
-}
-.decorer .post-tags-item {
-    background-color: $light-green;
-}
-.colorier-et-jouer .post-tags-item {
-    background-color: $dark-green;
-}
-.les-indispensables .post-tags-item {
-    background-color: $orange;
-}
-.jeux-et-jouets .post-tags-item {
-    background-color: $vermillon;
-} */
 .post-tags-item {
   list-style-image: none;
   list-style-type: none;
@@ -1626,11 +1553,6 @@ button.submit:active, button.preview:active {
   .pagination .first::after, .pagination .other::after {
     content: " | "; }
 
-.addthis_toolbox {
-  margin-left: 66%; }
-  .addthis_toolbox a:link {
-    border: none; }
-
 /* ---------------------------------------------------------------- archives */
 /* general */
 @media all and (min-width: 30em) {
@@ -1840,9 +1762,7 @@ hr.home-separator {
 
 @media screen and (min-width: 80.1em) {
   .dc-home .post {
-    /* float: left; */
-    width: 32%;
-    /* margin-right: 2%; */ }
+    width: 32%; }
 
   .dc-home .post.line-end {
     float: right;

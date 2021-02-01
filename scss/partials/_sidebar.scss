@@ -4,70 +4,14 @@
         color: $dark-green;
      }
 }
-// .univers-creatif .sidebar {
-//     color: $light-blue;
-//     a:link, a:visited {
-//         color: $light-blue;
-//    }
-// }
-// .puericulture .sidebar {
-//     color: $light-mauve;
-//     a:link, a:visited {
-//         color: $light-mauve;
-//    }
-// }
-// .decorer .sidebar {
-//     color: $light-green;
-//     a:link, a:visited {
-//         color: $light-green;
-//    }
-// }
-// .colorier-et-jouer .sidebar {
-//     color: $dark-green;
-//     a:link, a:visited {
-//         color: $dark-green;
-//    }
-// }
-// .les-indispensables .sidebar {
-//     color: $orange;
-//     a:link, a:visited {
-//         color: $orange;
-//    }
-// }
-// .jeux-et-jouets .sidebar {
-//     color: $vermillon;
-//     a:link, a:visited {
-//         color: $vermillon;
-//    }
-// }
-// .mode-enfants .sidebar {
-//     color: $pale-blue;
-//     a:link, a:visited {
-//         color: $pale-blue;
-//    }
-// }
 .sidebar {
     @include pie-clearfix;
     padding-bottom: 2em;
     background: $white;
-    // color: $mauve;
-    // margin-top: 3em;
-    // text-shadow: $white 0px -1px 0px;
     a:link, a:visited {
-    //     color: $mauve;
         border: none;
     }
-    // a:hover, a:focus, a:active,
-    // li:hover, li:focus {
-    //     background-color: $mauve;
-    //     color: $white;
-    // }
 }
-// .blogName {
-//     height: 0;
-// }
-// .categories h3 {
-// }
 a.site-title__link,
 a.site-title__link:link,
 a.site-title__link:visited
@@ -78,11 +22,9 @@ a.site-title__link:hover {
 }
 .site-title__text {
     color: $white;
-    // color: rgba(120, 120, 120, 0.8);
     text-transform: uppercase;
     font-weight: normal;
     letter-spacing: 2px;
-    // text-shadow: 1px 4px 6px $white, 0 0 0 $black, 1px 4px 6px $white;
 }
 .blognav__title,
 .blogextra__title,
@@ -95,7 +37,6 @@ a.site-title__link:hover {
 .blogextra__widgets h3,
 .blogextra__widgets h4 {
     font-size: 1em;
-    // color: $white;
     font-weight: bold;
 }
 .widget.tags h3 {
@@ -104,7 +45,6 @@ a.site-title__link:hover {
     font-weight: normal;
     letter-spacing: 2px;
 }
-// .blognav__widgets h3,
 .blogextra__widgets h3 {
     text-transform: uppercase;
 }
@@ -145,15 +85,7 @@ a.site-title__link:hover {
     li {
         display: block;
         padding: .25em;
-        // border-bottom: 1px solid $gray-medium;
     }
-    // li ul {
-    // margin-left: -.25em;
-    // }
-    // // li li {
-    //     border-top: 1px solid $gray-medium;
-    //     border-bottom: none;
-    // }
 }
 #sidebar #search {
     display: none;
@@ -161,38 +93,6 @@ a.site-title__link:hover {
 #q {
     width: 75%;
 }
-/* .accueil .categories nav li {
-        border-bottom: 1px solid $dark-footer;
-        font-size: 1.25em;
-        font-weight: normal;
-        padding: 0 15px .5em 0;
-        margin-bottom: .5em;
-        font-style: normal;
-} */
-/* .categories h4.ui-accordion-header-collapsed, .categories ul ul {
-        border-bottom: 1px solid $light-mauve;
-} */
-/* .univers-creatif .categories h3.ui-accordion-header-collapsed, .univers-creatif .categories ul {
-        border-bottom: 1px solid $light-blue;
-}
-.puericulture .categories h3.ui-accordion-header-collapsed, .puericulture .categories ul {
-        border-bottom: 1px solid $light-mauve;
-}
-.decorer .categories h3.ui-accordion-header-collapsed, .decorer .categories ul {
-        border-bottom: 1px solid $light-green;
-}
-.colorier-et-jouer .categories h3.ui-accordion-header-collapsed, .colorier-et-jouer .categories ul {
-        border-bottom: 1px solid $dark-green;
-}
-.les-indispensables .categories h3.ui-accordion-header-collapsed, .les-indispensables .categories ul {
-        border-bottom: 1px solid $orange;
-}
-.jeux-et-jouets .categories h3.ui-accordion-header-collapsed, .jeux-et-jouets .categories ul {
-        border-bottom: 1px solid $vermillon;
-}
-.mode-enfants .categories h3.ui-accordion-header-collapsed, .mode-enfants .categories ul {
-        border-bottom: 1px solid $pale-blue;
-} */
 .categories {
     padding: 0 2em;
     margin-top: 1em;
@@ -205,15 +105,10 @@ a.site-title__link:hover {
         top: -30px;
         height: 35px;
         text-align: center;
-        // font-size: .9em;
         background: transparent url(img/CartoucheTitre.png) no-repeat center;
         padding-top: 6px;
         margin: auto 0 -30px 0;
-        // margin-bottom:;
     }
-    /* .ui-accordion a {
-        display:block;
-    } */
     h4 {
         margin: 0;
     }
@@ -231,61 +126,22 @@ a.site-title__link:hover {
         font-size: 1.1em;
         font-style: normal;
         font-weight: bold;
-/*         font-style: italic;
-        font-size: .9em; */
         ul li {
             font-style: italic;
             font-size: .9em;
             padding-left: .5em;
-            // border-bottom: none;
-            // font-size: .75em;
         }
     }
 }
 .category-current {
-    // margin-left: -2em;
     background-color: $dark-green;
 }
-// .univers-creatif .category-current {
-//     // margin-left: -2em;
-//     background-color: $light-blue;
-// }
-// .puericulture .category-current {
-//     // margin-left: -2em;
-//     background-color: $light-mauve;
-// }
-// .decorer .category-current {
-//     // margin-left: -2em;
-//     background-color: $light-green;
-// }
-// .colorier-et-jouer .category-current {
-//     // margin-left: -2em;
-//     background-color: $dark-green;
-// }
-// .les-indispensables .category-current {
-//     // margin-left: -2em;
-//     background-color: $orange;
-// }
-// .jeux-et-jouets .category-current {
-//     // margin-left: -2em;
-//     background-color: $vermillon;
-// }
-// .mode-enfants .category-current {
-//     // margin-left: -2em;
-//     background-color: $pale-blue;
-// }
 .sidebar .category-current {
-    // margin-left: -2em;
-    // background-color: $mauve;
     color: white;
     a:link, a:visited, a:hover, a:active {
         color: white;
     }
 }
-// .category-current ul {
-//     background-color: transparent;
-//     color: $mauve;
-// }
 ul.tags {
     @include no-bullets;
     padding-left: 0;
@@ -331,9 +187,6 @@ li.tag-current {
     background-color: $gray-light;
 }
 
-/* .sidebar li:hover ul {
-    background-color: $gray-very-dark;
-} */
 @media screen and(min-width: ($small-screen + .1em)) and (max-width: $large-screen) {
     .blognav__widgets .widget, .blogextra__widgets .widget {
         width: 50%;
