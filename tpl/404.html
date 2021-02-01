@@ -14,16 +14,11 @@
 </tpl:Block>
 
 <tpl:Block name="body-tag"><body class="dc-404 {{tpl:BlogID}}"></tpl:Block>
-								<tpl:Block name="main-breadcrumb">
-								<p class="breadcrumb"><a href="/">Accueil</a> › <a href="{{tpl:BlogURL}}">{{tpl:BlogName}}</a> › Document non trouvé</p>
-								</tpl:Block>
 
 <tpl:Block name="main-content">
 	<header id="content-info">
 		<h2>{{tpl:lang Document not found}}</h2>
-		<p>Il ne semble pas y avoir de contenu à cette adresse.<br />
-			Peut-être une faute s’est-elle glissée dans l’URL <br />
-			ou le contenu correspondant a été supprimé…</p>
+		<p>{{tpl:lang URL you've tried has typos, or the page has been deleted or moved.}}</p>
 	</header>
 
 	<nav class="content-inner">

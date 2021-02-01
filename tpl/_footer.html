@@ -3,7 +3,7 @@
 <footer class="footer" id="footer" role="contentinfo">
 	<tpl:IfWidgets type="custom">
 		<div class="widgets footer__widgets" id="blogcustom">
-	        <h2 class="blogcustom__title">{{tpl:lang Blog info}}</h2>
+			<h2 class="blogcustom__title">{{tpl:lang Blog info}}</h2>
 			{{tpl:Widgets type="custom"}}
 		</div> <!-- # End #custom widgets -->
 	</tpl:IfWidgets>
@@ -11,49 +11,21 @@
 	{{tpl:SysBehavior behavior="publicInsideFooter"}}
 	<p class="credits">{{tpl:SysPoweredBy}} – thème Magalogue par <a href="https://www.noecendrier.fr/" title="Webbidouilleur et comédien">Noé Cendrier</a>, <a href="http://www.julienjakoby.com/">Julien Jakoby</a></p>
   <div id="bottomlinks">
-    {{tpl:Menu level="0"}}
+	{{tpl:Menu level="0"}}
   </div>
 
 </footer>
 {{tpl:SysBehavior behavior="publicFooterContent"}}
 <script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/jquery.treemenu.js"></script>
 <script type="text/javascript">//<![CDATA[
-	// var c = 0;
-	// if ($(".categories li.category-current")[0]){
-	// 	$(".category-current").parent().addClass("category-current-below");
-	// 	$(".categories ul:has(ul)").each(function(){
-	// 		c++;
-	// 		if ($(this).hasClass("category-current-below")) {
-	// 			return false;
-	// 		}
-	// 	});
-	// }
-	// $(function() {
-	// 	// $(".categories li:has(ul) > *").wrapAll('<div></div>');
-	// 	//$(".categories li:has(ul) > h4 ~ *").wrapAll('<div></div>');
-	// 	$(".categories li:has(ul) > a").before('<h4>Déplier</h4>');
-	// 	$(".categories li > h4 ~ *").wrapAll('<div></div>');
-	// 	$(".categories").accordion({
-	// 		header: "li:has(ul) > h4",
-	// 		heightStyle: "content",
-	// 		collapsible: true,
-	// 		icons: false,
-	// 		active: c
-	// 	});
-	// 	$(".categories li:has(ul) >  a").click(function() {
-	// 		window.location($(this).attr("href"));
-	// 	});
-	// });
-	// $(".category-current").parent().prev().addClass("category-current-below");
-	// // $(".post-tags-item").parent().css("background-color","yellow");
 	$(function(){
-        $(".categories > ul").treemenu({
+		$(".categories > ul").treemenu({
 			activeSelector: 'category-current',
 			openActive: true,
 			closeOther: true,
 			delay: 300
 		});
-    });
+	});
 //]]></script>
 
 {{tpl:include src="user_footer.html"}}

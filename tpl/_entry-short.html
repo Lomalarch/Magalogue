@@ -9,26 +9,22 @@
 		<tpl:EntryIf has_featured_media="1">
 		<!-- # Featured media -->
 		<tpl:FeaturedMedia>
-		    <div class="post-featured-media {{tpl:FeaturedMediaType}}" id="featured-media-{{tpl:EntryID}}">
-		        <tpl:FeaturedMediaIf is_audio="1">
-		            {{tpl:include src="_audio_player.html"}}
-		        </tpl:FeaturedMediaIf>
-		        <tpl:FeaturedMediaIf is_video="1">
-		            <tpl:FeaturedMediaIf is_flv="0">
-		                {{tpl:include src="_video_player.html"}}
-		            {{tpl:else}}
-		                {{tpl:include src="_flv_player.html"}}
-		            </tpl:FeaturedMediaIf>
-		        </tpl:FeaturedMediaIf>
-		        <tpl:FeaturedMediaIf is_image="1">
-		            <img src="{{tpl:FeaturedMediaImageURL size="m"}}" alt="{{tpl:FeaturedMediaTitle}}" />
-		        </tpl:FeaturedMediaIf>
-		    </div>
+			<div class="post-featured-media {{tpl:FeaturedMediaType}}" id="featured-media-{{tpl:EntryID}}">
+				<tpl:FeaturedMediaIf is_audio="1">
+					{{tpl:include src="_audio_player.html"}}
+				</tpl:FeaturedMediaIf>
+				<tpl:FeaturedMediaIf is_video="1">
+					<tpl:FeaturedMediaIf is_flv="0">
+						{{tpl:include src="_video_player.html"}}
+					{{tpl:else}}
+						{{tpl:include src="_flv_player.html"}}
+					</tpl:FeaturedMediaIf>
+				</tpl:FeaturedMediaIf>
+				<tpl:FeaturedMediaIf is_image="1">
+					<img src="{{tpl:FeaturedMediaImageURL size="m"}}" alt="{{tpl:FeaturedMediaTitle}}" />
+				</tpl:FeaturedMediaIf>
+			</div>
 		</tpl:FeaturedMedia>
-			<!-- # {{tpl:EntryContent encode_html="1" remove_html="1" cut_string="300"}}
-			<tpl:EntryIfContentCut encode_html="1" remove_html="1" cut_string="300">
-				<span class="ellipsis">&nbsp;[&#8230;]</span>
-			</tpl:EntryIfContentCut> -->
 		</tpl:EntryIf>
 		<tpl:EntryIf has_featured_media="0">
 			<div class="image">
@@ -49,57 +45,11 @@
 	<!-- # --BEHAVIOR-- publicEntryBeforeContent -->
 	{{tpl:SysBehavior behavior="publicEntryBeforeContent"}}
 
-	<!-- # Entry with an excerpt
-	<tpl:EntryIf extended="1">
-		<div class="post-content">
-			{{tpl:EntryFirstImage size="t" class="post-icon"}}
-			{{tpl:EntryExcerpt}}
-		</div>
-		<p class="post-read-it"><a href="{{tpl:EntryURL}}"
-		 title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:lang Continue reading}}</a></p>
-	</tpl:EntryIf> -->
-
-	<!-- # Entry without excerpt
-	<tpl:EntryIf extended="0"> -->
 	<div class="post-content">
-	<!-- # <tpl:EntryIfContentCut encode_html="1" remove_html="1" cut_string="300"> -->
 		<p class="post-read-it"><span class="button"><a href="{{tpl:EntryURL}}" title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:lang Continue reading}}</span></a></p>
-	<!-- # </tpl:EntryIfContentCut> -->
 	</div>
-	<!-- # </tpl:EntryIf> -->
 
 	<!-- # --BEHAVIOR-- publicEntryAfterContent -->
 	{{tpl:SysBehavior behavior="publicEntryAfterContent"}}
 
-	<!-- # <footer class="post-meta">
-		<p class="post-info">
-			<span class="post-author">{{tpl:lang By}} {{tpl:EntryAuthorLink}}, </span>
-			<span class="post-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate}}</time>.</span>
-		</p>
-
-		<tpl:EntryTags>
-			<tpl:TagsHeader>
-				<ul class="post-tags-list">
-			</tpl:TagsHeader>
-				<li class="post-tags-item"><a href="{{tpl:TagURL}}">{{tpl:TagID}}</a></li>
-			<tpl:TagsFooter>
-				</ul>
-			</tpl:TagsFooter>
-		</tpl:EntryTags>
-
-		<!-- # Number of comments, trackbacks and attachments
-		<tpl:EntryIf operator="or" show_comments="1" show_pings="1" has_attachment="1">
-			<p class="post-info-co">
-		</tpl:EntryIf>
-			<tpl:EntryIf show_comments="1">
-				<a href="{{tpl:EntryURL}}#comments" class="comment_count">{{tpl:EntryCommentCount}}</a>
-			</tpl:EntryIf>
-			<tpl:EntryIf show_pings="1">
-				<a href="{{tpl:EntryURL}}#pings" class="ping_count">{{tpl:EntryPingCount}}</a></tpl:EntryIf>
-			<tpl:EntryIf has_attachment="1">
-				<a href="{{tpl:EntryURL}}#attachments" class="attach_count">{{tpl:EntryAttachmentCount}}</a></tpl:EntryIf>
-		<tpl:EntryIf operator="or" show_comments="1" show_pings="1" has_attachment="1">
-			</p>
-		</tpl:EntryIf>
-	</footer> -->
 </article>

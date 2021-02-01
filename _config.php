@@ -346,11 +346,11 @@ if ($core->plugins->moduleExists('simpleMenu')) {
         $core->adminurl->get('admin.plugin.simpleMenu')) . '</p>';
 }
 
-echo '<h4 class="border-top pretty-title">' . __('Stickers') . '</h4>';
+echo '<h4 class="border-top pretty-title">' . __('Social links') . '</h4>';
 
 echo
 '<div class="table-outer">' .
-'<table class="dragable">' . '<caption>' . __('Stickers (footer)') . '</caption>' .
+'<table class="dragable">' . '<caption>' . __('Social links (header)') . '</caption>' .
 '<thead>' .
 '<tr>' .
 '<th scope="col">' . '</th>' .

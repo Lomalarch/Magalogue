@@ -1,17 +1,13 @@
 <aside class="sidebar" id="sidebar" role="complementary">
-	<!-- # <div class="blogName">
-		<h1 class="site-title"><a class="site-title__link" href="{{tpl:BlogURL}}"><span class="site-title__text">{{tpl:BlogName encode_html="1"}}</span></a></h1>
-		<p class="site-baseline">{{tpl:BlogDescription}}</p>
-	</div> -->
 	<tpl:IfWidgets type="nav">
 		<div class="widgets blognav__widgets" id="blognav">
-	        <h2 class="blognav__title">{{tpl:lang Blog menu}}</h2>
+			<h2 class="blognav__title">{{tpl:lang Blog menu}}</h2>
 			{{tpl:Widgets type="nav"}}
 		</div> <!-- # End #blognav -->
 	</tpl:IfWidgets>
 	<tpl:IfWidgets type="extra">
 		<div class="widgets blogextra__widgets" id="blogextra">
-	        <h2 class="blogextra__title">{{tpl:lang Extra menu}}</h2>
+			<h2 class="blogextra__title">{{tpl:lang Extra menu}}</h2>
 			{{tpl:Widgets type="extra"}}
 		</div> <!-- # End #blogextra -->
 	</tpl:IfWidgets>
