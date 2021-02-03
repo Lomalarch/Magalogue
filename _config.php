@@ -59,12 +59,8 @@ if (is_array($list_types_templates)) {
 }
 
 $contexts = [
-    'default'      => __('Home (first page)'),
-    'default-page' => __('Home (other pages)'),
-    'category'     => __('Entries for a category'),
-    'tag'          => __('Entries for a tag'),
-    'search'       => __('Search result entries'),
-    'archive'      => __('Month archive entries')
+    'slider'      => __('Homepage slider'),
+    'recent'      => __('Homepage displayed posts')
 ];
 
 $fonts = [
@@ -116,7 +112,7 @@ function fontDef($c)
     return isset($font_families[$c]) ? '<span style="position:absolute;top:0;left:32em;">' . $font_families[$c] . '</span>' : '';
 }
 
-$ductile_base = [
+$magalogue_base = [
     // HTML
     'subtitle_hidden'          => null,
     'logo_src'                 => null,
@@ -148,72 +144,65 @@ $ductile_base = [
     'post_simple_title_c'      => null
 ];
 
-$ductile_lists_base = [
-    'default'      => 'short',
-    'default-page' => 'short',
-    'category'     => 'short',
-    'tag'          => 'short',
-    'search'       => 'short',
-    'archive'      => 'short'
+$magalogue_lists_base = [
+    'slider'      => 'selected',
+    'recent' => 'catlast'
 ];
 
-$ductile_counts_base = [
-    'default'      => null,
-    'default-page' => null,
-    'category'     => null,
-    'tag'          => null,
-    'search'       => null
+$magalogue_counts_base = [
+    'slider'      => null,
+    'recent' => null
 ];
 
-$ductile_user = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_style');
-$ductile_user = @unserialize($ductile_user);
-if (!is_array($ductile_user)) {
-    $ductile_user = [];
+$magalogue_user = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_style');
+$magalogue_user = @unserialize($magalogue_user);
+if (!is_array($magalogue_user)) {
+    $magalogue_user = [];
 }
-$ductile_user = array_merge($ductile_base, $ductile_user);
+$magalogue_user = array_merge($magalogue_base, $magalogue_user);
 
-$ductile_lists = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_entries_lists');
-$ductile_lists = @unserialize($ductile_lists);
-if (!is_array($ductile_lists)) {
-    $ductile_lists = $ductile_lists_base;
+$magalogue_lists = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_entries_lists');
+$magalogue_lists = @unserialize($magalogue_lists);
+if (!is_array($magalogue_lists)) {
+    $magalogue_lists = $magalogue_lists_base;
 }
-$ductile_lists = array_merge($ductile_lists_base, $ductile_lists);
+$magalogue_lists = array_merge($magalogue_lists_base, $magalogue_lists);
 
-$ductile_counts = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_entries_counts');
-$ductile_counts = @unserialize($ductile_counts);
-if (!is_array($ductile_counts)) {
-    $ductile_counts = $ductile_counts_base;
+$magalogue_counts = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_entries_counts');
+$magalogue_counts = @unserialize($magalogue_counts);
+if (!is_array($magalogue_counts)) {
+    $magalogue_counts = $magalogue_counts_base;
 }
-$ductile_counts = array_merge($ductile_counts_base, $ductile_counts);
+$magalogue_counts = array_merge($magalogue_counts_base, $magalogue_counts);
 
-$ductile_stickers = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_stickers');
-$ductile_stickers = @unserialize($ductile_stickers);
+$magalogue_stickers = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_stickers');
+$magalogue_stickers = @unserialize($magalogue_stickers);
 
 // If no stickers defined, add feed Atom one
-if (!is_array($ductile_stickers)) {
-    $ductile_stickers = [[
+if (!is_array($magalogue_stickers)) {
+    $magalogue_stickers = [[
         'label' => __('Subscribe'),
         'url'   => $core->blog->url .
         $core->url->getURLFor('feed', 'atom'),
-        'image' => 'sticker-feed.png'
+        'image' => 'rss-link.png'
     ]];
 }
 
-$ductile_stickers_full = [];
+$magalogue_stickers_full = [];
 // Get all sticker images already used
-if (is_array($ductile_stickers)) {
-    foreach ($ductile_stickers as $v) {
-        $ductile_stickers_full[] = $v['image'];
+if (is_array($magalogue_stickers)) {
+    foreach ($magalogue_stickers as $v) {
+        $magalogue_stickers_full[] = $v['image'];
     }
 }
 // Get all sticker-*.png in img folder of theme
-$ductile_stickers_images = files::scandir($img_path);
-if (is_array($ductile_stickers_images)) {
-    foreach ($ductile_stickers_images as $v) {
-        if (preg_match('/^sticker\-(.*)\.png$/', $v)) {
-            if (!in_array($v, $ductile_stickers_full)) {
+$magalogue_stickers_images = files::scandir($img_path);
+if (is_array($magalogue_stickers_images)) {
+    foreach ($magalogue_stickers_images as $v) {
+        if (preg_match('/^(.*)-link\.png$/', $v)) {
+            if (!in_array($v, $magalogue_stickers_full)) {
                 // image not already used
-                $ductile_stickers[] = [
+                $magalogue_stickers[] = [
                     'label' => null,
                     'url'   => null,
                     'image' => $v];
@@ -229,13 +218,13 @@ if (!empty($_POST)) {
     {
         # HTML
         if ($conf_tab == 'html') {
-            $ductile_user['subtitle_hidden']       = (integer) !empty($_POST['subtitle_hidden']);
-            $ductile_user['logo_src']              = $_POST['logo_src'];
-            $ductile_user['preview_not_mandatory'] = (integer) !empty($_POST['preview_not_mandatory']);
+            $magalogue_user['subtitle_hidden']       = (integer) !empty($_POST['subtitle_hidden']);
+            $magalogue_user['logo_src']              = $_POST['logo_src'];
+            $magalogue_user['preview_not_mandatory'] = (integer) !empty($_POST['preview_not_mandatory']);
 
-            $ductile_stickers = [];
+            $magalogue_stickers = [];
             for ($i = 0; $i < count($_POST['sticker_image']); $i++) {
-                $ductile_stickers[] = [
+                $magalogue_stickers[] = [
                     'label' => $_POST['sticker_label'][$i],
                     'url'   => $_POST['sticker_url'][$i],
                     'image' => $_POST['sticker_image'][$i]
@@ -252,64 +241,64 @@ if (!empty($_POST)) {
                 $new_ductile_stickers = [];
                 foreach ($order as $i => $k) {
                     $new_ductile_stickers[] = [
-                        'label' => $ductile_stickers[$k]['label'],
-                        'url'   => $ductile_stickers[$k]['url'],
-                        'image' => $ductile_stickers[$k]['image']
+                        'label' => $magalogue_stickers[$k]['label'],
+                        'url'   => $magalogue_stickers[$k]['url'],
+                        'image' => $magalogue_stickers[$k]['image']
                     ];
                 }
-                $ductile_stickers = $new_ductile_stickers;
+                $magalogue_stickers = $new_ductile_stickers;
             }
 
             for ($i = 0; $i < count($_POST['list_type']); $i++) {
-                $ductile_lists[$_POST['list_ctx'][$i]] = $_POST['list_type'][$i];
+                $magalogue_lists[$_POST['list_ctx'][$i]] = $_POST['list_type'][$i];
             }
 
             for ($i = 0; $i < count($_POST['count_nb']); $i++) {
-                $ductile_counts[$_POST['count_ctx'][$i]] = $_POST['count_nb'][$i];
+                $magalogue_counts[$_POST['count_ctx'][$i]] = $_POST['count_nb'][$i];
             }
 
         }
 
         # CSS
         if ($conf_tab == 'css') {
-            $ductile_user['body_font']           = $_POST['body_font'];
-            $ductile_user['body_webfont_family'] = $_POST['body_webfont_family'];
-            $ductile_user['body_webfont_url']    = $_POST['body_webfont_url'];
-            $ductile_user['body_webfont_api']    = $_POST['body_webfont_api'];
+            $magalogue_user['body_font']           = $_POST['body_font'];
+            $magalogue_user['body_webfont_family'] = $_POST['body_webfont_family'];
+            $magalogue_user['body_webfont_url']    = $_POST['body_webfont_url'];
+            $magalogue_user['body_webfont_api']    = $_POST['body_webfont_api'];
 
-            $ductile_user['alternate_font']           = $_POST['alternate_font'];
-            $ductile_user['alternate_webfont_family'] = $_POST['alternate_webfont_family'];
-            $ductile_user['alternate_webfont_url']    = $_POST['alternate_webfont_url'];
-            $ductile_user['alternate_webfont_api']    = $_POST['alternate_webfont_api'];
+            $magalogue_user['alternate_font']           = $_POST['alternate_font'];
+            $magalogue_user['alternate_webfont_family'] = $_POST['alternate_webfont_family'];
+            $magalogue_user['alternate_webfont_url']    = $_POST['alternate_webfont_url'];
+            $magalogue_user['alternate_webfont_api']    = $_POST['alternate_webfont_api'];
 
-            $ductile_user['blog_title_w'] = (integer) !empty($_POST['blog_title_w']);
-            $ductile_user['blog_title_s'] = dcThemeConfig::adjustFontSize($_POST['blog_title_s']);
-            $ductile_user['blog_title_c'] = dcThemeConfig::adjustColor($_POST['blog_title_c']);
+            $magalogue_user['blog_title_w'] = (integer) !empty($_POST['blog_title_w']);
+            $magalogue_user['blog_title_s'] = dcThemeConfig::adjustFontSize($_POST['blog_title_s']);
+            $magalogue_user['blog_title_c'] = dcThemeConfig::adjustColor($_POST['blog_title_c']);
 
-            $ductile_user['post_title_w'] = (integer) !empty($_POST['post_title_w']);
-            $ductile_user['post_title_s'] = dcThemeConfig::adjustFontSize($_POST['post_title_s']);
-            $ductile_user['post_title_c'] = dcThemeConfig::adjustColor($_POST['post_title_c']);
+            $magalogue_user['post_title_w'] = (integer) !empty($_POST['post_title_w']);
+            $magalogue_user['post_title_s'] = dcThemeConfig::adjustFontSize($_POST['post_title_s']);
+            $magalogue_user['post_title_c'] = dcThemeConfig::adjustColor($_POST['post_title_c']);
 
-            $ductile_user['post_link_w']   = (integer) !empty($_POST['post_link_w']);
-            $ductile_user['post_link_v_c'] = dcThemeConfig::adjustColor($_POST['post_link_v_c']);
-            $ductile_user['post_link_f_c'] = dcThemeConfig::adjustColor($_POST['post_link_f_c']);
+            $magalogue_user['post_link_w']   = (integer) !empty($_POST['post_link_w']);
+            $magalogue_user['post_link_v_c'] = dcThemeConfig::adjustColor($_POST['post_link_v_c']);
+            $magalogue_user['post_link_f_c'] = dcThemeConfig::adjustColor($_POST['post_link_f_c']);
 
-            $ductile_user['post_simple_title_c'] = dcThemeConfig::adjustColor($_POST['post_simple_title_c']);
+            $magalogue_user['post_simple_title_c'] = dcThemeConfig::adjustColor($_POST['post_simple_title_c']);
 
-            $ductile_user['blog_title_w_m'] = (integer) !empty($_POST['blog_title_w_m']);
-            $ductile_user['blog_title_s_m'] = dcThemeConfig::adjustFontSize($_POST['blog_title_s_m']);
-            $ductile_user['blog_title_c_m'] = dcThemeConfig::adjustColor($_POST['blog_title_c_m']);
+            $magalogue_user['blog_title_w_m'] = (integer) !empty($_POST['blog_title_w_m']);
+            $magalogue_user['blog_title_s_m'] = dcThemeConfig::adjustFontSize($_POST['blog_title_s_m']);
+            $magalogue_user['blog_title_c_m'] = dcThemeConfig::adjustColor($_POST['blog_title_c_m']);
 
-            $ductile_user['post_title_w_m'] = (integer) !empty($_POST['post_title_w_m']);
-            $ductile_user['post_title_s_m'] = dcThemeConfig::adjustFontSize($_POST['post_title_s_m']);
-            $ductile_user['post_title_c_m'] = dcThemeConfig::adjustColor($_POST['post_title_c_m']);
+            $magalogue_user['post_title_w_m'] = (integer) !empty($_POST['post_title_w_m']);
+            $magalogue_user['post_title_s_m'] = dcThemeConfig::adjustFontSize($_POST['post_title_s_m']);
+            $magalogue_user['post_title_c_m'] = dcThemeConfig::adjustColor($_POST['post_title_c_m']);
         }
 
         $core->blog->settings->addNamespace('themes');
-        $core->blog->settings->themes->put($core->blog->settings->system->theme . '_style', serialize($ductile_user));
-        $core->blog->settings->themes->put($core->blog->settings->system->theme . '_stickers', serialize($ductile_stickers));
-        $core->blog->settings->themes->put($core->blog->settings->system->theme . '_entries_lists', serialize($ductile_lists));
-        $core->blog->settings->themes->put($core->blog->settings->system->theme . '_entries_counts', serialize($ductile_counts));
+        $core->blog->settings->themes->put($core->blog->settings->system->theme . '_style', serialize($magalogue_user));
+        $core->blog->settings->themes->put($core->blog->settings->system->theme . '_stickers', serialize($magalogue_stickers));
+        $core->blog->settings->themes->put($core->blog->settings->system->theme . '_entries_lists', serialize($magalogue_lists));
+        $core->blog->settings->themes->put($core->blog->settings->system->theme . '_entries_counts', serialize($magalogue_counts));
 
         // Blog refresh
         $core->blog->triggerBlog();
@@ -338,9 +327,9 @@ echo '<form id="theme_config" action="' . $core->adminurl->get('admin.blog.theme
 
 echo '<h4>' . __('Header') . '</h4>' .
 '<p class="field"><label for="subtitle_hidden">' . __('Hide blog description:') . '</label> ' .
-form::checkbox('subtitle_hidden', 1, $ductile_user['subtitle_hidden']) . '</p>';
+form::checkbox('subtitle_hidden', 1, $magalogue_user['subtitle_hidden']) . '</p>';
 echo '<p class="field"><label for="logo_src">' . __('Logo URL:') . '</label> ' .
-form::field('logo_src', 40, 255, $ductile_user['logo_src']) . '</p>';
+form::field('logo_src', 40, 255, $magalogue_user['logo_src']) . '</p>';
 if ($core->plugins->moduleExists('simpleMenu')) {
     echo '<p>' . sprintf(__('To configure the top menu go to the <a href="%s">Simple Menu administration page</a>.'),
         $core->adminurl->get('admin.plugin.simpleMenu')) . '</p>';
@@ -361,18 +350,18 @@ echo
     '</thead>' .
     '<tbody id="stickerslist">';
 $count = 0;
-foreach ($ductile_stickers as $i => $v) {
+foreach ($magalogue_stickers as $i => $v) {
     $count++;
     echo
     '<tr class="line" id="l_' . $i . '">' .
     '<td class="handle minimal">' . form::number(['order[' . $i . ']'], [
         'min'     => 0,
-        'max'     => count($ductile_stickers),
+        'max'     => count($magalogue_stickers),
         'default' => $count,
         'class'   => 'position'
     ]) .
     form::hidden(['dynorder[]', 'dynorder-' . $i], $i) . '</td>' .
-    '<td>' . form::hidden(['sticker_image[]'], $v['image']) . '<img src="' . $img_url . $v['image'] . '" alt="' . $v['image'] . '" /> ' . '</td>' .
+    '<td class="linkimg">' . form::hidden(['sticker_image[]'], $v['image']) . '<img src="' . $img_url . $v['image'] . '" alt="' . $v['image'] . '" /> ' . '</td>' .
     '<td scope="row">' . form::field(['sticker_label[]', 'dsl-' . $i], 20, 255, $v['label']) . '</td>' .
     '<td>' . form::field(['sticker_url[]', 'dsu-' . $i], 40, 255, $v['url']) . '</td>' .
         '</tr>';
@@ -381,7 +370,7 @@ echo
     '</tbody>' .
     '</table></div>';
 
-echo '<h4 class="border-top pretty-title">' . __('Entries list types and limits') . '</h4>';
+echo '<h4 class="border-top pretty-title">' . __('Entries lists in homepage') . '</h4>';
 
 echo '<table id="entrieslist">' . '<caption class="hidden">' . __('Entries lists') . '</caption>' .
 '<thead>' .
@@ -392,16 +381,16 @@ echo '<table id="entrieslist">' . '<caption class="hidden">' . __('Entries lists
     '</tr>' .
     '</thead>' .
     '<tbody>';
-foreach ($ductile_lists as $k => $v) {
+foreach ($magalogue_lists as $k => $v) {
     echo
     '<tr>' .
     '<td scope="row">' . $contexts[$k] . '</td>' .
     '<td>' . form::hidden(['list_ctx[]'], $k) . form::combo(['list_type[]'], $list_types, $v) . '</td>';
-    if (array_key_exists($k, $ductile_counts)) {
+    if (array_key_exists($k, $magalogue_counts)) {
         echo '<td>' . form::hidden(['count_ctx[]'], $k) . form::number(['count_nb[]'], [
             'min'     => 0,
             'max'     => 999,
-            'default' => $ductile_counts[$k]
+            'default' => $magalogue_counts[$k]
         ]) . '</td>';
     } else {
         echo '<td></td>';
@@ -412,10 +401,6 @@ foreach ($ductile_lists as $k => $v) {
 echo
     '</tbody>' .
     '</table>';
-
-echo '<h4 class="border-top pretty-title">' . __('Miscellaneous options') . '</h4>';
-echo '<p><label for="preview_not_mandatory" class="classic">' . __('Comment preview is not mandatory:') . '</label> ' .
-form::checkbox('preview_not_mandatory', 1, $ductile_user['preview_not_mandatory']) . '</p>';
 
 echo '<p><input type="hidden" name="conf_tab" value="html" /></p>';
 echo '<p class="clear">' . form::hidden('ds_order', '') . '<input type="submit" value="' . __('Save') . '" />' . $core->formNonce() . '</p>';
@@ -439,31 +424,31 @@ echo '<div class="col">';
 echo
 '<h5>' . __('Main text') . '</h5>' .
 '<p class="field"><label for="body_font">' . __('Main font:') . '</label> ' .
-form::combo('body_font', $fonts, $ductile_user['body_font']) .
-(!empty($ductile_user['body_font']) ? ' ' . fontDef($ductile_user['body_font']) : '') .
+form::combo('body_font', $fonts, $magalogue_user['body_font']) .
+(!empty($magalogue_user['body_font']) ? ' ' . fontDef($magalogue_user['body_font']) : '') .
 ' <span class="form-note">' . __('Set to Default to use a webfont.') . '</span>' .
 '</p>' .
 '<p class="field"><label for="body_webfont_family">' . __('Webfont family:') . '</label> ' .
-form::field('body_webfont_family', 25, 255, $ductile_user['body_webfont_family']) . '</p>' .
+form::field('body_webfont_family', 25, 255, $magalogue_user['body_webfont_family']) . '</p>' .
 '<p class="field"><label for="body_webfont_url">' . __('Webfont URL:') . '</label> ' .
-form::url('body_webfont_url', 50, 255, $ductile_user['body_webfont_url']) . '</p>' .
+form::url('body_webfont_url', 50, 255, $magalogue_user['body_webfont_url']) . '</p>' .
 '<p class="field"><label for="body_webfont_url">' . __('Webfont API:') . '</label> ' .
-form::combo('body_webfont_api', $webfont_apis, $ductile_user['body_webfont_api']) . '</p>';
+form::combo('body_webfont_api', $webfont_apis, $magalogue_user['body_webfont_api']) . '</p>';
 echo '</div>';
 echo '<div class="col">';
 echo
 '<h5>' . __('Secondary text') . '</h5>' .
 '<p class="field"><label for="alternate_font">' . __('Secondary font:') . '</label> ' .
-form::combo('alternate_font', $fonts, $ductile_user['alternate_font']) .
-(!empty($ductile_user['alternate_font']) ? ' ' . fontDef($ductile_user['alternate_font']) : '') .
+form::combo('alternate_font', $fonts, $magalogue_user['alternate_font']) .
+(!empty($magalogue_user['alternate_font']) ? ' ' . fontDef($magalogue_user['alternate_font']) : '') .
 ' <span class="form-note">' . __('Set to Default to use a webfont.') . '</span>' .
 '</p>' .
 '<p class="field"><label for="alternate_webfont_family">' . __('Webfont family:') . '</label> ' .
-form::field('alternate_webfont_family', 25, 255, $ductile_user['alternate_webfont_family']) . '</p>' .
+form::field('alternate_webfont_family', 25, 255, $magalogue_user['alternate_webfont_family']) . '</p>' .
 '<p class="field"><label for="alternate_webfont_url">' . __('Webfont URL:') . '</label> ' .
-form::url('alternate_webfont_url', 50, 255, $ductile_user['alternate_webfont_url']) . '</p>' .
+form::url('alternate_webfont_url', 50, 255, $magalogue_user['alternate_webfont_url']) . '</p>' .
 '<p class="field"><label for="alternate_webfont_api">' . __('Webfont API:') . '</label> ' .
-form::combo('alternate_webfont_api', $webfont_apis, $ductile_user['alternate_webfont_api']) . '</p>';
+form::combo('alternate_webfont_api', $webfont_apis, $magalogue_user['alternate_webfont_api']) . '</p>';
 echo '</div>';
 echo '</div>';
 
@@ -472,16 +457,16 @@ echo '<div class="two-cols">';
 echo '<div class="col">';
 echo '<h5>' . __('Blog title') . '</h5>' .
 '<p class="field"><label for="blog_title_w">' . __('In bold:') . '</label> ' .
-form::checkbox('blog_title_w', 1, $ductile_user['blog_title_w']) . '</p>' .
+form::checkbox('blog_title_w', 1, $magalogue_user['blog_title_w']) . '</p>' .
 
 '<p class="field"><label for="blog_title_s">' . __('Font size (in em by default):') . '</label> ' .
-form::field('blog_title_s', 7, 7, $ductile_user['blog_title_s']) . '</p>' .
+form::field('blog_title_s', 7, 7, $magalogue_user['blog_title_s']) . '</p>' .
 
 '<p class="field picker"><label for="blog_title_c">' . __('Color:') . '</label> ' .
-form::color('blog_title_c', ['default' => $ductile_user['blog_title_c']]) .
-dcThemeConfig::contrastRatio($ductile_user['blog_title_c'], '#ffffff',
-    (!empty($ductile_user['blog_title_s']) ? $ductile_user['blog_title_s'] : '2em'),
-    $ductile_user['blog_title_w']) .
+form::color('blog_title_c', ['default' => $magalogue_user['blog_title_c']]) .
+dcThemeConfig::contrastRatio($magalogue_user['blog_title_c'], '#ffffff',
+    (!empty($magalogue_user['blog_title_s']) ? $magalogue_user['blog_title_s'] : '2em'),
+    $magalogue_user['blog_title_w']) .
     '</p>';
 
 echo '</div>';
@@ -489,16 +474,16 @@ echo '<div class="col">';
 
 echo '<h5>' . __('Post title') . '</h5>' .
 '<p class="field"><label for="post_title_w">' . __('In bold:') . '</label> ' .
-form::checkbox('post_title_w', 1, $ductile_user['post_title_w']) . '</p>' .
+form::checkbox('post_title_w', 1, $magalogue_user['post_title_w']) . '</p>' .
 
 '<p class="field"><label for="post_title_s">' . __('Font size (in em by default):') . '</label> ' .
-form::field('post_title_s', 7, 7, $ductile_user['post_title_s']) . '</p>' .
+form::field('post_title_s', 7, 7, $magalogue_user['post_title_s']) . '</p>' .
 
 '<p class="field picker"><label for="post_title_c">' . __('Color:') . '</label> ' .
-form::color('post_title_c', ['default' => $ductile_user['post_title_c']]) .
-dcThemeConfig::contrastRatio($ductile_user['post_title_c'], '#ffffff',
-    (!empty($ductile_user['post_title_s']) ? $ductile_user['post_title_s'] : '2.5em'),
-    $ductile_user['post_title_w']) .
+form::color('post_title_c', ['default' => $magalogue_user['post_title_c']]) .
+dcThemeConfig::contrastRatio($magalogue_user['post_title_c'], '#ffffff',
+    (!empty($magalogue_user['post_title_s']) ? $magalogue_user['post_title_s'] : '2.5em'),
+    $magalogue_user['post_title_w']) .
     '</p>';
 
 echo '</div>';
@@ -507,28 +492,28 @@ echo '</div>';
 echo '<h5>' . __('Titles without link') . '</h5>' .
 
 '<p class="field picker"><label for="post_simple_title_c">' . __('Color:') . '</label> ' .
-form::color('post_simple_title_c', ['default' => $ductile_user['post_simple_title_c']]) .
-dcThemeConfig::contrastRatio($ductile_user['post_simple_title_c'], '#ffffff',
+form::color('post_simple_title_c', ['default' => $magalogue_user['post_simple_title_c']]) .
+dcThemeConfig::contrastRatio($magalogue_user['post_simple_title_c'], '#ffffff',
     '1.1em', // H5 minimum size
     false) .
     '</p>';
 
 echo '<h4 class="border-top pretty-title">' . __('Inside posts links') . '</h4>' .
 '<p class="field"><label for="post_link_w">' . __('In bold:') . '</label> ' .
-form::checkbox('post_link_w', 1, $ductile_user['post_link_w']) . '</p>' .
+form::checkbox('post_link_w', 1, $magalogue_user['post_link_w']) . '</p>' .
 
 '<p class="field picker"><label for="post_link_v_c">' . __('Normal and visited links color:') . '</label> ' .
-form::color('post_link_v_c', ['default' => $ductile_user['post_link_v_c']]) .
-dcThemeConfig::contrastRatio($ductile_user['post_link_v_c'], '#ffffff',
+form::color('post_link_v_c', ['default' => $magalogue_user['post_link_v_c']]) .
+dcThemeConfig::contrastRatio($magalogue_user['post_link_v_c'], '#ffffff',
     '1em',
-    $ductile_user['post_link_w']) .
+    $magalogue_user['post_link_w']) .
 '</p>' .
 
 '<p class="field picker"><label for="post_link_f_c">' . __('Active, hover and focus links color:') . '</label> ' .
-form::color('post_link_f_c', ['default' => $ductile_user['post_link_f_c']]) .
-dcThemeConfig::contrastRatio($ductile_user['post_link_f_c'], '#ebebee',
+form::color('post_link_f_c', ['default' => $magalogue_user['post_link_f_c']]) .
+dcThemeConfig::contrastRatio($magalogue_user['post_link_f_c'], '#ebebee',
     '1em',
-    $ductile_user['post_link_w']) .
+    $magalogue_user['post_link_w']) .
     '</p>';
 
 echo '<h3 class="border-top">' . __('Mobile specific settings') . '</h3>';
@@ -538,16 +523,16 @@ echo '<div class="col">';
 
 echo '<h4 class="pretty-title">' . __('Blog title') . '</h4>' .
 '<p class="field"><label for="blog_title_w_m">' . __('In bold:') . '</label> ' .
-form::checkbox('blog_title_w_m', 1, $ductile_user['blog_title_w_m']) . '</p>' .
+form::checkbox('blog_title_w_m', 1, $magalogue_user['blog_title_w_m']) . '</p>' .
 
 '<p class="field"><label for="blog_title_s_m">' . __('Font size (in em by default):') . '</label> ' .
-form::field('blog_title_s_m', 7, 7, $ductile_user['blog_title_s_m']) . '</p>' .
+form::field('blog_title_s_m', 7, 7, $magalogue_user['blog_title_s_m']) . '</p>' .
 
 '<p class="field picker"><label for="blog_title_c_m">' . __('Color:') . '</label> ' .
-form::color('blog_title_c_m', ['default' => $ductile_user['blog_title_c_m']]) .
-dcThemeConfig::contrastRatio($ductile_user['blog_title_c_m'], '#d7d7dc',
-    (!empty($ductile_user['blog_title_s_m']) ? $ductile_user['blog_title_s_m'] : '1.8em'),
-    $ductile_user['blog_title_w_m']) .
+form::color('blog_title_c_m', ['default' => $magalogue_user['blog_title_c_m']]) .
+dcThemeConfig::contrastRatio($magalogue_user['blog_title_c_m'], '#d7d7dc',
+    (!empty($magalogue_user['blog_title_s_m']) ? $magalogue_user['blog_title_s_m'] : '1.8em'),
+    $magalogue_user['blog_title_w_m']) .
     '</p>';
 
 echo '</div>';
@@ -555,16 +540,16 @@ echo '<div class="col">';
 
 echo '<h4 class="pretty-title">' . __('Post title') . '</h4>' .
 '<p class="field"><label for="post_title_w_m">' . __('In bold:') . '</label> ' .
-form::checkbox('post_title_w_m', 1, $ductile_user['post_title_w_m']) . '</p>' .
+form::checkbox('post_title_w_m', 1, $magalogue_user['post_title_w_m']) . '</p>' .
 
 '<p class="field"><label for="post_title_s_m">' . __('Font size (in em by default):') . '</label> ' .
-form::field('post_title_s_m', 7, 7, $ductile_user['post_title_s_m']) . '</p>' .
+form::field('post_title_s_m', 7, 7, $magalogue_user['post_title_s_m']) . '</p>' .
 
 '<p class="field picker"><label for="post_title_c_m">' . __('Color:') . '</label> ' .
-form::color('post_title_c_m', ['default' => $ductile_user['post_title_c_m']]) .
-dcThemeConfig::contrastRatio($ductile_user['post_title_c_m'], '#ffffff',
-    (!empty($ductile_user['post_title_s_m']) ? $ductile_user['post_title_s_m'] : '1.5em'),
-    $ductile_user['post_title_w_m']) .
+form::color('post_title_c_m', ['default' => $magalogue_user['post_title_c_m']]) .
+dcThemeConfig::contrastRatio($magalogue_user['post_title_c_m'], '#ffffff',
+    (!empty($magalogue_user['post_title_s_m']) ? $magalogue_user['post_title_s_m'] : '1.5em'),
+    $magalogue_user['post_title_w_m']) .
     '</p>';
 
 echo '</div>';
