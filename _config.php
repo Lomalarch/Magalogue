@@ -38,20 +38,21 @@ if (file_exists(dirname(__FILE__) . '/locales/' . $_lang . '/resources.php')) {
     require dirname(__FILE__) . '/locales/' . $_lang . '/resources.php';
 }
 
-$list_types = [
-    __('Title') => 'title',
-    __('Short') => 'short',
-    __('Full')  => 'full'
+$slider_list_types = [
+    __('Selected') => 'selected',
+    __('First level categories') => 'first-level-categories',
+    __('All categories')  => 'categories',
+    __('Last entries') => 'recent'
 ];
-// Get all _entry-*.html in tpl folder of theme
+// Get all _home-slider-*.html in tpl folder of theme
 $list_types_templates = files::scandir($tpl_path);
 if (is_array($list_types_templates)) {
     foreach ($list_types_templates as $v) {
-        if (preg_match('/^_entry\-(.*)\.html$/', $v, $m)) {
+        if (preg_match('/^_home\-slider\-(.*)\.html$/', $v, $m)) {
             if (isset($m[1])) {
-                if (!in_array($m[1], $list_types)) {
+                if (!in_array($m[1], $slider_list_types)) {
                     // template not already in full list
-                    $list_types[__($m[1])] = $m[1];
+                    $slider_list_types[__($m[1])] = $m[1];
                 }
             }
         }
@@ -62,7 +63,7 @@ $contexts = [
     'slider'      => __('Homepage slider'),
     'recent'      => __('Homepage displayed posts')
 ];
-
+/*
 $fonts = [
     __('Default')           => '',
     __('Ductile primary')   => 'Ductile body',
@@ -110,13 +111,13 @@ function fontDef($c)
     global $font_families;
 
     return isset($font_families[$c]) ? '<span style="position:absolute;top:0;left:32em;">' . $font_families[$c] . '</span>' : '';
-}
+}*/
 
 $magalogue_base = [
     // HTML
     'subtitle_hidden'          => null,
-    'logo_src'                 => null,
-    'preview_not_mandatory'    => null,
+    'logo_src'                 => null/*,
+    // 'preview_not_mandatory'    => null,
     // CSS
     'body_font'                => null,
     'body_webfont_family'      => null,
@@ -141,12 +142,12 @@ $magalogue_base = [
     'post_title_w_m'           => null,
     'post_title_s_m'           => null,
     'post_title_c_m'           => null,
-    'post_simple_title_c'      => null
+    'post_simple_title_c'      => null*/
 ];
 
 $magalogue_lists_base = [
     'slider'      => 'selected',
-    'recent' => 'catlast'
+    'recent' => 'first-level-categories'
 ];
 
 $magalogue_counts_base = [
@@ -195,7 +196,7 @@ if (is_array($magalogue_stickers)) {
         $magalogue_stickers_full[] = $v['image'];
     }
 }
-// Get all sticker-*.png in img folder of theme
+// Get all *-link.png in img folder of theme
 $magalogue_stickers_images = files::scandir($img_path);
 if (is_array($magalogue_stickers_images)) {
     foreach ($magalogue_stickers_images as $v) {
@@ -217,10 +218,10 @@ if (!empty($_POST)) {
     try
     {
         # HTML
-        if ($conf_tab == 'html') {
+        // if ($conf_tab == 'html') {
             $magalogue_user['subtitle_hidden']       = (integer) !empty($_POST['subtitle_hidden']);
             $magalogue_user['logo_src']              = $_POST['logo_src'];
-            $magalogue_user['preview_not_mandatory'] = (integer) !empty($_POST['preview_not_mandatory']);
+            // $magalogue_user['preview_not_mandatory'] = (integer) !empty($_POST['preview_not_mandatory']);
 
             $magalogue_stickers = [];
             for ($i = 0; $i < count($_POST['sticker_image']); $i++) {
@@ -238,15 +239,15 @@ if (!empty($_POST)) {
                 $order = array_keys($order);
             }
             if (!empty($order)) {
-                $new_ductile_stickers = [];
+                $new_magalogue_stickers = [];
                 foreach ($order as $i => $k) {
-                    $new_ductile_stickers[] = [
+                    $new_magalogue_stickers[] = [
                         'label' => $magalogue_stickers[$k]['label'],
                         'url'   => $magalogue_stickers[$k]['url'],
                         'image' => $magalogue_stickers[$k]['image']
                     ];
                 }
-                $magalogue_stickers = $new_ductile_stickers;
+                $magalogue_stickers = $new_magalogue_stickers;
             }
 
             for ($i = 0; $i < count($_POST['list_type']); $i++) {
@@ -257,10 +258,10 @@ if (!empty($_POST)) {
                 $magalogue_counts[$_POST['count_ctx'][$i]] = $_POST['count_nb'][$i];
             }
 
-        }
+        // }
 
         # CSS
-        if ($conf_tab == 'css') {
+        /*if ($conf_tab == 'css') {
             $magalogue_user['body_font']           = $_POST['body_font'];
             $magalogue_user['body_webfont_family'] = $_POST['body_webfont_family'];
             $magalogue_user['body_webfont_url']    = $_POST['body_webfont_url'];
@@ -292,7 +293,7 @@ if (!empty($_POST)) {
             $magalogue_user['post_title_w_m'] = (integer) !empty($_POST['post_title_w_m']);
             $magalogue_user['post_title_s_m'] = dcThemeConfig::adjustFontSize($_POST['post_title_s_m']);
             $magalogue_user['post_title_c_m'] = dcThemeConfig::adjustColor($_POST['post_title_c_m']);
-        }
+        }*/
 
         $core->blog->settings->addNamespace('themes');
         $core->blog->settings->themes->put($core->blog->settings->system->theme . '_style', serialize($magalogue_user));
@@ -319,8 +320,8 @@ if (!$standalone_config) {
 
 # HTML Tab
 
-echo '<div class="multi-part" id="themes-list' . ($conf_tab == 'html' ? '' : '-html') . '" title="' . __('Content') . '">' .
-'<h3>' . __('Content') . '</h3>';
+// echo '<div class="multi-part" id="themes-list' . ($conf_tab == 'html' ? '' : '-html') . '" title="' . __('Content') . '">' .
+// '<h3>' . __('Content') . '</h3>';
 
 echo '<form id="theme_config" action="' . $core->adminurl->get('admin.blog.theme', ['conf' => '1']) .
     '" method="post" enctype="multipart/form-data">';
@@ -385,7 +386,7 @@ foreach ($magalogue_lists as $k => $v) {
     echo
     '<tr>' .
     '<td scope="row">' . $contexts[$k] . '</td>' .
-    '<td>' . form::hidden(['list_ctx[]'], $k) . form::combo(['list_type[]'], $list_types, $v) . '</td>';
+    '<td>' . form::hidden(['list_ctx[]'], $k) . form::combo(['list_type[]'], $slider_list_types, $v) . '</td>';
     if (array_key_exists($k, $magalogue_counts)) {
         echo '<td>' . form::hidden(['count_ctx[]'], $k) . form::number(['count_nb[]'], [
             'min'     => 0,
@@ -406,11 +407,11 @@ echo '<p><input type="hidden" name="conf_tab" value="html" /></p>';
 echo '<p class="clear">' . form::hidden('ds_order', '') . '<input type="submit" value="' . __('Save') . '" />' . $core->formNonce() . '</p>';
 echo '</form>';
 
-echo '</div>'; // Close tab
+// echo '</div>'; // Close tab
 
 # CSS tab
 
-echo '<div class="multi-part" id="themes-list' . ($conf_tab == 'css' ? '' : '-css') . '" title="' . __('Presentation') . '">';
+/*echo '<div class="multi-part" id="themes-list' . ($conf_tab == 'css' ? '' : '-css') . '" title="' . __('Presentation') . '">';
 
 echo '<form id="theme_config" action="' . $core->adminurl->get('admin.blog.theme', ['conf' => '1']) .
     '" method="post" enctype="multipart/form-data">';
@@ -559,9 +560,9 @@ echo '<p><input type="hidden" name="conf_tab" value="css" /></p>';
 echo '<p class="clear border-top"><input type="submit" value="' . __('Save') . '" />' . $core->formNonce() . '</p>';
 echo '</form>';
 
-echo '</div>'; // Close tab
+echo '</div>';*/ // Close tab
 
-dcPage::helpBlock('ductile');
+dcPage::helpBlock('magalogue');
 
 // Legacy mode
 if (!$standalone_config) {

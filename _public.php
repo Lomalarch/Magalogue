@@ -21,8 +21,9 @@ $core->addBehavior('publicHeadContent',[__NAMESPACE__ . '\behaviorMagalogueTheme
 // $core->addBehavior('publicEntryAfterContent',[__NAMESPACE__ . '\behaviorMagalogueTheme','publicEntryAfterContent']);
 
 # Templates
-// $core->tpl->addValue('magalogueEntriesList', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueEntriesList']);
-$core->tpl->addBlock('magalogueNbEntryOnHome', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueNbEntryOnHome']);
+$core->tpl->addValue('magalogueEntriesList', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueEntriesList']);
+$core->tpl->addValue('magalogueSliderContent', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueSliderContent']);
+$core->tpl->addValue('magalogueNbEntryOnHome', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueNbEntryOnHome']);
 $core->tpl->addValue('magalogueSocialLinks', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueSocialLinks']);
 //$core->tpl->addValue('magalogueNbEntryPerPage', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueNbEntryPerPage']);
 $core->tpl->addValue('magalogueLogoSrc', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueLogoSrc']);
@@ -37,16 +38,75 @@ class behaviorMagalogueTheme
     public static function publicHeadContent()
     {
         echo \dcUtils::jsVars(array(
-            'dotclear_berlin_show_menu' => __('Show menu'),
-            'dotclear_berlin_hide_menu' => __('Hide menu'),
-            'dotclear_berlin_navigation' => __('Navigation')
+            'dotclear_magalogue_show_menu' => __('Show menu'),
+            'dotclear_magalogue_hide_menu' => __('Hide menu'),
+            'dotclear_magalogue_navigation' => __('Navigation')
             ));
     }
 }
 
 class tplMagalogueTheme
 {
-    public static function magalogueNbEntryOnHome($attr)
+    public static function magalogueEntriesList($attr)
+    {
+        #Entries in home main block
+    }
+    public static function magalogueSliderContent($attr) 
+    {
+        #Entries in home slider
+        global $core;
+
+        $tpl_path   = dirname(__FILE__) . '/tpl/';
+        $slider_list_types = ['selected', 'first-level-categories', 'categories', 'recent'];
+
+        // Get all _home-slider-*.html in tpl folder of theme
+        $list_types_templates = \files::scandir($tpl_path);
+        if (is_array($list_types_templates)) {
+            foreach ($list_types_templates as $v) {
+                if (preg_match('/^_home\-slider\-(.*)\.html$/', $v, $m)) {
+                    if (isset($m[1])) {
+                        if (!in_array($m[1], $slider_list_types)) {
+                            // template not already in full list
+                            $slider_list_types[] = $m[1];
+                        }
+                    }
+                }
+            }
+        }
+
+        $default = isset($attr['default']) ? trim($attr['default']) : 'selected';
+        $ret     = '<?php ' . "\n" .
+        'switch (' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueEntriesListHelper(\'' . $default . '\')) {' . "\n";
+
+        foreach ($slider_list_types as $v) {
+            $ret .= '   case \'' . $v . '\':' . "\n" .
+            '?>' . "\n" .
+            $core->tpl->includeFile(['src' => '_home-slider-' . $v . '.html']) . "\n" .
+                '<?php ' . "\n" .
+                '       break;' . "\n";
+        }
+
+        $ret .= '}' . "\n" .
+            'echo \'' . $default . '\';' . "\n" .
+            '?>';
+        return $ret; // $core->tpl->includeFile(['src' => '_home-slider-selected.html']);
+    }
+        public static function magalogueEntriesListHelper($default)
+    {
+        $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_entries_lists');
+        if ($s !== null) {
+            $s = @unserialize($s);
+            if (is_array($s)) {
+                if (isset($s['slider'])) {
+                    $model = $s['slider'];
+                    return $model;
+                }
+            }
+        }
+        return $default;
+    }
+
+public static function magalogueNbEntryOnHome($attr)
     {
         return '<?php ' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueNbEntryOnHomeHelper(); ?>';
     }
@@ -64,8 +124,8 @@ class tplMagalogueTheme
                 switch ($GLOBALS['core']->url->type) {
                     case 'default':
                     case 'default-page':
-                        if (isset($s['default'])) {
-                            $nb_first = $nb_other = (integer) $s['default'];
+                        if (isset($s['slider'])) {
+                            $nb_first = $nb_other = (integer) $s['slider'];
                         }
                         if (isset($s['default-page'])) {
                             $nb_other = (integer) $s['default-page'];
@@ -97,9 +157,67 @@ class tplMagalogueTheme
     }
     public static function magalogueSocialLinks($attr)
     {
+        global $core;
         # Social media links
+        $res     = '';
+        $default = false;
+        $img_url = $core->blog->settings->system->themes_url . '/' . $core->blog->settings->system->theme . '/img/';
+
+        $s = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_stickers');
+
+        if ($s === null) {
+            $default = true;
+        } else {
+            $s = @unserialize($s);
+            if (!is_array($s)) {
+                $default = true;
+            } else {
+                $s = array_filter($s, 'self::cleanSocialLinks');
+                if (count($s) == 0) {
+                    $default = true;
+                } else {
+                    $count = 1;
+                    foreach ($s as $sticker) {
+                        $res .= self::setSocialLink($count, ($count == count($s)), $sticker['label'], $sticker['url'], $img_url . $sticker['image']);
+                        $count++;
+                    }
+                }
+            }
+        }
+
+        if ($default || $res == '') {
+            $res = self::setSocialLink(1, true, __('Subscribe'), $core->blog->url .
+                $core->url->getURLFor('feed', 'atom'), $img_url . 'rss-link.png');
+        }
+
+        if ($res != '') {
+            $res = '<ul id="stickers">' . "\n" . $res . '</ul>' . "\n";
+            // echo $res;
+            return $res;
+        }
     }
-    public static function magalogueLogoSrc($attr)
+    protected static function setSocialLink($position, $last, $label, $url, $image)
+    {
+        return '<li id="slink' . $position . '"' . ($last ? ' class="last"' : '') . '>' . "\n" .
+            '<a href="' . $url . '">' . "\n" .
+            '<img alt="' . $label . '" src="' . $image . '" title="' . $label . '" />' . "\n" .
+            // '<span>' . $label . '</span>' . "\n" .
+            '</a>' . "\n" .
+            '</li>' . "\n";
+    }
+
+    protected static function cleanSocialLinks($s)
+    {
+        if (is_array($s)) {
+            if (isset($s['label']) && isset($s['url']) && isset($s['image'])) {
+                if ($s['label'] != null && $s['url'] != null && $s['image'] != null) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+public static function magalogueLogoSrc($attr)
     {
         return '<?php echo ' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueLogoSrcHelper(); ?>';
     }
