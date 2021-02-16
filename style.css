@@ -492,6 +492,7 @@ body {
 .header-small {
   position: fixed;
   width: 100%;
+  max-width: 100%;
   z-index: 1000;
   background: #dcdcdc;
   background: linear-gradient(#dcdcdc, #ffffff); }
@@ -1359,6 +1360,20 @@ h3.related-entries {
     padding-right: 3em;
     margin-bottom: 0; }
 
+.post-footer-info {
+  text-align: right;
+  font-style: italic; }
+  .post-footer-info .post-author {
+    font-weight: bold; }
+  .post-footer-info .post-permalink a {
+    font-style: normal;
+    font-variant: small-caps;
+    border-bottom: none;
+    font-weight: bold;
+    color: #aaa;
+    letter-spacing: .15rem;
+    text-transform: lowercase; }
+
 .post-attachments {
   position: relative;
   padding: 0 2.5em .25em;
@@ -1755,6 +1770,14 @@ hr.home-separator {
   .dc-home .slick-dots li.slick-active button::before {
     color: #008000; }
 
+@media screen and (max-width: 40em) {
+  .dc-home #topshelf .button {
+    font-size: .8em;
+    padding: 5px 10px; }
+  .dc-home #topshelf .post-read-it {
+    margin-top: 0; }
+  .dc-home #topshelf .post-meta {
+    display: none; } }
 .dc-home #lastnews {
   display: flex;
   flex-wrap: wrap;

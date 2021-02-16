@@ -28,6 +28,7 @@
 .header-small {
     position: fixed;
     width: 100%;
+    max-width: 100%;
     z-index: 1000;
     background: $gray-medium;
     background: linear-gradient($gray-medium, $white);

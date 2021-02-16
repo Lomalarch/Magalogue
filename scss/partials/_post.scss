@@ -164,6 +164,23 @@
         margin-bottom: 0;
     }
 }
+.post-footer-info {
+    text-align: right;
+    font-style: italic;
+    .post-author {
+        font-weight: bold;
+    }
+    .post-permalink a {
+        // font-size: .8em;
+        font-style: normal;
+        font-variant: small-caps;
+        border-bottom: none;
+        font-weight: bold;
+        color: #aaa;
+        letter-spacing: .15rem;
+        text-transform: lowercase;
+    }
+}
 .post-attachments {
     position: relative;
     padding: 0 2.5em .25em;

@@ -58,6 +58,20 @@ hr.home-separator {
     color: $dark-green;
   }
 }
+@media screen and (max-width: ($medium-screen)) {
+  .dc-home #topshelf {
+    .button {
+      font-size: .8em;
+      padding: 5px 10px;
+    }
+    .post-read-it {
+      margin-top: 0;
+    }
+    .post-meta {
+      display: none;
+    }
+  }
+}
 .dc-home #lastnews {
   display: flex;
   flex-wrap: wrap;
