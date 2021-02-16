@@ -2,16 +2,18 @@
 	$("html").addClass("js");
 	// Show/Hide main menu
 	$(".header__nav-small").
-	before('<button id="hamburger" type="button"><span class="visually-hidden">' + dotclear_berlin_navigation + '</span></button>').
+	before('<button id="hamburger" type="button"><span class="visually-hidden">' + dotclear_magalogue_navigation + '</span></button>').
 	toggle();
 	$("#hamburger").click(function() {
 		$(this).toggleClass("open");
 		$(".header__nav-small").toggle('easing');
 	});
 	// Show/Hide sidebar on small screens
-	$("#main").prepend('<button id="offcanvas-on" type="button"><span class="visually-hidden">' + dotclear_berlin_show_menu + '</span></button>');
+	<tpl:SysIf current_mode="!default">
+		
+	$("#main").prepend('<button id="offcanvas-on" type="button"><span class="visually-hidden">' + dotclear_magalogue_show_menu + '</span></button>');
 	$("#offcanvas-on").click(function() {
-		var btn = $('<button id="offcanvas-off" type="button"><span class="visually-hidden">' + dotclear_berlin_hide_menu + '</span></button>');
+		var btn = $('<button id="offcanvas-off" type="button"><span class="visually-hidden">' + dotclear_magalogue_hide_menu + '</span></button>');
 		$("#wrapper").addClass("off-canvas");
 		$("#footer").addClass("off-canvas");
 		$("#sidebar").prepend(btn);
@@ -21,6 +23,7 @@
 			evt.target.remove();
 		});
 	});
+	</tpl:SysIf>
 	$(document).ready(function() {
 		// totop scroll
 		$(window).scroll(function() {
@@ -36,6 +39,8 @@
 			}, 800);
 			e.preventDefault();
 		});
+		// suppress linked image border
+		$('a:has(>img)').css('border', 'none');
 	});
 	var stickyOffset = $('.header').offset().top;
 	$(window).scroll(function(){

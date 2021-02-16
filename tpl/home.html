@@ -4,43 +4,7 @@
 
 	<h1 class="home__title">Sélection du moment</h1>
 	<section id="topshelf">
-		<tpl:Entries selected="1">
-			<div class="slider-thumb">
-				<tpl:EntryIf has_featured_media="1">
-	  <!-- # Featured media -->
-	  <tpl:FeaturedMedia>
-		  <div class="post-featured-media {{tpl:FeaturedMediaType}}" id="featured-media-{{tpl:EntryID}}">
-			  <tpl:FeaturedMediaIf is_audio="1">
-				  {{tpl:include src="_audio_player.html" encode_xml="1"}}
-			  </tpl:FeaturedMediaIf>
-			  <tpl:FeaturedMediaIf is_video="1">
-				  <tpl:FeaturedMediaIf is_flv="0">
-					  {{tpl:include src="_video_player.html" encode_xml="1"}}
-				  {{tpl:else}}
-					  {{tpl:include src="_flv_player.html" encode_xml="1"}}
-				  </tpl:FeaturedMediaIf>
-			  </tpl:FeaturedMediaIf>
-			  <tpl:FeaturedMediaIf is_image="1">
-				  <div class="image">
-		  <a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}"><img src="{{tpl:FeaturedMediaImageURL size="m"}}" alt="{{tpl:FeaturedMediaTitle}}" /></a>
-		</div>
-			  </tpl:FeaturedMediaIf>
-		  </div>
-	  </tpl:FeaturedMedia>
-	  </tpl:EntryIf>
-	  <tpl:EntryIf has_featured_media="0">
-		<div class="image">
-		  <a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}"><img src="{{tpl:CategoryImageFile size="m" random="1"}}" alt="{{tpl:EntryCategory encode_xml="1"}}" /></a>
-		</div>
-	  </tpl:EntryIf>
-	  <div class="post-premices">
-	  <p class="post-cat {{tpl:EntryCategoryShortURL}}"><a href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></p>
-	  <h2 class="post-title"><a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}">{{tpl:EntryTitle encode_html="1"  remove_html="1" cut_string="50"}}</a></h2>
-	  <p class="post-meta"><span class="post-date">{{tpl:EntryDate}}</span></p>
-	  <p class="post-read-it"><a href="{{tpl:EntryURL}}"><span class="button">Lire la suite</span></a></p>
-	  </div>
-			</div>
-		</tpl:Entries>
+		{{tpl:magalogueSliderContent}}
 	</section>
 	<h1 class="section-title"><span>Dernières publications</span></h1>
 	<section id="lastnews">
