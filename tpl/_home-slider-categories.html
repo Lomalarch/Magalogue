@@ -11,14 +11,14 @@
 										<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}"><img src="{{tpl:FeaturedMediaImageURL size="o"}}" alt="{{tpl:FeaturedMediaTitle}}" /></a>
 									</div>
 									{{tpl:else}}
-									<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}>{{tpl:EntryFirstImage size="o"}}</a>
+									<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}>{{tpl:EntryFirstImage size="o" with_category="1"}}</a>
 								</tpl:FeaturedMediaIf>
 							</div>
 						</tpl:FeaturedMedia>
 					</tpl:EntryIf>
 					<tpl:EntryIf has_featured_media="0">
 						<div class="image">
-						<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}">{{tpl:EntryFirstImage size="o"}}</a>
+						<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}">{{tpl:EntryFirstImage size="o" with_category="1"}}</a>
 						</div>
 					</tpl:EntryIf>
 					<div class="post-premices">
