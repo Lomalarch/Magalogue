@@ -58,6 +58,9 @@ hr.home-separator {
     color: $dark-green;
   }
 }
+.slick-prev::before, .slick-next::before {
+  color: $gray-dark;
+}
 @media screen and (max-width: ($medium-screen)) {
   .dc-home #topshelf {
     .button {
