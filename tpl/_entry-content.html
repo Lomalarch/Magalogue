@@ -67,7 +67,7 @@
 		 title="{{tpl:EntryTitle encode_html="1"}}" class="next">Article suivant &gt;</a></tpl:EntryNext></p>
 	</nav>
 	<!-- # relatedPosts (if plugin is installed) -->
-	<tpl:magalogueRelatedEntries no_content="1" lastn="4">
+	<tpl:magalogueRelatedEntries lastn="4">
 	<tpl:EntriesHeader>
 			<h3 class="related-entries"><span>{{tpl:lang Related entries}}</span></h3>
 	</tpl:EntriesHeader>
@@ -76,25 +76,17 @@
 			<!-- # Featured media -->
 			<tpl:FeaturedMedia>
 				<div class="featured-media">
-					<tpl:FeaturedMediaIf is_audio="1">
-						{{tpl:include src="_audio_player.html"}}
-					</tpl:FeaturedMediaIf>
-					<tpl:FeaturedMediaIf is_video="1">
-						<tpl:FeaturedMediaIf is_flv="0">
-							{{tpl:include src="_video_player.html"}}
-						{{tpl:else}}
-							{{tpl:include src="_flv_player.html"}}
-						</tpl:FeaturedMediaIf>
-					</tpl:FeaturedMediaIf>
 					<tpl:FeaturedMediaIf is_image="1">
 						<img src="{{tpl:FeaturedMediaImageURL size="m"}}" alt="{{tpl:FeaturedMediaTitle}}" />
+						{{tpl:else}}
+						{{tpl:EntryFirstImage size="m"}}
 					</tpl:FeaturedMediaIf>
 				</div>
 			</tpl:FeaturedMedia>
 			</tpl:EntryIf>
 			<tpl:EntryIf has_featured_media="0">
 				<div class="featured-media">
-					<img src="{{tpl:CategoryImageFile size="m" random="1"}}" alt="{{tpl:EntryCategory}}" />
+					{{tpl:EntryFirstImage size="m"}}
 				</div>
 			</tpl:EntryIf>
 

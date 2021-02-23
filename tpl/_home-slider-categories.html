@@ -3,30 +3,22 @@
 		<tpl:Entries lastn="1">
 				<div class="slider-thumb">
 					<tpl:EntryIf has_featured_media="1">
-					<!-- # Featured media -->
-					<tpl:FeaturedMedia>
-						<div class="post-featured-media {{tpl:FeaturedMediaType}}" id="featured-media-{{tpl:EntryID}}">
-							<tpl:FeaturedMediaIf is_audio="1">
-								{{tpl:include src="_audio_player.html" encode_xml="1"}}
-							</tpl:FeaturedMediaIf>
-							<tpl:FeaturedMediaIf is_video="1">
-								<tpl:FeaturedMediaIf is_flv="0">
-									{{tpl:include src="_video_player.html" encode_xml="1"}}
-								{{tpl:else}}
-									{{tpl:include src="_flv_player.html" encode_xml="1"}}
+						<!-- # Featured media -->
+						<tpl:FeaturedMedia>
+							<div class="post-featured-media {{tpl:FeaturedMediaType}}" id="featured-media-{{tpl:EntryID}}">
+								<tpl:FeaturedMediaIf is_image="1">
+									<div class="image">
+										<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}"><img src="{{tpl:FeaturedMediaImageURL size="o"}}" alt="{{tpl:FeaturedMediaTitle}}" /></a>
+									</div>
+									{{tpl:else}}
+									<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}>{{tpl:EntryFirstImage size="o"}}</a>
 								</tpl:FeaturedMediaIf>
-							</tpl:FeaturedMediaIf>
-							<tpl:FeaturedMediaIf is_image="1">
-								<div class="image">
-									<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}"><img src="{{tpl:FeaturedMediaImageURL size="m"}}" alt="{{tpl:FeaturedMediaTitle}}" /></a>
-								</div>
-							</tpl:FeaturedMediaIf>
-						</div>
-					</tpl:FeaturedMedia>
+							</div>
+						</tpl:FeaturedMedia>
 					</tpl:EntryIf>
 					<tpl:EntryIf has_featured_media="0">
 						<div class="image">
-							<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}"><img src="{{tpl:CategoryImageFile size="m" random="1"}}" alt="{{tpl:EntryCategory encode_xml="1"}}" /></a>
+						<a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}">{{tpl:EntryFirstImage size="o"}}</a>
 						</div>
 					</tpl:EntryIf>
 					<div class="post-premices">
