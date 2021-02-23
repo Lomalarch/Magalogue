@@ -1021,12 +1021,17 @@ ul.tags {
 
 .tags li {
   display: inline; }
+  .tags li a {
+    padding-top: 3px; }
 
 .widget.tags ul {
-  line-height: 1.1; }
+  line-height: 1.6; }
 
-li.tag-current {
-  background: #27be95; }
+li.tag-current a {
+  background: #27be95;
+  padding: 0 .25em; }
+li.tag-current a:link, li.tag-current a:visited {
+  color: #fff; }
 
 .tag0 {
   font-size: 100%; }
@@ -1788,6 +1793,9 @@ hr.home-separator {
     opacity: 100%; }
   .dc-home .slick-dots li.slick-active button::before {
     color: #008000; }
+
+.slick-prev::before, .slick-next::before {
+  color: #636363; }
 
 @media screen and (max-width: 40em) {
   .dc-home #topshelf .button {

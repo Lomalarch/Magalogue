@@ -150,12 +150,21 @@ ul.tags {
 }
 .tags li {
     display: inline;
+    a {
+        padding-top: 3px;
+    }
 }
 .widget.tags ul {
-    line-height: 1.1;
+    line-height: 1.6;
 }
 li.tag-current {
-    background: $light-green;
+    a {
+        background: $light-green;
+        padding: 0 .25em;
+    }
+    a:link, a:visited {
+        color: $white;
+    }
 }
 .tag0 { font-size: 100%; }
 .tag10 { font-size: 105%; }
