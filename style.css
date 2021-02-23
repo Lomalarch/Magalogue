@@ -1199,6 +1199,24 @@ h3.related-entries {
     padding: 0 50px;
     background: white; }
 
+#content figure {
+  position: relative; }
+  #content figure:hover figcaption {
+    opacity: 1; }
+  #content figure figcaption {
+    font-size: 0.875em;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    color: white;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.6s ease;
+    opacity: 0; }
+
+.post-content img {
+  max-width: 100%; }
+
 /**
     POST
 ------------------------------- */
@@ -1241,14 +1259,15 @@ h3.related-entries {
   @media screen and (max-width: 40em) {
     .post div.image, .related-entry .featured-media {
       height: 185px; } }
-  .post div.image img, .related-entry .featured-media img {
-    max-width: 139%;
-    position: absolute;
-    left: -60px; }
 
-.dc-post .post div.image img {
-  max-width: 100%;
-  position: static; }
+div.image img, .related-entry .featured-media img {
+  max-width: 200%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-height: 100%;
+  min-width: 100%;
+  transform: translate(-50%, -50%); }
 
 .post-premices, .related-contents {
   margin: -5em 1em 2em;

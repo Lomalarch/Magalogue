@@ -124,3 +124,23 @@ h3.related-entries {
     background: white;
   }
 }
+#content figure {
+    position: relative;
+    &:hover figcaption {
+        opacity: 1;
+    }
+    figcaption {
+        font-size: 0.875em;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        color: white;
+        padding: 1em;
+        background-color: rgba(0, 0, 0, .5);
+        transition: 0.6s ease;
+        opacity: 0;
+    }
+}
+.post-content img {
+    max-width: 100%;
+}
