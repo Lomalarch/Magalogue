@@ -1,9 +1,3 @@
-/*const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-if (!mediaQuery || mediaQuery.matches) {
-    const animate = false;
-} else {
-    const animate = true;
-}*/
 $(document).ready(function(){
 const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 if (!mediaQuery || mediaQuery.matches) {
