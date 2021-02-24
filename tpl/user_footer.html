@@ -1,4 +1,14 @@
+<script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/jquery.treemenu.js"></script>
 <script type="text/javascript">//<![CDATA[
+	// Collapsible categories
+	$(function(){
+		$(".categories > ul").treemenu({
+			activeSelector: 'category-current',
+			openActive: true,
+			closeOther: true,
+			delay: 300
+		});
+	});
 	$("html").addClass("js");
 	// Show/Hide main menu
 	$(".header__nav-small").
