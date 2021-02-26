@@ -54,17 +54,17 @@
 	});
 	var stickyOffset = $('.header').offset().top;
 	$(window).scroll(function(){
-		var sticky = $('.header'),
+		// var sticky = $('.header'),
 		scroll = $(window).scrollTop();
     
-  if (scroll >= stickyOffset) {
+  /*if (scroll >= stickyOffset) {
   	sticky.addClass('fixed');
   	$('.site-baseline').addClass('header-jump')
   }
   else {
   	sticky.removeClass('fixed');
    	$('.site-baseline').removeClass('header-jump') 	
-  }
+  }*/
 });
 //]]</script>
 <tpl:SysIf current_mode="default">
