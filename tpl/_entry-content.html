@@ -25,7 +25,7 @@
 			<p class="post-cat"><a href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></p>
 		</tpl:EntryIf>
 
-			<h2 class="post-title">{{tpl:EntryTitle encode_html="1"}}</h2>
+			<h2 class="post-title <tpl:EntryIf has_category="0">no-cat</tpl:EntryIf>">{{tpl:EntryTitle encode_html="1"}}</h2>
 		</div>
 
 		<div class="post-meta">
@@ -95,7 +95,7 @@
 				<p class="post-cat"><a href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></p>
 			</tpl:EntryIf>
 
-				<h2 class="post-title"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
+				<h2 class="post-title <tpl:EntryIf has_category="0">no-cat</tpl:EntryIf>"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
 				<p class="post-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate}}</time></p>
 			</div>
 				<div class="post-content">

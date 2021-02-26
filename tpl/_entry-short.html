@@ -10,25 +10,20 @@
 		<!-- # Featured media -->
 		<tpl:FeaturedMedia>
 			<div class="post-featured-media {{tpl:FeaturedMediaType}}" id="featured-media-{{tpl:EntryID}}">
-				<tpl:FeaturedMediaIf is_audio="1">
-					{{tpl:include src="_audio_player.html"}}
-				</tpl:FeaturedMediaIf>
-				<tpl:FeaturedMediaIf is_video="1">
-					<tpl:FeaturedMediaIf is_flv="0">
-						{{tpl:include src="_video_player.html"}}
-					{{tpl:else}}
-						{{tpl:include src="_flv_player.html"}}
-					</tpl:FeaturedMediaIf>
-				</tpl:FeaturedMediaIf>
 				<tpl:FeaturedMediaIf is_image="1">
 					<img src="{{tpl:FeaturedMediaImageURL size="m"}}" alt="{{tpl:FeaturedMediaTitle}}" />
+				{{tpl:else}}
+					<div class="image">
+						{{tpl:EntryFirstImage size="m"}}
+					</div>
+
 				</tpl:FeaturedMediaIf>
 			</div>
 		</tpl:FeaturedMedia>
 		</tpl:EntryIf>
 		<tpl:EntryIf has_featured_media="0">
 			<div class="image">
-				<img src="{{tpl:CategoryImageFile size="m" random="1"}}" alt="{{tpl:EntryCategory}}" />
+				{{tpl:EntryFirstImage size="m"}}
 			</div>
 		</tpl:EntryIf>
 
@@ -37,7 +32,7 @@
 			<p class="post-cat"><a href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></p>
 		</tpl:EntryIf>
 
-			<h2 class="post-title"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
+			<h2 class="post-title <tpl:EntryIf has_category="0">no-cat</tpl:EntryIf>"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
 			<p class="post-date"><time datetime="{{tpl:EntryDate iso8601="1"}}">{{tpl:EntryDate}}</time></p>
 		</div>
 	</header>
