@@ -2,3 +2,4 @@
 *sublime-*
 .sass-cache
 _public.php.*
+*.obs

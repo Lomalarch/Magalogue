@@ -1093,8 +1093,8 @@ li.tag-current a:link, li.tag-current a:visited {
     float: left; } }
 /* *** navigation *** */
 .navlinks {
-  color: #fff;
   margin: 0;
+  text-align: center;
   padding: .5em 0 1em;
   border-top: 1px solid #dcdcdc;
   border-bottom: 1px solid #dcdcdc; }
@@ -1105,7 +1105,8 @@ li.tag-current a:link, li.tag-current a:visited {
     margin: 0;
     text-transform: uppercase; }
   .navlinks .prev-post {
-    float: left; }
+    float: left;
+    text-align: left; }
   .navlinks .next-post {
     float: right;
     text-align: right; }
@@ -1349,6 +1350,9 @@ div.image img, .related-entry .featured-media img {
   @media screen and (max-width: 40em) {
     .post-title, .related-title {
       font-size: 1.5em; } }
+
+.post-title.no-cat {
+  padding-top: 40px; }
 
 .post-content {
   margin-bottom: 1em; }
