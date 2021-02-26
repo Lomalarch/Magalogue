@@ -87,9 +87,8 @@ class tplMagalogueTheme
         }
 
         $ret .= '}' . "\n" .
-            'echo \'' . $default . '\';' . "\n" .
             '?>';
-        return $ret; // $core->tpl->includeFile(['src' => '_home-slider-selected.html']);
+        return $ret;
     }
         public static function magalogueEntriesListHelper($default)
     {

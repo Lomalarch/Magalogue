@@ -1787,7 +1787,8 @@ hr.home-separator {
         margin-bottom: .5em; } }
 
 .dc-home .slider-thumb {
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .dc-home .slick-dots {
   bottom: 15px; }
