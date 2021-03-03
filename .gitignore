@@ -3,3 +3,5 @@
 .sass-cache
 _public.php.*
 *.obs
+*.mo
+_pot/

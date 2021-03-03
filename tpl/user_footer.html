@@ -50,22 +50,42 @@
 			e.preventDefault();
 		});
 		// suppress linked image border
-		$('a:has(>img)').css('border', 'none');
+		$('a:has(>img)').each(function() {
+			$(this).css('border', 'none');
+		});
 	});
 	var stickyOffset = $('.header').offset().top;
 	$(window).scroll(function(){
-		// var sticky = $('.header'),
 		scroll = $(window).scrollTop();
-    
-  /*if (scroll >= stickyOffset) {
-  	sticky.addClass('fixed');
-  	$('.site-baseline').addClass('header-jump')
-  }
-  else {
-  	sticky.removeClass('fixed');
-   	$('.site-baseline').removeClass('header-jump') 	
-  }*/
+	});
+
+	const titleImages = document.querySelectorAll('.post .image img');
+
+	Array.from(titleImages).forEach(image => {
+		image.addEventListener('load', () => fitImage(image));
+
+		if (image.complete && image.naturalWidth !== 0)
+			fitImage(image);
 });
+	<tpl:SysIf current_mode="!post">
+	// adapt image cropping with image aspect ratio
+	function fitImage(image) {
+		const aspectRatio = image.naturalWidth / image.naturalHeight;
+
+		// If image is landscape
+		if (aspectRatio > 1) {
+			image.style.height = '100%';
+			image.style.maxWidth = '200%';
+		}
+
+		// If image is portrait
+		else if (aspectRatio < 1) {
+			image.style.minWidth = '100%';
+			image.style.maxHeight = '200%';
+		}
+	}
+	</tpl:SysIf>
+
 //]]</script>
 <tpl:SysIf current_mode="default">
 <script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/slick.js"></script>

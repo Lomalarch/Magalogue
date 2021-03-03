@@ -44,7 +44,6 @@
     }
 }
 div.image img, .related-entry .featured-media img {
-    max-width: 200%;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -52,12 +51,6 @@ div.image img, .related-entry .featured-media img {
     min-width: 100%;
     transform: translate(-50%,-50%);
 }
-// .dc-post .post div.image {
-//     img {
-//         max-width: 100%;
-//         position: static;
-//     }
-// }
 .post-premices, .related-contents {
     margin: -5em 1em 2em;
     background-color: $white;
