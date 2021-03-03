@@ -789,11 +789,14 @@ body {
   padding: 1em;
   text-align: center;
   display: flex;
-  justify-content: space-between;
   max-width: 61.25em;
   margin: 0 auto;
   text-align: left;
   flex-wrap: wrap; }
+  .footer__widgets .widget {
+    margin-top: 1em;
+    width: 170px;
+    margin-right: 19px; }
 
 .blogcustom__title {
   border: 0;
@@ -804,10 +807,6 @@ body {
   padding: 0;
   position: absolute;
   width: 1px; }
-
-.footer__widgets .widget {
-  margin-top: 1em;
-  width: 20%; }
 
 .footer__widgets h3 {
   margin-bottom: 0;
@@ -910,15 +909,12 @@ a.site-title__link:hover {
   font-size: 1em;
   font-weight: bold; }
 
-.widget.tags h3 {
-  font-size: 1.5em;
-  text-align: center;
-  font-weight: normal;
-  letter-spacing: 2px; }
-
-.blogextra__widgets h3 {
-  text-transform: uppercase; }
-
+/* .widget.tags h3 {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: 2px;
+} */
 .blognav__widgets h4,
 .blogextra__widgets h4 {
   margin-top: 1.5em;
@@ -946,9 +942,6 @@ a.site-title__link:hover {
 .accueil .blognav__widgets {
   border: #383648 1px solid; }
 
-.blognav__widgets .categories {
-  border: #008000 1px solid; }
-
 .blognav__widgets {
   padding: 2em 0 1em; }
 
@@ -967,10 +960,11 @@ a.site-title__link:hover {
 #q {
   width: 75%; }
 
-.categories {
+#sidebar .categories {
   padding: 0 2em;
-  margin-top: 1em; }
-  .categories h3 {
+  margin-top: 1em;
+  border: #008000 1px solid; }
+  #sidebar .categories h3 {
     font-size: 1.25em;
     text-transform: uppercase;
     color: #fff;
@@ -982,26 +976,23 @@ a.site-title__link:hover {
     background: transparent url(img/CartoucheTitre.png) no-repeat center;
     padding-top: 6px;
     margin: auto 0 -30px 0; }
-  .categories h4 {
-    margin: 0; }
-  .categories h4.ui-accordion-header-collapsed {
-    background: transparent url(img/unfold-arrow.png) no-repeat center right; }
-  .categories h4.ui-accordion-header-active {
-    background: transparent url(img/fold-arrow.png) no-repeat center right; }
-  .categories h4.ui-accordion-header-collapsed, .categories ul ul, .categories li.tree-closed {
-    padding-bottom: 5px;
-    border-bottom: 1px solid #27be95; }
-  .categories li {
+  #sidebar .categories li {
     font-size: 1.1em;
     font-style: normal;
     font-weight: bold; }
-    .categories li ul li {
+    #sidebar .categories li ul li {
       font-style: italic;
-      font-size: .9em;
-      padding-left: .5em; }
+      font-size: .9em; }
+
+.categories li ul li {
+  font-style: italic;
+  font-size: .9em;
+  padding-left: .5em; }
 
 .category-current {
   background-color: #008000; }
+  .footer__widgets .category-current {
+    background-color: #636363; }
 
 .sidebar .category-current {
   color: white; }
@@ -1065,10 +1056,10 @@ li.tag-current a:link, li.tag-current a:visited {
 .tag100 {
   font-size: 190%; }
 
-.widget.tags {
+.widget.tags p {
   text-align: right; }
-  .widget.tags ul {
-    text-align: center; }
+.widget.tags ul {
+  text-align: center; }
 
 .extratoppub {
   margin: 1em -53px 0;

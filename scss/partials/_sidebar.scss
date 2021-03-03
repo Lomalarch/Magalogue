@@ -39,15 +39,12 @@ a.site-title__link:hover {
     font-size: 1em;
     font-weight: bold;
 }
-.widget.tags h3 {
+/* .widget.tags h3 {
     font-size: 1.5em;
     text-align: center;
     font-weight: normal;
     letter-spacing: 2px;
-}
-.blogextra__widgets h3 {
-    text-transform: uppercase;
-}
+} */
 .blognav__widgets h4,
 .blogextra__widgets h4 {
     margin-top: 1.5em;
@@ -69,12 +66,8 @@ a.site-title__link:hover {
 .accueil .blognav__widgets {
     border: $dark-footer 1px solid;
 }
-.blognav__widgets .categories {
-    border: $dark-green 1px solid;
-}
 .blognav__widgets {
     padding: 2em 0 1em;
-    // border: $mauve 1px solid;
 }
 .blognav__widgets, .blogextra__widgets {
     margin-left: .75em;
@@ -93,9 +86,10 @@ a.site-title__link:hover {
 #q {
     width: 75%;
 }
-.categories {
+#sidebar .categories {
     padding: 0 2em;
     margin-top: 1em;
+    border: $dark-green 1px solid;
     h3 {
         font-size: 1.25em;
         text-transform: uppercase;
@@ -109,19 +103,6 @@ a.site-title__link:hover {
         padding-top: 6px;
         margin: auto 0 -30px 0;
     }
-    h4 {
-        margin: 0;
-    }
-    h4.ui-accordion-header-collapsed {
-        background: transparent url(img/unfold-arrow.png) no-repeat center right;
-    }
-    h4.ui-accordion-header-active {
-        background: transparent url(img/fold-arrow.png) no-repeat center right;
-    }
-    h4.ui-accordion-header-collapsed, ul ul, li.tree-closed {
-        padding-bottom: 5px;
-        border-bottom: 1px solid $light-green;
-    }
     li {
         font-size: 1.1em;
         font-style: normal;
@@ -129,12 +110,20 @@ a.site-title__link:hover {
         ul li {
             font-style: italic;
             font-size: .9em;
-            padding-left: .5em;
+            // padding-left: .5em;
         }
     }
 }
+.categories li ul li {
+            font-style: italic;
+            font-size: .9em;
+            padding-left: .5em;
+}
 .category-current {
     background-color: $dark-green;
+    .footer__widgets & {
+        background-color: $gray-dark;
+    }
 }
 .sidebar .category-current {
     color: white;
@@ -178,7 +167,9 @@ li.tag-current {
 .tag90 { font-size: 180%; }
 .tag100 { font-size: 190%; }
 .widget.tags {
-    text-align: right;
+    p {
+        text-align: right;
+    }
     ul {
         text-align: center;
     }
