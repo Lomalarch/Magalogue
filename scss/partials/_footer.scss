@@ -25,6 +25,12 @@
         width: 170px;
         margin-right: 19px;
     }
+    #footer & li.tag-current a {
+        background-color: $gray-dark;
+    }
+    .tags li {
+        display: block;
+    }
 }
 .blogcustom__title {
     @include visually-hidden;
@@ -36,6 +42,7 @@
 }
 .footer__widgets ul {
     padding: 0;
+    margin-top: .25em;
     li {
         list-style-image: none;
         list-style-type: none;
