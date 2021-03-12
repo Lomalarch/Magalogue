@@ -1,0 +1,32 @@
+        {{tpl:magalogueNbEntryOnHome nb="5"}}
+        <tpl:Categories>
+            <tpl:Entries lastn="1">
+                <div class="post home {{tpl:EntryIfOdd}}">
+                    <tpl:EntryIf has_featured_media="1">
+                        <!-- # Featured media -->
+                        <tpl:FeaturedMedia>
+                            <div class="post-featured-media {{tpl:FeaturedMediaType}}" id="featured-media-{{tpl:EntryID}}">
+                                <tpl:FeaturedMediaIf is_image="1">
+                                    <div class="image">
+                                        <a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}"><img src="{{tpl:FeaturedMediaImageURL size="m"}}" alt="{{tpl:FeaturedMediaTitle}}" /></a>
+                                    </div>
+                                    {{tpl:else}}
+                                    <a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}>{{tpl:EntryFirstImage size="m"}}</a>
+                                </tpl:FeaturedMediaIf>
+                            </div>
+                        </tpl:FeaturedMedia>
+                    </tpl:EntryIf>
+                    <tpl:EntryIf has_featured_media="0">
+                        <div class="image">
+                        <a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}}">{{tpl:EntryFirstImage size="m"}}</a>
+                        </div>
+                    </tpl:EntryIf>
+                    <div class="post-premices">
+                        <p class="post-cat {{tpl:EntryCategory}}"><a href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></p>
+                        <h2 class="post-title"><a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_xml="1"}}">{{tpl:EntryTitle encode_xml="1" remove_html="1" cut_string="50"}}</a></h2>
+                        <p class="post-meta"><span class="post-date">{{tpl:EntryDate}}</span></p>
+                        <p class="post-read-it"><a href="{{tpl:EntryURL}}"><span class="button">Lire la suite</span></a></p>
+                    </div>
+                </div>
+            </tpl:Entries>
+        </tpl:Categories>
