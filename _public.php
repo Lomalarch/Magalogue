@@ -50,6 +50,41 @@ class tplMagalogueTheme
     public static function magalogueEntriesList($attr)
     {
         #Entries in home main block
+        global $core;
+
+        $tpl_path   = dirname(__FILE__) . '/tpl/';
+        $entries_list_types = ['selected', 'first-level-categories', 'categories', 'recent'];
+
+        // Get all _home-entries-*.html in tpl folder of theme
+        $list_types_templates = \files::scandir($tpl_path);
+        if (is_array($list_types_templates)) {
+            foreach ($list_types_templates as $v) {
+                if (preg_match('/^_home\-entries\-(.*)\.html$/', $v, $m)) {
+                    if (isset($m[1])) {
+                        if (!in_array($m[1], $entries_list_types)) {
+                            // template not already in full list
+                            $entries_list_types[] = $m[1];
+                        }
+                    }
+                }
+            }
+        }
+
+        $default = isset($attr['default']) ? trim($attr['default']) : 'first-level-categories';
+        $ret     = '<?php ' . "\n" .
+        'switch (' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueEntriesListHelper(\'list-' . $default . '\')) {' . "\n";
+
+        foreach ($entries_list_types as $v) {
+            $ret .= '   case \'' . $v . '\':' . "\n" .
+            '?>' . "\n" .
+            $core->tpl->includeFile(['src' => '_home-entries-' . $v . '.html']) . "\n" .
+                '<?php ' . "\n" .
+                '       break;' . "\n";
+        }
+
+        $ret .= '}' . "\n" .
+            '?>';
+        return $ret;
     }
     public static function magalogueSliderContent($attr) 
     {
@@ -76,7 +111,7 @@ class tplMagalogueTheme
 
         $default = isset($attr['default']) ? trim($attr['default']) : 'selected';
         $ret     = '<?php ' . "\n" .
-        'switch (' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueEntriesListHelper(\'' . $default . '\')) {' . "\n";
+        'switch (' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueEntriesListHelper(\'slider-' . $default . '\')) {' . "\n";
 
         foreach ($slider_list_types as $v) {
             $ret .= '   case \'' . $v . '\':' . "\n" .
@@ -90,22 +125,27 @@ class tplMagalogueTheme
             '?>';
         return $ret;
     }
-        public static function magalogueEntriesListHelper($default)
+    public static function magalogueEntriesListHelper($default)
     {
         $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_entries_lists');
         if ($s !== null) {
             $s = @unserialize($s);
             if (is_array($s)) {
-                if (isset($s['slider'])) {
+                if (isset($s['slider']) && preg_match('/^slider-/', $default)) {
                     $model = $s['slider'];
+                    return $model;
+                }
+                elseif (isset($s['list']) && preg_match('/^list-/', $default)) {
+                    $model = $s['list'];
                     return $model;
                 }
             }
         }
+        $default = preg_replace('/^(slider-|list-)/', '', $default);
         return $default;
     }
 
-public static function magalogueNbEntryOnHome($attr)
+    public static function magalogueNbEntryOnHome($attr)
     {
         return '<?php ' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueNbEntryOnHomeHelper(); ?>';
     }
@@ -126,8 +166,8 @@ public static function magalogueNbEntryOnHome($attr)
                         if (isset($s['slider'])) {
                             $nb_first = $nb_other = (integer) $s['slider'];
                         }
-                        if (isset($s['default-page'])) {
-                            $nb_other = (integer) $s['default-page'];
+                        if (isset($s['list'])) {
+                            $nb_other = (integer) $s['list'];
                         }
                         break;
                     default:
