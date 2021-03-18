@@ -14,26 +14,19 @@ namespace themes\magalogue;
 if (!defined('DC_RC_PATH')) { return; }
 
 \l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
-//__('Show menu').__('Hide menu').__('Navigation');
 
 # Behaviors
-$core->addBehavior('publicHeadContent',[__NAMESPACE__ . '\behaviorMagalogueTheme','publicHeadContent']);
-// $core->addBehavior('publicEntryAfterContent',[__NAMESPACE__ . '\behaviorMagalogueTheme','publicEntryAfterContent']);
+$core->addBehavior('publicHeadContent',[__NAMESPACE__ . '\behaviorsMagalogueTheme','publicHeadContent']);
+$core->addBehavior('templateBeforeBlock', [__NAMESPACE__ . '\behaviorsMagalogueTheme', 'templateBeforeBlock']);
 
 # Templates
 $core->tpl->addValue('magalogueEntriesList', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueEntriesList']);
 $core->tpl->addValue('magalogueSliderContent', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueSliderContent']);
-$core->tpl->addValue('magalogueNbEntryOnHome', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueNbEntryOnHome']);
 $core->tpl->addValue('magalogueSocialLinks', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueSocialLinks']);
-//$core->tpl->addValue('magalogueNbEntryPerPage', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueNbEntryPerPage']);
 $core->tpl->addValue('magalogueLogoSrc', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueLogoSrc']);
-//$core->tpl->addValue('magalogueRelatedEntries', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueRelatedEntries']);
 $core->tpl->addBlock('magalogueRelatedEntries', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueRelatedEntries']);
-//$core->tpl->addBlock('IfPreviewIsNotMandatory', [__NAMESPACE__ . '\tplMagalogueTheme', 'IfPreviewIsNotMandatory']);
 
-
-
-class behaviorMagalogueTheme
+class behaviorsMagalogueTheme
 {
     public static function publicHeadContent()
     {
@@ -42,6 +35,47 @@ class behaviorMagalogueTheme
             'dotclear_magalogue_hide_menu' => __('Hide menu'),
             'dotclear_magalogue_navigation' => __('Navigation')
             ));
+    }
+    public static function templateBeforeBlock($core, $b, $attr)
+    {
+        #Number of entries in block
+        if ($b == 'Entries' && (isset($attr['maga_id']) && $attr['maga_id'] == 'slider')) {
+            return '<?php' . "\n" .
+            'if ($core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\')) {'  . "\n" .
+                '$c = $core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\');'  . "\n" .
+                '$c = @unserialize($c);'  . "\n" .
+                'if (is_array($c)) {' . "\n" .
+                    '$c = $c[\'slider\'];' . "\n" .
+                '}' . "\n" .
+                'else {' . "\n" .
+                    '$c = 5;' . "\n" .
+                '}' . "\n" .
+            '} ' . "\n" .
+            'else {' . "\n" .
+                '$c = 5;' . "\n" .
+            '}' . "\n" .
+            '$_ctx->nb_entry_first_page = $c;' . "\n" .
+           '?>' . "\n";
+        }
+        if ($b == 'Entries' && (isset($attr['maga_id']) && $attr['maga_id'] == 'list')) {
+            return '<?php' . "\n" .
+            'if ($core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\')) {'  . "\n" .
+                '$c = $core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\');'  . "\n" .
+                '$c = @unserialize($c);'  . "\n" .
+                'if (is_array($c)) {' . "\n" .
+                    '$c = $c[\'list\'];' . "\n" .
+                '}' . "\n" .
+                'else {' . "\n" .
+                    '$c = 9;' . "\n" .
+                '}' . "\n" .
+            '} ' . "\n" .
+            'else {' . "\n" .
+                '$c = 9;' . "\n" .
+            '}' . "\n" .
+            '$_ctx->nb_entry_first_page = $c;' . "\n" .
+                    '?>'  . "\n";
+            ;
+        }
     }
 }
 
@@ -145,7 +179,7 @@ class tplMagalogueTheme
         return $default;
     }
 
-    public static function magalogueNbEntryOnHome($attr)
+    /*public static function magalogueNbEntryOnHome($attr)
     {
         return '<?php ' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueNbEntryOnHomeHelper(); ?>';
     }
@@ -193,7 +227,7 @@ class tplMagalogueTheme
         if ($nb_first > 0) {
             $_ctx->nb_entry_first_page = $nb_first;
         }
-    }
+    }*/
     public static function magalogueSocialLinks($attr)
     {
         global $core;
