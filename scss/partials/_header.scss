@@ -15,6 +15,18 @@
         }
     }
 }
+#topcontainer h1.HomeLink {
+    font-size: 2rem;
+    margin-top: 1rem;
+    font-family: "playfair-display", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+    a, a:visited {
+        color: $gray-very-dark;
+    }
+    &::first-letter {
+        font-size: 3rem;
+        color: $dark-green;
+    }
+}
 #balloon {
     position: absolute;
     top: 16px;
@@ -45,7 +57,7 @@
     border-bottom-color: transparent;
 }
 .header-band {
-    background: transparent url(img/ballon.png) no-repeat 97% 118%;
+    background: transparent url(img/ballon.png) no-repeat 97% 69%;
 }
 .skip-links {
     float: left;
@@ -69,7 +81,7 @@
 }
 .follow-us {
      @include zen-grid-item(5,1);
-     padding-top: 60px;
+     padding-top: 3.3rem;
      ul {
         list-style-type: none;
         padding: 0;
@@ -100,7 +112,7 @@
 .banner {
     padding-top: 10px;
     margin-right: 3em;
-    height: 110px;
+    // height: 110px;
     @include zen-grid-item(3,5);
     padding-left: 1.25em;
     }
@@ -196,7 +208,7 @@
 .header__nav, .header__nav-small {
     @include inline-block-list-container;
     clear: left;
-    background-color: $white;
+    // background-color: $white;
     li {
         @include inline-block-list-item(1.15em);
         margin-right: .5em;

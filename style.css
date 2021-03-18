@@ -479,6 +479,16 @@ body {
     #topcontainer-small .HomeLink {
       float: left;
       width: 30%; } }
+#topcontainer h1.HomeLink {
+  font-size: 2rem;
+  margin-top: 1rem;
+  font-family: "playfair-display", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif; }
+  #topcontainer h1.HomeLink a, #topcontainer h1.HomeLink a:visited {
+    color: #161616; }
+  #topcontainer h1.HomeLink::first-letter {
+    font-size: 3rem;
+    color: #008000; }
+
 #balloon {
   position: absolute;
   top: 16px;
@@ -509,7 +519,7 @@ body {
   border-bottom-color: transparent; }
 
 .header-band {
-  background: transparent url(img/ballon.png) no-repeat 97% 118%; }
+  background: transparent url(img/ballon.png) no-repeat 97% 69%; }
 
 .skip-links {
   float: left;
@@ -550,7 +560,7 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
-  padding-top: 60px; }
+  padding-top: 3.3rem; }
   .follow-us ul {
     list-style-type: none;
     padding: 0;
@@ -574,7 +584,6 @@ body {
 .banner {
   padding-top: 10px;
   margin-right: 3em;
-  height: 110px;
   float: left;
   width: 25%;
   margin-left: 33.3333333%;
@@ -683,8 +692,7 @@ body {
   padding: 0;
   border: 0;
   overflow: hidden;
-  clear: left;
-  background-color: #fff; }
+  clear: left; }
   .header__nav li, .header__nav-small li {
     list-style-image: none;
     list-style-type: none;

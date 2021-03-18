@@ -23,7 +23,7 @@ $core->addBehavior('templateBeforeBlock', [__NAMESPACE__ . '\behaviorsMagalogueT
 $core->tpl->addValue('magalogueEntriesList', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueEntriesList']);
 $core->tpl->addValue('magalogueSliderContent', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueSliderContent']);
 $core->tpl->addValue('magalogueSocialLinks', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueSocialLinks']);
-$core->tpl->addValue('magalogueLogoSrc', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueLogoSrc']);
+$core->tpl->addValue('magalogueBanner', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueBanner']);
 $core->tpl->addBlock('magalogueRelatedEntries', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueRelatedEntries']);
 
 class behaviorsMagalogueTheme
@@ -290,13 +290,14 @@ class tplMagalogueTheme
         }
         return false;
     }
-public static function magalogueLogoSrc($attr)
+public static function magalogueBanner($attr)
     {
-        return '<?php echo ' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueLogoSrcHelper(); ?>';
+        return '<?php echo ' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueBannerHelper(); ?>';
     }
 
-    public static function magalogueLogoSrcHelper()
+    public static function magalogueBannerHelper()
     {
+        $blog_name = $GLOBALS['core']->blog->name;
         $img_url = $GLOBALS['core']->blog->settings->system->themes_url . '/' . $GLOBALS['core']->blog->settings->system->theme . '/img/MagalogueBanner.png';
 
         $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style');
@@ -308,6 +309,11 @@ public static function magalogueLogoSrc($attr)
         if (!is_array($s)) {
             // settings error, return default logo
             return $img_url;
+        }
+
+        if ($s['no_logo']) {
+            // no_logo has been checked, return BlogName
+            return $blog_name;
         }
 
         if (isset($s['logo_src'])) {
@@ -324,7 +330,7 @@ public static function magalogueLogoSrc($attr)
             }
         }
 
-        return $img_url;
+        return '<img src="' . $img_url .'" alt="' . $blog_name . '" />';
     }
 
     public static function thisPostrelatedEntries ($id)
