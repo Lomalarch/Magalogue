@@ -38,9 +38,9 @@ a.site-title__link:hover {
     margin-bottom: 0;
 }
 .blognav__widgets .widget, .blogextra__widgets .widget {
-    padding: 1em;
-    font-size: .875em;
-    line-height: 1.71429;
+    // padding: 1em;
+    // font-size: .875em;
+    // line-height: 1.71429;
    > ul {
         @include no-bullets;
         padding-left: 0;
@@ -73,11 +73,14 @@ a.site-title__link:hover {
 #q {
     width: 75%;
 }
-#sidebar .categories {
-    padding: 0 2em;
-    margin-top: 1rem;
+.sidebar .widget {
+    padding: 0 2rem 1rem;
+    margin-top: 2rem;
+    text-align: center;
     border: $dark-green 1px solid;
+    border-radius: 5px;
     h3 {
+        display: inline-block;
         font-size: 1.25em;
         text-transform: uppercase;
         color: #fff;
@@ -85,19 +88,20 @@ a.site-title__link:hover {
         position: relative;
         top: -1.2rem;
         min-height: 35px;
-        text-align: center;
-        background: transparent url(img/CartoucheTitre.png) no-repeat center;
-        padding-top: 6px;
+        background-color: $dark-green;
+        padding: 6px 10px 7px;
         margin: auto 0 -1rem 0;
+        border-radius: 10px;
     }
-    li {
-        font-size: 1.1em;
-        font-style: normal;
-        font-weight: bold;
-        ul li {
-            font-style: italic;
-            font-size: .9em;
-            // padding-left: .5em;
+    ul {
+        text-align: left;
+    }
+    li:hover {
+        background-color: $light-green;
+        transition: .3s;
+        color: $white;
+        a {
+            color: $white;
         }
     }
 }

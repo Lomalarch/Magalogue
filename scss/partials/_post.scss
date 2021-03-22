@@ -52,7 +52,7 @@ div.image img, .related-entry .featured-media img {
     transform: translate(-50%,-50%);
 }
 .post-premices, .related-contents {
-    margin: -5em 1em 2em;
+    margin: -5em 1em 1em;
     background-color: $white;
     position: relative;
 }
@@ -64,7 +64,7 @@ div.image img, .related-entry .featured-media img {
 }
 .post-meta {
     text-align: center;
-    font-size: scut-em(14);
+    // font-size: scut-em(14);
     clear: both;
 }
 .post-info {
@@ -88,16 +88,16 @@ div.image img, .related-entry .featured-media img {
 }
 .post-tags-list {
     @include inline-block-list-container;
-    margin: 2.5em 0 3.5em;
+    margin: 1.5em 0 2.5em;
 }
 .post-tags-item {
     background-color: $dark-green;
 }
 .post-tags-item {
     @include inline-block-list-item();
-    padding: 1px 10px;
+    padding: 1px 10px 3px;
     border-radius: 5px;
-    margin: 0 .25em 1em;
+    margin: 0 .25em;
     a {
         color: $white;
         border: none;

@@ -208,7 +208,6 @@
 .header__nav, .header__nav-small {
     @include inline-block-list-container;
     clear: left;
-    // background-color: $white;
     li {
         @include inline-block-list-item(1.15em);
         margin-right: .5em;
