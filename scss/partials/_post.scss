@@ -84,6 +84,7 @@ div.image img, .related-entry .featured-media img {
     a:link, a:visited {
         padding-bottom: .25em;
         line-height: 2;
+        color: $dark-green;
     }
 }
 .post-tags-list {
@@ -229,7 +230,7 @@ div.image img, .related-entry .featured-media img {
             box-shadow: 0 2px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.2);
         }
         .comment {
-            background-color: #EDF3F2;
+            background-color: $gray-very-light;
         }
         .ping {
             background: #f3efed inline-image('icon_trackbacks.png') no-repeat 1.5em 4em;
@@ -254,7 +255,7 @@ div.image img, .related-entry .featured-media img {
     margin-bottom: 2em;
     border-radius: .25em;
     box-shadow: 0 2px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.2);
-    background-color: #EDF3F2;
+    background-color: $gray-very-light;
 }
 .send-trackback {
     background: #f3efed inline-image('icon_trackbacks.png') no-repeat 1.5em 4em;

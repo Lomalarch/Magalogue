@@ -46,24 +46,22 @@ h6 {
 }
 a {
     color: $dark-green;
-    &:link, &:visited {
-        border-bottom: 1px solid $dark-green;
+    text-decoration: none;
+    transition: .3s;
+    border-bottom: 1px solid $dark-green;
+    &:visited {
+        border-bottom-color: $light-green;
+        color: $light-green;
     }
     &:hover, &:active {
         border-color: $dark-green;
-    }
-}
-a {
-    text-decoration: none;
-    transition: .3s;
-    &:visited {
-        border-bottom-style: dotted;
     }
     &:focus {
         background-color: $link;
         color: $gray-very-light;
     }
 }
+
 // autres balises
 hr {
     border: 0;

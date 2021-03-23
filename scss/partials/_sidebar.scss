@@ -96,12 +96,21 @@ a.site-title__link:hover {
     ul {
         text-align: left;
     }
-    li:hover {
+    li:hover, a:hover {
         background-color: $light-green;
         transition: .3s;
         color: $white;
         a {
             color: $white;
+        }
+        ul {
+            background-color: $white;
+            a {
+                color: $dark-green;
+            }
+            li:hover a,  .category-current a {
+                color: $white;
+            }
         }
     }
 }
@@ -139,7 +148,7 @@ ul.tags {
 }
 li.tag-current {
     a {
-        background: $light-green;
+        background: $dark-green;
         padding: 0 .25em;
     }
     a:link, a:visited {
