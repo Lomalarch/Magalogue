@@ -11,13 +11,15 @@
 	});
 	$("html").addClass("js");
 	// Show/Hide main menu
-	$(".header__nav-small").
-	before('<button id="hamburger" type="button"><span class="visually-hidden">' + dotclear_magalogue_navigation + '</span></button>').
-	toggle();
-	$("#hamburger").click(function() {
-		$(this).toggleClass("open");
-		$(".header__nav-small").toggle('easing');
-	});
+	if (screen.width<=1280) {
+		$(".header__nav").
+		before('<button id="hamburger" type="button"><span class="visually-hidden">' + dotclear_magalogue_navigation + '</span></button>').toggle();
+		$(".follow-us").toggle();
+		$("#hamburger").click(function() {
+			$(this).toggleClass("open");
+			$(".header__nav, .follow-us").toggle('easing');
+		});
+	}
 	// Show/Hide sidebar on small screens
 	<tpl:SysIf current_mode="!default">
 		

@@ -6,7 +6,7 @@
 
 // Par défaut le bouton n'est pas affiché ; il ne
 // le sera que sur les petits écrans.
-#offcanvas-on {
+#offcanvas-on, #hamburger {
     display: none;
 }
 // Sexy glissando
@@ -21,6 +21,9 @@
 
 @media screen and(max-width: $xlarge-screen) {
     // les boutons
+    #hamburger {
+        display: inline;
+    }
     #offcanvas-on,
     #offcanvas-off {
         position: absolute;

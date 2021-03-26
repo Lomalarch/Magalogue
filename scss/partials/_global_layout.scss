@@ -6,8 +6,13 @@ body {
     background-color: $white;
     padding: 1em .5em 2em;
 }
-#page, #bottomlinks, .header-band/* , .blogName */ {
+#page, #bottomlinks/* , .header-band, .blogName */ {
     @include zen-grid-container();
+    max-width: $large-screen;
+    margin: 0 auto;
+    padding: 0;
+}
+.header-band {
     max-width: $large-screen;
     margin: 0 auto;
     padding: 0;
