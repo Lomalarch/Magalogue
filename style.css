@@ -380,20 +380,15 @@ body {
   background-color: #fff;
   padding: 1em .5em 2em; }
 
-#page, #bottomlinks {
+#page, #bottomlinks, .header-band {
   max-width: 60em;
   margin: 0 auto;
   padding: 0; }
-  #page:before, #page:after, #bottomlinks:before, #bottomlinks:after {
+  #page:before, #page:after, #bottomlinks:before, #bottomlinks:after, .header-band:before, .header-band:after {
     content: "";
     display: table; }
-  #page:after, #bottomlinks:after {
+  #page:after, #bottomlinks:after, .header-band:after {
     clear: both; }
-
-.header-band {
-  max-width: 60em;
-  margin: 0 auto;
-  padding: 0; }
 
 #wrapper:before, #wrapper:after {
   content: "";
@@ -439,10 +434,6 @@ body {
   #page, #bottomlinks, .header-band {
     max-width: 61.25em; }
 
-  /*.header {
-      max-width: zen-grid-item-width(8);
-      padding-bottom: 0;
-  }*/
   #main {
     float: left;
     width: 66.6666667%;
@@ -463,16 +454,12 @@ body {
     padding-right: 0;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    word-wrap: break-word; }
-
-  /*    #blognav, #blogextra {
-          width: 49%;
-          display: inline-block;
-          vertical-align: top;
-      }*/ }
+    word-wrap: break-word; } }
 @media screen and (min-width: 80.1em) {
-  #topcontainer-small h1.HomeLink {
-    margin-top: 1rem; }
+  h1.HomeLink {
+    font-size: 2rem; }
+    h1.HomeLink::first-letter {
+      font-size: 3rem; }
 
   .header-band {
     background: transparent url(img/ballon.png) no-repeat 97% 69%; }
@@ -539,6 +526,14 @@ body {
       text-transform: uppercase;
       font-weight: bold; } }
 @media all and (max-width: 80em) {
+  h1.HomeLink {
+    font-size: 1rem; }
+    h1.HomeLink::first-letter {
+      font-size: 1.5rem; }
+
+  #balloon {
+    display: none; }
+
   .banner {
     order: 0;
     width: 30%;
@@ -606,13 +601,11 @@ body {
     width: 100%;
     overflow-y: auto;
     background-color: #fff; } }
-#topcontainer h1.HomeLink {
-  font-size: 2rem;
+h1.HomeLink {
   font-family: "playfair-display", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif; }
-  #topcontainer h1.HomeLink a, #topcontainer h1.HomeLink a:visited {
+  h1.HomeLink a, h1.HomeLink a:visited {
     color: #161616; }
-  #topcontainer h1.HomeLink::first-letter {
-    font-size: 3rem;
+  h1.HomeLink::first-letter {
     color: #008000; }
 
 #balloon {
@@ -1857,6 +1850,10 @@ hr.home-separator {
 .sidebar, #main {
   transition: all 0.3s linear; }
 
+.js #content-info h2,
+.js .content-info__feed {
+  margin-right: 3.5em; }
+
 @media screen and (max-width: 80em) {
   #hamburger {
     display: inline; }
@@ -1901,7 +1898,10 @@ hr.home-separator {
     margin-left: -66.6666667%; }
 
   .off-canvas .sidebar {
-    position: relative;
+    position: absolute;
+    transition: .3s;
+    top: 0;
+    right: 0;
     float: right;
     width: 91.6666667%;
     margin-right: 0%;
@@ -1910,6 +1910,5 @@ hr.home-separator {
     padding-right: 0;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    word-wrap: break-word;
-    padding-top: 1.7em; } }
+    word-wrap: break-word; } }
 /*** dev only ***/

@@ -1,96 +1,12 @@
 <script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/jquery.treemenu.js"></script>
-<script type="text/javascript">//<![CDATA[
-	// Collapsible categories
-	$(function(){
-		$("#sidebar .categories > ul").treemenu({
-			activeSelector: 'category-current',
-			openActive: true,
-			closeOther: true,
-			delay: 300
-		});
-	});
-	$("html").addClass("js");
-	// Show/Hide main menu
-	if (screen.width<=1280) {
-		$(".header__nav").
-		before('<button id="hamburger" type="button"><span class="visually-hidden">' + dotclear_magalogue_navigation + '</span></button>').toggle();
-		$(".follow-us").toggle();
-		$("#hamburger").click(function() {
-			$(this).toggleClass("open");
-			$(".header__nav, .follow-us").toggle('easing');
-		});
-	}
-	// Show/Hide sidebar on small screens
-	<tpl:SysIf current_mode="!default">
-		
-	$("#main").prepend('<button id="offcanvas-on" type="button"><span class="visually-hidden">' + dotclear_magalogue_show_menu + '</span></button>');
-	$("#offcanvas-on").click(function() {
-		var btn = $('<button id="offcanvas-off" type="button"><span class="visually-hidden">' + dotclear_magalogue_hide_menu + '</span></button>');
-		$("#wrapper").addClass("off-canvas");
-		$("#footer").addClass("off-canvas");
-		$("#sidebar").prepend(btn);
-		btn.click(function(evt) {
-			$("#wrapper").removeClass("off-canvas");
-			$("#footer").removeClass("off-canvas");
-			evt.target.remove();
-		});
-	});
-	</tpl:SysIf>
-	$(document).ready(function() {
-		// totop scroll
-		$(window).scroll(function() {
-			if ($(this).scrollTop() != 0) {
-				$('#gotop').fadeIn();
-			} else {
-				$('#gotop').fadeOut();
-			}
-		});
-		$('#gotop').click(function(e) {
-			$('body,html').animate({
-				scrollTop: 0
-			}, 800);
-			e.preventDefault();
-		});
-		// suppress linked image border
-		$('a:has(>img)').each(function() {
-			$(this).css('border', 'none');
-		});
-	});
-	var stickyOffset = $('.header').offset().top;
-	$(window).scroll(function(){
-		scroll = $(window).scrollTop();
-	});
-
-	<tpl:SysIf current_mode="!post">
-	const titleImages = document.querySelectorAll('.post .image img');
-
-	Array.from(titleImages).forEach(image => {
-		image.addEventListener('load', () => fitImage(image));
-
-		if (image.complete && image.naturalWidth !== 0)
-			fitImage(image);
-	});
-	// adapt image cropping with image aspect ratio
-	function fitImage(image) {
-		const aspectRatio = image.naturalWidth / image.naturalHeight;
-
-		// If image is landscape
-		if (aspectRatio > 1) {
-			image.style.height = '100%';
-			image.style.maxWidth = '200%';
-		}
-
-		// If image is portrait
-		else if (aspectRatio < 1) {
-			image.style.minWidth = '100%';
-			image.style.maxHeight = '200%';
-		}
-	}
-	</tpl:SysIf>
-
-//]]</script>
+<script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/magalogue.js"></script>
+<tpl:SysIf current_mode="!default">
+	<script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/magalogue-inner.js"></script>
+</tpl:SysIf>
+<tpl:SysIf current_mode="!post">
+	<script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/magalogue-lists.js"></script>
+</tpl:SysIf>
 <tpl:SysIf current_mode="default">
 <script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/slick.js"></script>
 <script type="text/javascript" src="{{tpl:BlogThemeURL}}/js/home-slider.js"></script>
 </tpl:SysIf>
-

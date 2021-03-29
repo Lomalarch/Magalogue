@@ -14,10 +14,10 @@
     @include transition(.3s all linear);
 }
 // Dégager la place de l'icône d'ouverture
-// .js #content-info h2,
-// .js .content-info__feed {
-//         margin-right: 3.5em;
-// }
+.js #content-info h2,
+.js .content-info__feed {
+        margin-right: 3.5em;
+}
 
 @media screen and(max-width: $xlarge-screen) {
     // les boutons
@@ -67,8 +67,11 @@
         margin-left: -1*(zen-grid-item-width(8));
     }
     .off-canvas .sidebar {
-        position: relative;
+        position: absolute;
+        transition: .3s;
+        top: 0;
+        right: 0;
         @include zen-grid-item (11, 1, right);
-        padding-top: 1.7em;
+        // padding-top: 1.7em;
     }
 }

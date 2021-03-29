@@ -6,23 +6,18 @@ body {
     background-color: $white;
     padding: 1em .5em 2em;
 }
-#page, #bottomlinks/* , .header-band, .blogName */ {
+#page, #bottomlinks, .header-band {
     @include zen-grid-container();
     max-width: $large-screen;
     margin: 0 auto;
     padding: 0;
 }
-.header-band {
-    max-width: $large-screen;
-    margin: 0 auto;
-    padding: 0;
-}
+
 #wrapper {
     @include zen-grid-container();
 }
 .header {
     position: relative;
-    // padding: .25em 0;
     }
 @media all and(max-width: $small-screen) {
     #main {
@@ -30,13 +25,13 @@ body {
     }
 }
 @media screen and(min-width: ($xlarge-screen + .1em)) and(max-width: 110em) {
-    #page, #bottomlinks, .header-band/* , .blogName */ {
+    #page, #bottomlinks, .header-band {
         max-width: 61.25em;
     }
     #main {
         @include zen-grid-item(9,1)
     }
-    #sidebar/* , .site-title */ {
+    #sidebar {
         @include zen-grid-item(3,10);
     }
     .blognav__widgets, .blogextra__widgets {
@@ -44,25 +39,16 @@ body {
     }
 }
 @media screen and(min-width: 110.1em) {
-    // body {
-    //     font-size: .8em;
-    // }
-    #page, #bottomlinks, .header-band/* , .blogName */ {
+    
+    #page, #bottomlinks, .header-band {
         max-width: 61.25em;
     }
-    /*.header {
-        max-width: zen-grid-item-width(8);
-        padding-bottom: 0;
-    }*/
+    
     #main {
         @include zen-grid-item(8,1)
     }
-    #sidebar/* , .site-title */ {
+    #sidebar {
         @include zen-grid-item(4,9);
     }
-/*    #blognav, #blogextra {
-        width: 49%;
-        display: inline-block;
-        vertical-align: top;
-    }*/
+
 }

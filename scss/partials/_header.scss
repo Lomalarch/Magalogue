@@ -1,6 +1,9 @@
 @media screen and(min-width: ($xlarge-screen + .1em)) {
-    #topcontainer-small h1.HomeLink {
-        margin-top: 1rem;
+    h1.HomeLink {
+        font-size: 2rem;
+        &::first-letter {
+            font-size: 3rem;
+        }    
     }
     .header-band {
         background: transparent url(img/ballon.png) no-repeat 97% 69%;
@@ -54,9 +57,15 @@
     }
 }
 @media all and(max-width: $xlarge-screen) {
-    // #topcontainer {
-        // display: none;
-    // }
+    h1.HomeLink {
+        font-size: 1rem;
+        &::first-letter {
+            font-size: 1.5rem;
+        }    
+    }
+    #balloon {
+        display: none;
+    }
     .banner {
         order: 0;
         width: 30%;
@@ -143,14 +152,12 @@
         background-color: $white;
     }
 }
-#topcontainer h1.HomeLink {
-    font-size: 2rem;
+h1.HomeLink {
     font-family: "playfair-display", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
     a, a:visited {
         color: $gray-very-dark;
     }
     &::first-letter {
-        font-size: 3rem;
         color: $dark-green;
     }
 }

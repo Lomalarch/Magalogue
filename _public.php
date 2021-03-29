@@ -30,11 +30,11 @@ class behaviorsMagalogueTheme
 {
     public static function publicHeadContent()
     {
-        echo \dcUtils::jsVars(array(
-            'dotclear_magalogue_show_menu' => __('Show menu'),
-            'dotclear_magalogue_hide_menu' => __('Hide menu'),
-            'dotclear_magalogue_navigation' => __('Navigation')
-            ));
+        echo \dcUtils::jsJson('dotclear_magalogue', [
+            'show_menu'  => __('Show menu'),
+            'hide_menu'  => __('Hide menu'),
+            'navigation' => __('Main menu')
+        ]);
     }
     public static function templateBeforeBlock($core, $b, $attr)
     {
