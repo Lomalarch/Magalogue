@@ -4,7 +4,7 @@
 .post, .related-entry {
     margin: 2em auto 0;
 }
-@media screen and(min-width: ($medium-screen + .1em)) /* and(max-width: 110em) */ {
+@media screen and(min-width: ($medium-screen + .1em)) {
     .post, .related-entry {
         float: right;
         clear: right;
@@ -64,7 +64,6 @@ div.image img, .related-entry .featured-media img {
 }
 .post-meta {
     text-align: center;
-    // font-size: scut-em(14);
     clear: both;
 }
 .post-info {
@@ -172,7 +171,6 @@ div.image img, .related-entry .featured-media img {
         font-weight: bold;
     }
     .post-permalink a {
-        // font-size: .8em;
         font-style: normal;
         font-variant: small-caps;
         border-bottom: none;

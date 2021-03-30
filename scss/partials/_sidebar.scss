@@ -38,9 +38,6 @@ a.site-title__link:hover {
     margin-bottom: 0;
 }
 .blognav__widgets .widget, .blogextra__widgets .widget {
-    // padding: 1em;
-    // font-size: .875em;
-    // line-height: 1.71429;
    > ul {
         @include no-bullets;
         padding-left: 0;

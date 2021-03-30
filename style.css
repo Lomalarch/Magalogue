@@ -325,45 +325,10 @@ p, ul, ol {
 ul ul, ul ol, ol ol, ol ul {
   margin-top: .5em; }
 
-/* .post-date,
-.post-cat,
-.post-tags-list,
-.post-permalink,
-.comment_count,
-.ping_count,
-.attach_count, */
 .feed {
-  padding-left: 22px;
   background-repeat: no-repeat;
   background-position: 0 50%;
-  padding-right: .5em; }
-
-/* .post-author {
-    padding-right: .5em;
-} */
-/* .post-date {
-    background-image: inline-image('icon_date.png');
-}
-.post-cat {
-    background-image: inline-image('icon_category.png');
-}
-.post-tags-list {
-    background-image: inline-image('icon_tags.png');
-    padding-left: 22px !important;
-}
-.comment_count {
-    background-image: inline-image('icon_comments.png');
-}
-.ping_count {
-    background-image: inline-image('icon_trackbacks.png');
-}
-.attach_count {
-    background-image: inline-image('icon_attach.png');
-}
-.post-permalink {
-    background-image: inline-image('icon_permalink.png');
-} */
-.feed {
+  padding-right: .5em;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR4AaWTwQ3DIAwAGYERGCEjMEJHyK+/qs8+s0FG6CiM4BEYgRFSVzpLCKmRGyqdFLtwxnEI39/98YrKU9m8sD7aZlGOC0jAdFwlcBxLNKXOCIpiba3Efwkq8U2JyLLSPIKRxn8RxCMQKu4ILBehegSpew/vQZJdLVBpQWSSjbh4BMZC5QZM53wKqVskVN2Jmc5vgW1IluM5D23UsxbEFoCAnbD038X8XZi9jR9ZshK3KFzXhgAAAABJRU5ErkJggg==');
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAgLS0+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiIFsNCgk8IUVOVElUWSBuc19mbG93cyAiaHR0cDovL25zLmFkb2JlLmNvbS9GbG93cy8xLjAvIj4NCl0+DQo8c3ZnIHZlcnNpb249IjEuMSINCgkgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6YT0iaHR0cDovL25zLmFkb2JlLmNvbS9BZG9iZVNWR1ZpZXdlckV4dGVuc2lvbnMvMy4wLyINCgkgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCAxNiAxNiIgb3ZlcmZsb3c9InZpc2libGUiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE2IDE2Ig0KCSB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxkZWZzPg0KPC9kZWZzPg0KPHBhdGggZmlsbD0iIzY3NkU3OCIgZD0iTTEzLDBIM0MxLjM0MywwLDAsMS4zNDMsMCwzdjEwYzAsMS42NTcsMS4zNDMsMywzLDNoMTBjMS42NTcsMCwzLTEuMzQzLDMtM1YzQzE2LDEuMzQzLDE0LjY1NywwLDEzLDB6DQoJIE00LjMxNSwxMi45NzdjLTAuNzE5LDAtMS4zMDMtMC41OC0xLjMwMy0xLjI5OWMwLTAuNzE0LDAuNTg0LTEuMzAxLDEuMzAzLTEuMzAxYzAuNzIxLDAsMS4zMDQsMC41ODcsMS4zMDUsMS4zMDENCglDNS42MiwxMi4zOTYsNS4wMzcsMTIuOTc3LDQuMzE1LDEyLjk3N3ogTTcuNTg5LDEyLjk4OGMwLTEuMjI4LTAuNDc3LTIuMzgxLTEuMzQxLTMuMjQzQzUuMzg0LDguODc5LDQuMjM1LDguNDAxLDMuMDE0LDguNDAxVjYuNTI1DQoJYzMuNTYxLDAsNi40NiwyLjg5OSw2LjQ2LDYuNDYzSDcuNTg5eiBNMTAuOTE4LDEyLjk4NmMwLTQuMzYxLTMuNTQ1LTcuOTEtNy45MDItNy45MVYzLjJjNS4zOTQsMCw5Ljc4NCw0LjM5Miw5Ljc4NCw5Ljc4NkgxMC45MTh6Ig0KCS8+DQo8L3N2Zz4NCg=='), none;
   background-size: .875em;
@@ -555,9 +520,6 @@ body {
     .header-band div {
       height: 2rem; }
 
-  /* .header__nav {
-      display: none;
-  } */
   .follow-us {
     order: 5;
     padding-bottom: 15px;
@@ -634,17 +596,13 @@ h1.HomeLink {
   color: #008000;
   border-bottom-color: transparent; }
 
-/* .header-band {
-    // display: flex;
-} */
 .skip-links {
   float: left;
   text-indent: -10000px;
   margin: 0;
   padding: 0;
   border: 0;
-  overflow: hidden;
-  /* text-align: right;*/ }
+  overflow: hidden; }
   .skip-links li {
     list-style-image: none;
     list-style-type: none;
@@ -659,13 +617,7 @@ h1.HomeLink {
   border-bottom: 1px solid #dcdcdc;
   background-color: #fff; }
 
-/* .fixed {
-    position: fixed;
-    top:0;
-    left:0;
-    width: 100%;
-} */
-.site-baseline, .site-baseline-small {
+.site-baseline {
   font-style: italic;
   font-weight: bold;
   margin: 0 auto;
@@ -677,16 +629,13 @@ h1.HomeLink {
 .site-baseline.header-jump {
   margin-bottom: 152px; }
 
-.site-baseline-small {
-  font-size: .8em; }
-
-.header__nav, .header__nav-small {
+.header__nav {
   margin: 0;
   padding: 0;
   border: 0;
   overflow: hidden;
   clear: left; }
-  .header__nav li, .header__nav-small li {
+  .header__nav li {
     list-style-image: none;
     list-style-type: none;
     margin-left: 0;
@@ -699,34 +648,31 @@ h1.HomeLink {
     padding-top: 1em;
     padding-bottom: 1em;
     text-align: center; }
-    .header__nav li span:not(.simple-menu-label), .header__nav-small li span:not(.simple-menu-label) {
+    .header__nav li span:not(.simple-menu-label) {
       font-size: 0.875em;
       line-height: 1.7142857em;
       font-family: playfair-display, "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
       font-style: italic;
       display: block; }
-  .header__nav li.active, .header__nav-small li.active {
+  .header__nav li.active {
     color: #008000; }
     .header__nav li.active a:link,
-    .header__nav li.active a:visited, .header__nav-small li.active a:link,
-    .header__nav-small li.active a:visited {
+    .header__nav li.active a:visited {
       color: #008000; }
-  .header__nav li.active, .header__nav-small li.active {
+  .header__nav li.active {
     font-style: italic;
     border-bottom: 2px solid #008000; }
   .header__nav li a:link,
-  .header__nav li a:visited, .header__nav-small li a:link,
-  .header__nav-small li a:visited {
+  .header__nav li a:visited {
     color: inherit; }
-  .header__nav li a:hover, .header__nav-small li a:hover {
+  .header__nav li a:hover {
     color: #fff; }
-  .header__nav li:hover, .header__nav-small li:hover {
+  .header__nav li:hover {
     background-color: #008000;
     color: #fff;
     transition: .3s; }
     .header__nav li:hover a:link,
-    .header__nav li:hover a:visited, .header__nav-small li:hover a:link,
-    .header__nav-small li:hover a:visited {
+    .header__nav li:hover a:visited {
       color: #fff; }
 
 /* Si js est actif, un bouton pour afficher/masquer le menu est créé */
@@ -754,10 +700,10 @@ h1.HomeLink {
     padding-right: .5em;
     padding-bottom: 0; }
 
-  .header__nav, .header__nav-small {
+  .header__nav {
     margin-left: -.5em;
     margin-right: -.5em; }
-    .header__nav li, .header__nav-small li {
+    .header__nav li {
       display: block;
       margin-right: 0;
       border-bottom: 1px solid #fff; } }
