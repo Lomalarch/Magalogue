@@ -187,55 +187,6 @@ class tplMagalogueTheme
         return $default;
     }
 
-    /*public static function magalogueNbEntryOnHome($attr)
-    {
-        return '<?php ' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueNbEntryOnHomeHelper(); ?>';
-    }
-
-    public static function magalogueNbEntryOnHomeHelper()
-    {
-        global $_ctx;
-
-        $nb_other = $nb_first = 0;
-
-        $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_entries_counts');
-        if ($s !== null) {
-            $s = @unserialize($s);
-            if (is_array($s)) {
-                switch ($GLOBALS['core']->url->type) {
-                    case 'default':
-                    case 'default-page':
-                        if (isset($s['slider'])) {
-                            $nb_first = $nb_other = (integer) $s['slider'];
-                        }
-                        if (isset($s['list'])) {
-                            $nb_other = (integer) $s['list'];
-                        }
-                        break;
-                    default:
-                        if (isset($s[$GLOBALS['core']->url->type])) {
-                            // Nb de billets par page défini par la config du thème
-                            $nb_first = $nb_other = (integer) $s[$GLOBALS['core']->url->type];
-                        }
-                        break;
-                }
-            }
-        }
-
-        if ($nb_other == 0) {
-            if (!empty($attr['nb'])) {
-                // Nb de billets par page défini par défaut dans le template
-                $nb_other = $nb_first = (integer) $attr['nb'];
-            }
-        }
-
-        if ($nb_other > 0) {
-            $_ctx->nb_entry_per_page = $nb_other;
-        }
-        if ($nb_first > 0) {
-            $_ctx->nb_entry_first_page = $nb_first;
-        }
-    }*/
     public static function magalogueSocialLinks($attr)
     {
         global $core;
@@ -309,12 +260,12 @@ public static function magalogueBanner($attr)
         $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style');
         if ($s === null) {
             // no settings yet, return default logo
-            return $img_url;
+            return '<img src="' . $img_url .'" alt="' . $blog_name . '" />';
         }
         $s = @unserialize($s);
         if (!is_array($s)) {
             // settings error, return default logo
-            return $img_url;
+            return '<img src="' . $img_url .'" alt="' . $blog_name . '" />';
         }
 
         if ($s['no_logo']) {
