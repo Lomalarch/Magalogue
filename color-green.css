@@ -1,0 +1,53 @@
+.sidebar .widget li:hover, .sidebar .widget a:hover {
+    background-color: #27be95;
+}
+.category-current,
+.sidebar .widget h3,
+#hamburger,
+.header__nav li:hover,
+a:focus,
+li.tag-current a {
+    background-color: #008000;
+}
+#gotop ::after, 
+.post-cat a:link, 
+.post-cat a:visited, 
+.related-category a:link, 
+.related-category a:visited, 
+.arch-block h3, 
+.dc-home .slick-dots li.slick-active button::before,
+.sidebar .widget li:hover ul a, .sidebar .widget a:hover ul a,
+.sidebar,
+.sidebar a:link, .sidebar a:visited,
+.header__nav li.active, 
+.header__nav li.active a:link, 
+.header__nav li.active a:visited,
+.header a:hover,
+.header a:focus,
+h1.HomeLink::first-letter,
+a {
+    color: #008000;
+}
+a,
+.header__nav li.active {
+    border-bottom-color: #008000;
+}
+a:visited {
+    border-bottom-color: #27be95;
+    color: #27be95;
+}
+#hamburger,
+.post-read-it .button {
+    border-color: #27be95;
+}
+a:hover,
+a:active,
+.sidebar .widget {
+    border-color: #008000;
+}
+
+@media all and (max-width: 80em) {
+    #search input[type="submit"] {
+        background-color: #008000;
+    }
+}

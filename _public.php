@@ -35,6 +35,14 @@ class behaviorsMagalogueTheme
             'hide_menu'  => __('Hide menu'),
             'navigation' => __('Main menu')
         ]);
+        if ($GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style')) {
+            $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style');
+            $s = @unserialize($s);
+            if ($s['links_color'] && $s['links_color'] !== 'green') {
+                echo '<link rel="stylesheet" href="' . $GLOBALS['core']->blog->settings->system->themes_url . '/' . $GLOBALS['core']->blog->settings->system->theme . '/color-' . $s['links_color'] . '.css">';
+            }
+        }
+        
     }
     public static function templateBeforeBlock($core, $b, $attr)
     {

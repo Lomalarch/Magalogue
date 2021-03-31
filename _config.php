@@ -12,7 +12,7 @@
  /* Fonctions prévues :
  # Couleur de mise en valeur
  # Contenu du block slick
- # Contenu (et titre) du bloc dernières publi
+ # Contenu du bloc dernières publi
  # Bannière
  # Liens RS
  */
@@ -29,6 +29,8 @@ if (preg_match('#^http(s)?://#', $core->blog->settings->system->themes_url)) {
 $img_path = dirname(__FILE__) . '/img/';
 
 $tpl_path = dirname(__FILE__) . '/tpl/';
+
+$theme_path = dirname(__FILE__);
 
 $standalone_config = (boolean) $core->themes->moduleInfo($core->blog->settings->system->theme, 'standalone_config');
 
@@ -57,7 +59,26 @@ if (is_array($list_types_templates)) {
         }
     }
 }
-
+$links_colors = [
+    __('Blue') => 'blue',
+    __('Green') => 'green',
+    __('Purple') => 'purple',
+    __('Orange') => 'orange'
+];
+// Get all color-*.css
+$links_colors_css = files::scandir($theme_path);
+if (is_array($links_colors_css)) {
+    foreach ($links_colors_css as $v) {
+        if (preg_match('/^color\-(.*)\.css$/', $v, $m)) {
+            if (isset($m[1])) {
+                if (!in_array($m[1], $links_colors)) {
+                    // css not already in full list
+                    $links_colors[__($m[1])] = $m[1];
+                }
+            }
+        }
+    }
+}
 $contexts = [
     'slider'      => __('Homepage slider'),
     'list'      => __('Homepage displayed posts')
@@ -106,6 +127,8 @@ $magalogue_counts = array_merge($magalogue_counts_base, $magalogue_counts);
 $magalogue_stickers = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_stickers');
 $magalogue_stickers = @unserialize($magalogue_stickers);
 
+if (!$magalogue_base['links_color'])
+
 // If no stickers defined, add feed Atom one
 if (!is_array($magalogue_stickers)) {
     $magalogue_stickers = [[
@@ -139,14 +162,13 @@ if (is_array($magalogue_stickers_images)) {
     }
 }
 
-$conf_tab = isset($_POST['conf_tab']) ? $_POST['conf_tab'] : 'html';
-
 if (!empty($_POST)) {
     try
     {
         # HTML
             $magalogue_user['logo_src'] = $_POST['logo_src'];
             $magalogue_user['no_logo']  = (integer) !empty($_POST['no_logo']);
+            $magalogue_user['links_color'] = $_POST['links_color'];
 
             $magalogue_stickers = [];
             for ($i = 0; $i < count($_POST['sticker_image']); $i++) {
@@ -221,6 +243,12 @@ if ($core->plugins->moduleExists('simpleMenu')) {
 }
 echo '<h4 class="border-top pretty-title">' . __('Links color') . '</h4>';
 
+echo 
+'<p class="field"><label for="links_color">' . __('Select the base highlight color') . '</label>';
+if (!isset($magalogue_user['links_color'])) { // Green is the default color
+    $magalogue_user['links_color'] = 'green';
+}
+echo form::combo(['links_color'], $links_colors, $magalogue_user['links_color']); 
 echo '<h4 class="border-top pretty-title">' . __('Social links') . '</h4>';
 
 echo
@@ -264,7 +292,7 @@ echo '<table id="entrieslist">' . '<caption class="hidden">' . __('Entries lists
 '<tr>' .
 '<th scope="col">' . __('Context') . '</th>' .
 '<th scope="col">' . __('Entries list type') . '</th>' .
-'<th scope="col">' . __('Number of entries') . '</th>' .
+'<th scope="col">' . __('Number of entries (Selected and Last entries only)') . '</th>' .
     '</tr>' .
     '</thead>' .
     '<tbody>';
@@ -289,7 +317,6 @@ echo
     '</tbody>' .
     '</table>';
 
-// echo '<p><input type="hidden" name="conf_tab" value="html" /></p>';
 echo '<p class="clear">' . form::hidden('ds_order', '') . '<input type="submit" value="' . __('Save') . '" />' . $core->formNonce() . '</p>';
 echo '</form>';
 
