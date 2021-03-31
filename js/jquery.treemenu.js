@@ -44,14 +44,12 @@
             var siblings = li.parent('ul').find("li:not(.tree-empty)");
             siblings.removeClass("tree-opened");
             siblings.addClass("tree-closed");
-            //siblings.removeClass(options.activeSelector);
             siblings.find('> ul').slideUp(options.delay);
           }
 
           li.find('> ul').slideToggle(options.delay);
           li.toggleClass('tree-opened');
           li.toggleClass('tree-closed');
-          // li.toggleClass(options.activeSelector);
         });
 
         $(this).find('> ul').treemenu(options);

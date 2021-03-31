@@ -273,7 +273,6 @@ class tplMagalogueTheme
 
         if ($res != '') {
             $res = '<ul id="stickers">' . "\n" . $res . '</ul>' . "\n";
-            // echo $res;
             return $res;
         }
     }
@@ -282,7 +281,6 @@ class tplMagalogueTheme
         return '<li id="slink' . $position . '"' . ($last ? ' class="last"' : '') . '>' . "\n" .
             '<a href="' . $url . '">' . "\n" .
             '<img alt="' . $label . '" src="' . $image . '" title="' . $label . '" />' . "\n" .
-            // '<span>' . $label . '</span>' . "\n" .
             '</a>' . "\n" .
             '</li>' . "\n";
     }
