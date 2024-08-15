@@ -1,52 +1,94 @@
 <?php
-# -- BEGIN LICENSE BLOCK ---------------------------------------
-# This file is part of Magalogue,
-# a theme for Dotclear
-#
-# Copyright (c) Noé Cendrier
-# Licensed under the GPL version 2.0 license.
-# See LICENSE file or
-# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-#
-# -- END LICENSE BLOCK -----------------------------------------
-namespace themes\magalogue;
+/**
+ * @package     Dotclear
+ *
+ * @copyright   Noé Cendrier & Julien Jakoby
+ * @copyright   AGPL-3.0
+ */
 
-if (!defined('DC_RC_PATH')) { return; }
+namespace Dotclear\Theme\magalogue;
 
-\l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
+use ArrayObject;
+use Dotclear\App;
+use Dotclear\Core\Process;
+use Dotclear\Helper\File\Files;
+use Dotclear\Helper\Html\Html;
 
-# Behaviors
-$core->addBehavior('publicHeadContent',[__NAMESPACE__ . '\behaviorsMagalogueTheme','publicHeadContent']);
-$core->addBehavior('templateBeforeBlock', [__NAMESPACE__ . '\behaviorsMagalogueTheme', 'templateBeforeBlock']);
-
-# Templates
-$core->tpl->addValue('magalogueEntriesList', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueEntriesList']);
-$core->tpl->addValue('magalogueSliderContent', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueSliderContent']);
-$core->tpl->addValue('magalogueSocialLinks', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueSocialLinks']);
-$core->tpl->addValue('magalogueBanner', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueBanner']);
-$core->tpl->addBlock('magalogueRelatedEntries', [__NAMESPACE__ . '\tplMagalogueTheme', 'magalogueRelatedEntries']);
-
-class behaviorsMagalogueTheme
+/**
+ * @brief   The module frontend process.
+ * @ingroup magalogue
+ */
+class Frontend extends Process
 {
-    public static function publicHeadContent()
+    /**
+     * Init the process.
+     *
+     * @return     bool
+     */
+    public static function init(): bool
     {
-        echo \dcUtils::jsJson('dotclear_magalogue', [
+        return self::status(My::checkContext(My::FRONTEND));
+    }
+
+    /**
+     * Processes
+     *
+     * @return     bool
+     */
+    public static function process(): bool
+    {
+        if (!self::status()) {
+            return false;
+        }
+
+        # Behaviors
+        App::behavior()->addBehaviors([
+            'publicHeadContent'  => self::publicHeadContent(...),
+            'templateBeforeBlockV2' => self::templateBeforeBlock(...),
+        ]);
+
+        # Templates
+        App::frontend()->template()->addValue('magalogueEntriesList', self::magalogueEntriesList(...));
+        App::frontend()->template()->addValue('magalogueSliderContent', self::magalogueSliderContent(...));
+        App::frontend()->template()->addValue('magalogueSocialLinks', self::magalogueSocialLinks(...));
+        App::frontend()->template()->addValue('magalogueBanner', self::magalogueBanner(...));
+        App::frontend()->template()->addBlock('magalogueRelatedEntries', self::magalogueRelatedEntries(...));
+
+        return true;
+    }
+
+    /**
+     * Public head content behavior callback
+     *
+     * @return void
+     */
+    public static function publicHeadContent(): void
+    {
+        echo Html::jsJson('dotclear_magalogue', [
             'show_menu'  => __('Show menu'),
             'hide_menu'  => __('Hide menu'),
             'navigation' => __('Main menu')
         ]);
-        if ($GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style')) {
-            $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style');
+        if (App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_style')) {
+            $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_style');
             $s = @unserialize($s);
-            if ($s['links_color'] && $s['links_color'] !== 'green') {
-                echo '<link rel="stylesheet" href="' . $GLOBALS['core']->blog->settings->system->themes_url . '/' . $GLOBALS['core']->blog->settings->system->theme . '/color-' . $s['links_color'] . '.css">';
+            if (!empty($s['links_color']) && $s['links_color'] !== 'green') {
+                echo '<link rel="stylesheet" href="' . App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/color-' . $s['links_color'] . '.css">';
             }
         }
         
     }
-    public static function templateBeforeBlock($core, $b, $attr)
+
+    /**
+     * Filter Entries for Home page (slider and list)
+     *
+     * @param   string                      $b      The block
+     * @param   ArrayObject<string, mixed>  $attr   The attribute
+     * @return string
+     */
+    public static function templateBeforeBlock(string $b, ArrayObject $attr): string
     {
-        #Number of entries in block
+        # Number of entries in block
         if ($b == 'Entries' && (isset($attr['maga_id']) && $attr['maga_id'] == 'slider')) {
             return '<?php' . "\n" .
             'if ($core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\')) {'  . "\n" .
@@ -84,21 +126,22 @@ class behaviorsMagalogueTheme
                     '?>'  . "\n";
             ;
         }
+        return '';
     }
-}
 
-class tplMagalogueTheme
-{
-    public static function magalogueEntriesList($attr)
+    /**
+     * Tpl:magalogueEntriesList template element
+     *
+     * @param   ArrayObject<string, string> $attr   The attribute[type] $attr
+     * @return  string                              rendered element
+     */
+    public static function magalogueEntriesList(ArrayObject $attr): string
     {
-        #Entries in home main block
-        global $core;
-
-        $tpl_path   = dirname(__FILE__) . '/tpl/';
+        $tpl_path   = My::path() . '/tpl/';;
         $entries_list_types = ['selected', 'first-level-categories', 'categories', 'recent'];
 
         // Get all _home-entries-*.html in tpl folder of theme
-        $list_types_templates = \files::scandir($tpl_path);
+        $list_types_templates = Files::scandir($tpl_path);
         if (is_array($list_types_templates)) {
             foreach ($list_types_templates as $v) {
                 if (preg_match('/^_home\-entries\-(.*)\.html$/', $v, $m)) {
@@ -114,12 +157,12 @@ class tplMagalogueTheme
 
         $default = isset($attr['default']) ? trim($attr['default']) : 'first-level-categories';
         $ret     = '<?php ' . "\n" .
-        'switch (' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueEntriesListHelper(\'list-' . $default . '\')) {' . "\n";
+        'switch (' . self::class . '::magalogueEntriesListHelper(\'list-' . $default . '\')) {' . "\n";
 
         foreach ($entries_list_types as $v) {
             $ret .= '   case \'' . $v . '\':' . "\n" .
             '?>' . "\n" .
-            $core->tpl->includeFile(['src' => '_home-entries-' . $v . '.html']) . "\n" .
+            App::frontend()->template()->includeFile(['src' => '_home-entries-' . $v . '.html']) . "\n" .
                 '<?php ' . "\n" .
                 '       break;' . "\n";
         }
@@ -128,16 +171,20 @@ class tplMagalogueTheme
             '?>';
         return $ret;
     }
-    public static function magalogueSliderContent($attr) 
-    {
-        #Entries in home slider
-        global $core;
 
-        $tpl_path   = dirname(__FILE__) . '/tpl/';
+    /**
+     * Tpl:magalogueSliderContent template element
+     *
+     * @param   ArrayObject<string, string> $attr
+     * @return  string
+     */
+    public static function magalogueSliderContent(ArrayObject $attr): string
+    {
+        $tpl_path   = My::path() . '/tpl/';
         $slider_list_types = ['selected', 'first-level-categories', 'categories', 'recent'];
 
         // Get all _home-slider-*.html in tpl folder of theme
-        $list_types_templates = \files::scandir($tpl_path);
+        $list_types_templates = Files::scandir($tpl_path);
         if (is_array($list_types_templates)) {
             foreach ($list_types_templates as $v) {
                 if (preg_match('/^_home\-slider\-(.*)\.html$/', $v, $m)) {
@@ -153,12 +200,12 @@ class tplMagalogueTheme
 
         $default = isset($attr['default']) ? trim($attr['default']) : 'selected';
         $ret     = '<?php ' . "\n" .
-        'switch (' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueEntriesListHelper(\'slider-' . $default . '\')) {' . "\n";
+        'switch (' . self::class . '::magalogueEntriesListHelper(\'slider-' . $default . '\')) {' . "\n";
 
         foreach ($slider_list_types as $v) {
             $ret .= '   case \'' . $v . '\':' . "\n" .
             '?>' . "\n" .
-            $core->tpl->includeFile(['src' => '_home-slider-' . $v . '.html']) . "\n" .
+            App::frontend()->template()->includeFile(['src' => '_home-slider-' . $v . '.html']) . "\n" .
                 '<?php ' . "\n" .
                 '       break;' . "\n";
         }
@@ -167,9 +214,16 @@ class tplMagalogueTheme
             '?>';
         return $ret;
     }
-    public static function magalogueEntriesListHelper($default)
+
+    /**
+     * Helper for Tpl:ductileEntriesList
+     *
+     * @param   string  $default    The default
+     * @return  string
+     */
+    public static function magalogueEntriesListHelper(string $default): string
     {
-        $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_entries_lists');
+        $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_entries_lists');
         if ($s !== null) {
             $s = @unserialize($s);
             if (is_array($s)) {
@@ -187,15 +241,20 @@ class tplMagalogueTheme
         return $default;
     }
 
-    public static function magalogueSocialLinks($attr)
+    /**
+     * Tpl:magalogueSocialLinks template element
+     *
+     * @param   ArrayObject $attr
+     * @return  string      <ul> with links to social media profiles
+     */
+    public static function magalogueSocialLinks(ArrayObject $attr): string
     {
-        global $core;
         # Social media links
         $res     = '';
         $default = false;
-        $img_url = $core->blog->settings->system->themes_url . '/' . $core->blog->settings->system->theme . '/img/';
+        $img_url_link = My::fileURL('/img/links/');
 
-        $s = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_stickers');
+        $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_stickers');
 
         if ($s === null) {
             $default = true;
@@ -204,13 +263,13 @@ class tplMagalogueTheme
             if (!is_array($s)) {
                 $default = true;
             } else {
-                $s = array_filter($s, 'self::cleanSocialLinks');
+                $s = array_filter($s, self::class . '::cleanSocialLinks');
                 if (count($s) == 0) {
                     $default = true;
                 } else {
                     $count = 1;
                     foreach ($s as $sticker) {
-                        $res .= self::setSocialLink($count, ($count == count($s)), $sticker['label'], $sticker['url'], $img_url . $sticker['image']);
+                        $res .= self::setSocialLink($count, ($count == count($s)), $sticker['label'], $sticker['url'], $img_url_link . $sticker['image']);
                         $count++;
                     }
                 }
@@ -218,8 +277,8 @@ class tplMagalogueTheme
         }
 
         if ($default || $res == '') {
-            $res = self::setSocialLink(1, true, __('Subscribe'), $core->blog->url .
-                $core->url->getURLFor('feed', 'atom'), $img_url . 'rss-link.png');
+            $res = self::setSocialLink(1, true, __('Subscribe'), App::blog()->url .
+                App::url()->getURLFor('feed', 'atom'), $img_url_link . 'rss.svg');
         }
 
         if ($res != '') {
@@ -231,12 +290,12 @@ class tplMagalogueTheme
     {
         return '<li id="slink' . $position . '"' . ($last ? ' class="last"' : '') . '>' . "\n" .
             '<a href="' . $url . '">' . "\n" .
-            '<img alt="' . $label . '" src="' . $image . '" title="' . $label . '" />' . "\n" .
+            '<img alt="' . $label . '" src="' . $image . '" title="' . $label . '" class="social-link-sticker" />' . "\n" .
             '</a>' . "\n" .
             '</li>' . "\n";
     }
 
-    protected static function cleanSocialLinks($s)
+    protected static function cleanSocialLinks(array $s): bool
     {
         if (is_array($s)) {
             if (isset($s['label']) && isset($s['url']) && isset($s['image'])) {
@@ -247,17 +306,18 @@ class tplMagalogueTheme
         }
         return false;
     }
-public static function magalogueBanner($attr)
+
+    public static function magalogueBanner($attr)
     {
-        return '<?php echo ' . __NAMESPACE__ . '\tplMagalogueTheme::magalogueBannerHelper(); ?>';
+        return '<?php echo ' . self::class . '::magalogueBannerHelper(); ?>';
     }
 
     public static function magalogueBannerHelper()
     {
-        $blog_name = $GLOBALS['core']->blog->name;
-        $img_url = $GLOBALS['core']->blog->settings->system->themes_url . '/' . $GLOBALS['core']->blog->settings->system->theme . '/img/MagalogueBanner.png';
+        $blog_name = App::blog()->name;
+        $img_url = App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/img/MagalogueBanner.png';
 
-        $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style');
+        $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_style');
         if ($s === null) {
             // no settings yet, return default logo
             return '<img src="' . $img_url .'" alt="' . $blog_name . '" />';
@@ -268,7 +328,7 @@ public static function magalogueBanner($attr)
             return '<img src="' . $img_url .'" alt="' . $blog_name . '" />';
         }
 
-        if ($s['no_logo']) {
+        if (!empty($s['no_logo'])) {
             // no_logo has been checked, return BlogName
             return $blog_name;
         }
@@ -281,7 +341,7 @@ public static function magalogueBanner($attr)
                         $img_url = $s['logo_src'];
                     } else {
                         // relative URL (base = img folder of magalogue theme)
-                        $img_url = $GLOBALS['core']->blog->settings->system->themes_url . '/' . $GLOBALS['core']->blog->settings->system->theme . '/img/' . $s['logo_src'];
+                        $img_url = App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/img/' . $s['logo_src'];
                     }
                 }
             }
@@ -292,26 +352,24 @@ public static function magalogueBanner($attr)
 
     public static function thisPostrelatedEntries ($id)
     {
-        global $core;
-        $meta = &$core->meta;
+        $meta = App::meta();
         $params['post_id'] = $id;
         $params['no_content'] = false;
         $params['post_type'] = array('post');
 
-        $rs = $core->blog->getPosts($params);
+        $rs = App::blog()->getPosts($params);
         return $meta->getMetaStr($rs->post_meta,'relatedEntries');
     }
 
     public static function magalogueRelatedEntries($attr, $content)
     {
-        global $core, $_ctx;
         # Settings
 
-        if ($core->plugins->moduleExists('relatedEntries')) {
-            if ($core->url->type == 'post')
+        if (App::plugins()->moduleExists('relatedEntries')) {
+            if (App::url()->type == 'post')
             {
 
-                $s = &$core->blog->settings->relatedEntries;
+                $s = &App::blog()->settings()->relatedEntries;
 
                 if (!$s->relatedEntries_enabled) {
                     return;
@@ -322,9 +380,9 @@ public static function magalogueBanner($attr)
                     $lastn = abs((integer) $attr['lastn']) + 0;
                 }
 
-                $rel = "if (" . __NAMESPACE__ . "\\tplMagalogueTheme::thisPostrelatedEntries(\$_ctx->posts->post_id) !== '') :\n";
+                $rel = "if (" . self::class . "::thisPostrelatedEntries(\$_ctx->posts->post_id) !== '') :\n";
                 $rel .= "\$meta = &\$GLOBALS['core']->meta;\n";
-                $rel .= "\$r_ids = " . __NAMESPACE__ . "\\tplMagalogueTheme::thisPostrelatedEntries(\$_ctx->posts->post_id);";
+                $rel .= "\$r_ids = " . self::class . "::thisPostrelatedEntries(\$_ctx->posts->post_id);";
 
                 $p = "\$params['post_id'] = \$meta->splitMetaValues(\$r_ids);\n";
 
@@ -354,7 +412,7 @@ public static function magalogueBanner($attr)
                 $res = "<?php\n";
                 $res .= $rel;
                 $res .= $p;
-                $res .= $core->callBehavior("templatePrepareParams",
+                $res .= App::behavior()->callBehavior("templatePrepareParams",
                     ["tag" => "Entries", "method" => "blog::getPosts"],
                     $attr, $content);
                 $res .= '$_ctx->post_params = $params;' . "\n";
@@ -370,4 +428,3 @@ public static function magalogueBanner($attr)
         }
     }
 }
-
