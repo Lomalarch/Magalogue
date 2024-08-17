@@ -11,12 +11,13 @@
 if (!defined('DC_RC_PATH')) { return; }
 
 $this->registerModule(
-	/* Name */				"Magalogue",
-	/* Description*/		"Thème adaptatif",
-	/* Author */			"Julien Jakoby / Noé Cendrier",
-	/* Version */			'1.0',
-	/* Properties */		array(
-								'type' => 'theme',
-								'tplset' => 'dotty'
-							)
+    'Magalogue',                    // Name
+    'Thème adaptatif',              // Description
+    'Julien Jakoby / Noé Cendrier', // Author
+    '2.0',                          // Version
+    [                               // Properties
+        'standalone_config' => true,
+        'type'   => 'theme',
+        'tplset' => 'dotty',
+    ]
 );
