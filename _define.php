@@ -16,8 +16,10 @@ $this->registerModule(
     'Julien Jakoby / Noé Cendrier', // Author
     '2.0',                          // Version
     [                               // Properties
+        'requires'    => [['core', '2.30']],
         'standalone_config' => true,
         'type'   => 'theme',
         'tplset' => 'dotty',
+        'support'     => 'https://github.com/Lomalarch/Magalogue',
     ]
 );
