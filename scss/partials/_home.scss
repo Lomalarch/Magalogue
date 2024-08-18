@@ -49,9 +49,8 @@ hr.home-separator {
   overflow: hidden;
 }
 .dc-home .slick-dots {
-  bottom: 15px;
   li button::before {
-    color: #fff;
+    color: #ccc;
     font-size: 15px;
     opacity: 100%;
   }
