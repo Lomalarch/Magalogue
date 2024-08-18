@@ -524,7 +524,8 @@ body {
     order: 5;
     padding-bottom: 15px;
     text-align: center;
-    padding-left: 3em; }
+    padding: 1rem 0 0 0;
+    width: 100%; }
     .follow-us ul {
       list-style-type: none;
       padding: 0;
@@ -814,14 +815,14 @@ h1.HomeLink {
 .sidebar {
   padding-bottom: 2em;
   background: #fff;
-  color: #008000; }
+  color: #424242; }
   .sidebar:after {
     content: "";
     display: table;
     clear: both; }
   .sidebar a:link, .sidebar a:visited {
     border: none;
-    color: #008000; }
+    color: #424242; }
   .sidebar h3 {
     font-size: 1.25em;
     font-weight: bold; }
@@ -885,7 +886,7 @@ a.site-title__link:hover {
     padding: 0; }
   .blognav__widgets li, .blogextra__widgets li {
     display: block;
-    padding: .25em; }
+    padding: .1rem 0 .2rem; }
 
 #sidebar #search {
   display: none; }
@@ -894,11 +895,11 @@ a.site-title__link:hover {
   width: 75%; }
 
 .sidebar .widget {
-  padding: 0 2rem 1rem;
+  padding: 0 1.25rem 1rem;
   margin-top: 2rem;
   text-align: center;
-  border: #008000 1px solid;
-  border-radius: 5px; }
+  border: #27be95 1px solid;
+  border-radius: 15px 15px 5px 5px; }
   .sidebar .widget h3 {
     display: inline-block;
     font-size: 1.25em;
@@ -914,27 +915,40 @@ a.site-title__link:hover {
     border-radius: 10px; }
   .sidebar .widget ul {
     text-align: left; }
-  .sidebar .widget li:hover, .sidebar .widget a:hover {
+  .sidebar .widget li:hover {
     background-color: #27be95;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     transition: .3s;
     color: #fff; }
-    .sidebar .widget li:hover a, .sidebar .widget a:hover a {
+    .sidebar .widget li:hover a {
       color: #fff; }
-    .sidebar .widget li:hover ul, .sidebar .widget a:hover ul {
+    .sidebar .widget li:hover ul {
       background-color: #fff; }
-      .sidebar .widget li:hover ul a, .sidebar .widget a:hover ul a {
-        color: #008000; }
-      .sidebar .widget li:hover ul li:hover a, .sidebar .widget li:hover ul .category-current a, .sidebar .widget a:hover ul li:hover a, .sidebar .widget a:hover ul .category-current a {
-        color: #fff; }
+      .sidebar .widget li:hover ul a {
+        color: #424242; }
+      .sidebar .widget li:hover ul li:hover a, .sidebar .widget li:hover ul .category-current a {
+        color: #fff;
+        background-color: #27be95; }
+  .sidebar .widget a:hover {
+    background-color: #27be95;
+    color: #fff;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: .3s;
+    display: inline-block; }
 
 .categories li ul li {
   font-style: italic;
   font-size: .9em;
   padding-left: .5em; }
 
-.category-current {
-  background-color: #008000; }
-  .footer__widgets .category-current {
+li.category-current {
+  background-color: #008000;
+  padding: 0 3px; }
+  .footer__widgets li.category-current {
     background-color: #636363; }
 
 .sidebar .category-current {
@@ -953,9 +967,9 @@ ul.tags {
     margin-left: 0; }
 
 .tags li {
-  display: inline; }
+  display: inline-block; }
   .tags li a {
-    padding-top: 3px; }
+    padding: 0 3px; }
 
 .widget.tags ul {
   line-height: 1.6; }

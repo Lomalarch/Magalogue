@@ -1,17 +1,19 @@
-body {
-    --green-block: rgb(0, 128, 0);
-    --green-fade: rgba(0, 128, 0, .5);
-}
 .sidebar .widget li:hover, .sidebar .widget a:hover {
-    background-color: var(--green-fade);
+    background-color: var(--light-highlight);
 }
-.category-current,
+li.category-current,
 .sidebar .widget h3,
 #hamburger,
 .header__nav li:hover,
 a:focus,
 li.tag-current a {
-    background-color: var(--green-block);
+    background-color: var(--color-highlight);
+}
+.sidebar .widget {
+    border-color: var(--color-highlight);
+}
+.sidebar .widget li:hover ul li:hover a {
+    background-color: var(--light-highlight);
 }
 #gotop ::after, 
 .post-cat a:link, 
@@ -20,9 +22,6 @@ li.tag-current a {
 .related-category a:visited, 
 .arch-block h3, 
 .dc-home .slick-dots li.slick-active button::before,
-.sidebar .widget li:hover ul a, .sidebar .widget a:hover ul a,
-.sidebar,
-.sidebar a:link, .sidebar a:visited,
 .header__nav li.active, 
 .header__nav li.active a:link, 
 .header__nav li.active a:visited,
@@ -30,28 +29,23 @@ li.tag-current a {
 .header a:focus,
 h1.HomeLink::first-letter,
 a {
-    color: var(--green-block);
+    color: var(--color-highlight);
 }
 a,
 .header__nav li.active {
-    border-bottom-color: var(--green-block);
+    border-bottom-color: var(--color-highlight);
 }
 a:visited {
-    border-bottom-color: var(--green-fade);
-    color: var(--green-fade);
+    border-bottom-color: var(--light-highlight);
+    color: var(--light-highlight);
 }
 #hamburger,
 .post-read-it .button {
-    border-color: var(--green-fade);
-}
-a:hover,
-a:active,
-.sidebar .widget {
-    border-color: var(--green-block);
+    border-color: var(--light-highlight);
 }
 
 @media all and (max-width: 80em) {
     #search input[type="submit"] {
-        background-color: var(--green-block);
+        background-color: var(--color-highlight);
     }
 }

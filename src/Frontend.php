@@ -73,7 +73,9 @@ class Frontend extends Process
             $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_style');
             $s = @unserialize($s);
             if (!empty($s['links_color']) && $s['links_color'] !== 'green') {
-                echo '<link rel="stylesheet" href="' . App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/color-' . $s['links_color'] . '.css">';
+                echo 
+                '<link rel="stylesheet" type="text/css" href="' . My::fileURL('/color-' . $s['links_color'] . '.css') . '">
+                <link rel="stylesheet" type="text/css" href="' . My::fileURL('/variant-color.css') . '">';
             }
         }
         

@@ -46,11 +46,7 @@ class Config extends Process
         // load locales
         My::l10n('admin');
 
-        // if (preg_match('#^http(s)?://#', (string) App::blog()->settings()->system->themes_url)) {
-        //     App::backend()->img_url_link = Http::concatURL(App::blog()->settings()->system->themes_url, '/' . App::blog()->settings()->system->theme . '/img/links/');
-        // } else {
-            App::backend()->img_url_link = My::fileURL('/img/links/');
-        // }
+        App::backend()->img_url_link = My::fileURL('/img/links/');
 
         $img_path_links = My::path() . '/img/links/';
         $tpl_path = My::path() . '/tpl/';
@@ -93,10 +89,12 @@ class Config extends Process
             foreach (App::backend()->links_colors_css as $v) {
                 if (preg_match('/^color\-(.*)\.css$/', $v, $m)) {
                     if (isset($m[1])) {
-                        if (!in_array($m[1], App::backend()->links_colors)) {
+                        $links_colors = App::backend()->links_colors;
+                        if (!in_array($m[1], $links_colors)) {
                             // css not already in full list
-                            App::backend()->links_colors[__($m[1])] = $m[1];
+                            $links_colors[__($m[1])] = $m[1];
                         }
+                        App::backend()->links_colors = $links_colors;
                     }
                 }
             }
@@ -325,9 +323,6 @@ class Config extends Process
 
         echo 
         '<p class="field"><label for="links_color">' . __('Select the base highlight color') . '</label>';
-        // if (!isset(App::backend()->magalogue_user['links_color'])) { // Green is the default color
-        //     App::backend()->magalogue_user['links_color'] = 'green';
-        // }
         echo form::combo(['links_color'], App::backend()->links_colors, App::backend()->magalogue_user['links_color'] ?? 'green'); 
         echo '<h4 class="border-top pretty-title">' . __('Social links') . '</h4>';
         

@@ -2,10 +2,10 @@
     @include pie-clearfix;
     padding-bottom: 2em;
     background: $white;
-    color: $dark-green;
+    color: $sidebar-gray;
     a:link, a:visited {
         border: none;
-        color: $dark-green;
+        color: $sidebar-gray;
     }
     h3 {
         font-size: 1.25em;
@@ -61,7 +61,7 @@ a.site-title__link:hover {
     }
     li {
         display: block;
-        padding: .25em;
+        padding: .1rem 0 .2rem;
     }
 }
 #sidebar #search {
@@ -71,11 +71,11 @@ a.site-title__link:hover {
     width: 75%;
 }
 .sidebar .widget {
-    padding: 0 2rem 1rem;
+    padding: 0 1.25rem 1rem;
     margin-top: 2rem;
     text-align: center;
-    border: $dark-green 1px solid;
-    border-radius: 5px;
+    border: $light-green 1px solid;
+    border-radius: 15px 15px 5px 5px;
     h3 {
         display: inline-block;
         font-size: 1.25em;
@@ -93,8 +93,11 @@ a.site-title__link:hover {
     ul {
         text-align: left;
     }
-    li:hover, a:hover {
+    li:hover {
         background-color: $light-green;
+        border-radius: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
         transition: .3s;
         color: $white;
         a {
@@ -103,12 +106,22 @@ a.site-title__link:hover {
         ul {
             background-color: $white;
             a {
-                color: $dark-green;
+                color: $sidebar-gray;
             }
             li:hover a,  .category-current a {
                 color: $white;
+                background-color: $light-green;
             }
         }
+    }
+    a:hover {
+        background-color: $light-green;
+        color: $white;
+        border-radius: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        transition: .3s;
+        display: inline-block;
     }
 }
 .categories li ul li {
@@ -116,8 +129,9 @@ a.site-title__link:hover {
             font-size: .9em;
             padding-left: .5em;
 }
-.category-current {
+li.category-current {
     background-color: $dark-green;
+    padding: 0 3px;
     .footer__widgets & {
         background-color: $gray-dark;
     }
@@ -135,9 +149,9 @@ ul.tags {
     line-height: 1.1;
 }
 .tags li {
-    display: inline;
+    display: inline-block;
     a {
-        padding-top: 3px;
+        padding: 0 3px;
     }
 }
 .widget.tags ul {
