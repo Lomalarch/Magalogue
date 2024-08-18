@@ -1722,10 +1722,9 @@ hr.home-separator {
   position: relative;
   overflow: hidden; }
 
-.dc-home .slick-dots {
-  bottom: 15px; }
+
   .dc-home .slick-dots li button::before {
-    color: #fff;
+    color: #ccc;
     font-size: 15px;
     opacity: 100%; }
   .dc-home .slick-dots li.slick-active button::before {
