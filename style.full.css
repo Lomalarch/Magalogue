@@ -887,6 +887,9 @@ a.site-title__link:hover {
   .blognav__widgets li, .blogextra__widgets li {
     display: block;
     padding: .1rem 0 .2rem; }
+    .blognav__widgets li a, .blogextra__widgets li a {
+      display: inline-block;
+      width: 92%; }
 
 #sidebar #search {
   display: none; }
@@ -928,9 +931,11 @@ a.site-title__link:hover {
       background-color: #fff; }
       .sidebar .widget li:hover ul a {
         color: #424242; }
+      .sidebar .widget li:hover ul li:hover {
+        border-radius: 0; }
       .sidebar .widget li:hover ul li:hover a, .sidebar .widget li:hover ul .category-current a {
         color: #fff;
-        background-color: #27be95; }
+        background-color: transparent; }
   .sidebar .widget a:hover {
     background-color: #27be95;
     color: #fff;
@@ -1032,12 +1037,14 @@ li.tag-current a:link, li.tag-current a:visited {
 
 @media screen and (min-width: 30.1em) and (max-width: 60em) {
   .blognav__widgets .widget, .blogextra__widgets .widget {
-    width: 50%;
-    float: left; } }
+    width: 47%;
+    float: left;
+    margin-right: 3%; } }
 @media screen and (min-width: 60.1em) and (max-width: 80em) {
   .blognav__widgets .widget, .blogextra__widgets .widget {
-    width: 33.33%;
-    float: left; } }
+    width: 30.33%;
+    float: left;
+    margin-right: 3%; } }
 /* *** navigation *** */
 .navlinks {
   margin: 0;

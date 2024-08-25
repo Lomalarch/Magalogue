@@ -62,6 +62,10 @@ a.site-title__link:hover {
     li {
         display: block;
         padding: .1rem 0 .2rem;
+        a {
+            display: inline-block;
+            width: 92%;
+        }
     }
 }
 #sidebar #search {
@@ -108,9 +112,12 @@ a.site-title__link:hover {
             a {
                 color: $sidebar-gray;
             }
+            li:hover {
+                border-radius: 0;
+            }
             li:hover a,  .category-current a {
                 color: $white;
-                background-color: $light-green;
+                background-color: transparent;
             }
         }
     }
@@ -200,13 +207,15 @@ li.tag-current {
 
 @media screen and(min-width: ($small-screen + .1em)) and (max-width: $large-screen) {
     .blognav__widgets .widget, .blogextra__widgets .widget {
-        width: 50%;
+        width: 47%;
         float: left;
+        margin-right: 3%;
     }
 }
 @media screen and(min-width: ($large-screen + .1em)) and(max-width: $xlarge-screen) {
     .blognav__widgets .widget, .blogextra__widgets .widget {
-        width: 33.33%;
+        width: 30.33%;
         float: left;
+        margin-right: 3%;
     }
 }
