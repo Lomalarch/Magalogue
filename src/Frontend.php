@@ -93,8 +93,8 @@ class Frontend extends Process
         # Number of entries in block
         if ($b == 'Entries' && (isset($attr['maga_id']) && $attr['maga_id'] == 'slider')) {
             return '<?php' . "\n" .
-            'if ($core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\')) {'  . "\n" .
-                '$c = $core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\');'  . "\n" .
+            'if (App::blog()->settings->themes->get(App::blog()->settings->system->theme . \'_entries_counts\')) {'  . "\n" .
+                '$c = App::blog()->settings->themes->get(App::blog()->settings->system->theme . \'_entries_counts\');'  . "\n" .
                 '$c = @unserialize($c);'  . "\n" .
                 'if (is_array($c)) {' . "\n" .
                     '$c = $c[\'slider\'];' . "\n" .
@@ -106,13 +106,13 @@ class Frontend extends Process
             'else {' . "\n" .
                 '$c = 5;' . "\n" .
             '}' . "\n" .
-            '$_ctx->nb_entry_first_page = $c;' . "\n" .
+            'App::frontend()->context()->nb_entry_first_page = $c;' . "\n" .
            '?>' . "\n";
         }
         if ($b == 'Entries' && (isset($attr['maga_id']) && $attr['maga_id'] == 'list')) {
             return '<?php' . "\n" .
-            'if ($core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\')) {'  . "\n" .
-                '$c = $core->blog->settings->themes->get($core->blog->settings->system->theme . \'_entries_counts\');'  . "\n" .
+            'if (App::blog()->settings->themes->get(App::blog()->settings->system->theme . \'_entries_counts\')) {'  . "\n" .
+                '$c = App::blog()->settings->themes->get(App::blog()->settings->system->theme . \'_entries_counts\');'  . "\n" .
                 '$c = @unserialize($c);'  . "\n" .
                 'if (is_array($c)) {' . "\n" .
                     '$c = $c[\'list\'];' . "\n" .
@@ -124,7 +124,7 @@ class Frontend extends Process
             'else {' . "\n" .
                 '$c = 9;' . "\n" .
             '}' . "\n" .
-            '$_ctx->nb_entry_first_page = $c;' . "\n" .
+            'App::frontend()->context()->nb_entry_first_page = $c;' . "\n" .
                     '?>'  . "\n";
             ;
         }
@@ -249,7 +249,7 @@ class Frontend extends Process
      * @param   ArrayObject $attr
      * @return  string      <ul> with links to social media profiles
      */
-    public static function magalogueSocialLinks(ArrayObject $attr): string
+    public static function magalogueSocialLinks(): string
     {
         # Social media links
         $res     = '';
@@ -288,7 +288,18 @@ class Frontend extends Process
             return $res;
         }
     }
-    protected static function setSocialLink($position, $last, $label, $url, $image)
+
+    /**
+     * Creates html list contents for Tpl:magalogueSocialLinks
+     *
+     * @param int $position
+     * @param boolean $last
+     * @param string $label
+     * @param string $url
+     * @param string $image
+     * @return string
+     */
+    protected static function setSocialLink(int $position, bool $last, string $label, string $url, string $image): string
     {
         return '<li id="slink' . $position . '"' . ($last ? ' class="last"' : '') . '>' . "\n" .
             '<a href="' . $url . '">' . "\n" .
@@ -297,6 +308,12 @@ class Frontend extends Process
             '</li>' . "\n";
     }
 
+    /**
+     * Do not display undefined links in Tpl:magalogueSocialLinks
+     *
+     * @param array $s
+     * @return boolean
+     */
     protected static function cleanSocialLinks(array $s): bool
     {
         if (is_array($s)) {
@@ -309,12 +326,22 @@ class Frontend extends Process
         return false;
     }
 
-    public static function magalogueBanner($attr)
+    /**
+     * Tpl:magalogueBanner template element
+     *
+     * @return string
+     */
+    public static function magalogueBanner(): string
     {
         return '<?php echo ' . self::class . '::magalogueBannerHelper(); ?>';
     }
 
-    public static function magalogueBannerHelper()
+    /**
+     * Helper for Tpl:magalogueBanner
+     *
+     * @return string
+     */
+    public static function magalogueBannerHelper(): string
     {
         $blog_name = App::blog()->name;
         $img_url = App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/img/MagalogueBanner.png';
@@ -352,7 +379,13 @@ class Frontend extends Process
         return '<img src="' . $img_url .'" alt="' . $blog_name . '" />';
     }
 
-    public static function thisPostrelatedEntries ($id)
+    /**
+     * Get current posts related entries for Tpl:magalogueRelatedEntries
+     *
+     * @param int $id
+     * @return string
+     */
+    public static function thisPostrelatedEntries (int $id): string
     {
         $meta = App::meta();
         $params['post_id'] = $id;
@@ -363,7 +396,14 @@ class Frontend extends Process
         return $meta->getMetaStr($rs->post_meta,'relatedEntries');
     }
 
-    public static function magalogueRelatedEntries($attr, $content)
+    /**
+     * Tpl:magalogueRelatedEntries template block - Displays relatedEntries in a grid
+     *
+     * @param ArrayObject $attr
+     * @param string $content
+     * @return string
+     */
+    public static function magalogueRelatedEntries(ArrayObject $attr, string $content): string
     {
         # Settings
 
@@ -374,7 +414,7 @@ class Frontend extends Process
                 $s = &App::blog()->settings()->relatedEntries;
 
                 if (!$s->relatedEntries_enabled) {
-                    return;
+                    return '';
                 }
 
                 $lastn = -1;
@@ -382,9 +422,9 @@ class Frontend extends Process
                     $lastn = abs((integer) $attr['lastn']) + 0;
                 }
 
-                $rel = "if (" . self::class . "::thisPostrelatedEntries(\$_ctx->posts->post_id) !== '') :\n";
-                $rel .= "\$meta = &\$GLOBALS['core']->meta;\n";
-                $rel .= "\$r_ids = " . self::class . "::thisPostrelatedEntries(\$_ctx->posts->post_id);";
+                $rel = "if (" . self::class . "::thisPostrelatedEntries(App::frontend()->context()->posts->post_id) !== '') :\n";
+                $rel .= "\$meta = App::meta();\n";
+                $rel .= "\$r_ids = " . self::class . "::thisPostrelatedEntries(App::frontend()->context()->posts->post_id);";
 
                 $p = "\$params['post_id'] = \$meta->splitMetaValues(\$r_ids);\n";
 
@@ -396,8 +436,8 @@ class Frontend extends Process
                         $p .= "\$nb_entry_first_page = \$nb_entry_per_page = " . $lastn . ";\n";
                     } else {
                         // nb of entries per page not specified -> use ctx settings
-                        $p .= "\$nb_entry_first_page=\$_ctx->nb_entry_first_page; \$nb_entry_per_page = \$_ctx->nb_entry_per_page;\n";
-                        $p .= "if ((\$core->url->type == 'default') || (\$core->url->type == 'default-page')) {\n";
+                        $p .= "\$nb_entry_first_page = App::frontend()->context()->nb_entry_first_page; \$nb_entry_per_page = App::frontend()->context()->nb_entry_per_page;\n";
+                        $p .= "if ((App::url()->type == 'default') || (App::url()->type == 'default-page')) {\n";
                         $p .= "    \$params['limit'] = (\$_page_number == 1 ? \$nb_entry_first_page : \$nb_entry_per_page);\n";
                         $p .= "} else {\n";
                         $p .= "    \$params['limit'] = \$nb_entry_per_page;\n";
@@ -417,12 +457,12 @@ class Frontend extends Process
                 $res .= App::behavior()->callBehavior("templatePrepareParams",
                     ["tag" => "Entries", "method" => "blog::getPosts"],
                     $attr, $content);
-                $res .= '$_ctx->post_params = $params;' . "\n";
-                $res .= '$_ctx->posts = $core->blog->getPosts($params); unset($params);' . "\n";
+                $res .= 'App::frontend()->context()->post_params = $params;' . "\n";
+                $res .= 'App::frontend()->context()->posts = App::blog()->getPosts($params); unset($params);' . "\n";
                 $res .= "?>\n";
                 $res .=
-                    '<?php while ($_ctx->posts->fetch()) : ?>' . $content . '<?php endwhile; ' .
-                    '$_ctx->posts = null; $_ctx->post_params = null;
+                    '<?php while (App::frontend()->context()->posts->fetch()) : ?>' . $content . '<?php endwhile; ' .
+                    'App::frontend()->context()->posts = null; App::frontend()->context()->post_params = null;
                     endif; ?>';
 
                 return $res;
