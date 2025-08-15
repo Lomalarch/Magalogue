@@ -197,13 +197,13 @@ h1, h2, h3, h4, h5, h6 {
 */
 @font-face {
   font-family: "Lato";
-  src: url('fonts/lato-regular-webfont.woff2?1723918330') format('woff2'); }
+  src: url('index.php?tf=fonts/lato-regular-webfont.woff2') format('woff2'); }
 @font-face {
   font-family: "playfair-display";
-  src: url('fonts/playfairdisplay-regular-webfont.woff2?1723918330') format('woff2'); }
+  src: url('index.php?tf=fonts/playfairdisplay-regular-webfont.woff2') format('woff2'); }
 @font-face {
   font-family: "slick";
-  src: url('fonts/slick.woff?1723918330') format('woff'); }
+  src: url('index.php?tf=fonts/slick.woff') format('woff'); }
 /** --------------------------------------------------
     Common rules
 --------------------------------------------------- */
@@ -427,7 +427,7 @@ body {
       font-size: 3rem; }
 
   .header-band {
-    background: transparent url(img/ballon.png) no-repeat 97% 69%; }
+    background: transparent url(index.php?tf=img/ballon.png) no-repeat 97% 69%; }
 
   .follow-us {
     float: left;
@@ -472,7 +472,7 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     word-wrap: break-word;
-    background: transparent url(img/search-form.png) no-repeat;
+    background: transparent url(index.php?tf=img/search-form.png) no-repeat;
     margin-top: 40px;
     padding: 0 0 0 25px; }
     #search p {
@@ -579,7 +579,7 @@ h1.HomeLink {
   width: 72em;
   margin-left: -43em;
   height: 165px;
-  background: transparent url(img/ballon.png) no-repeat top right; }
+  background: transparent url(index.php?tf=img/ballon.png) no-repeat top right; }
 
 .header {
   position: relative;
@@ -1026,7 +1026,7 @@ li.tag-current a:link, li.tag-current a:visited {
 .extratoppub {
   margin: 1em -53px 0;
   text-align: center;
-  background: transparent url(img/ours_deco.png) no-repeat right; }
+  background: transparent url(index.php?tf=img/ours_deco.png) no-repeat right; }
 
 .extrasidepub {
   float: left;
@@ -1147,7 +1147,7 @@ li.tag-current a:link, li.tag-current a:visited {
     border-bottom: 1px dotted #dcdcdc; }
 
 h3.related-entries {
-  background: transparent url(img/sep-double.png) repeat-x center;
+  background: transparent url(index.php?tf=img/sep-double.png) repeat-x center;
   font-size: 1em;
   color: #444;
   letter-spacing: 2px;
@@ -1789,7 +1789,7 @@ hr.home-separator {
   text-align: center;
   text-transform: uppercase;
   font-size: 1em;
-  background: transparent url(img/gray-line.png) repeat-x center;
+  background: transparent url(index.php?tf=img/gray-line.png) repeat-x center;
   color: #444;
   letter-spacing: 2px; }
 

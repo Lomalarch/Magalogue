@@ -181,7 +181,7 @@ $zen-switch-direction             : false       !default;
       @warn "Setting $box-sizing to #{$box-sizing} will fail for legacy IE browsers because the $box-sizing-polyfill-path is empty.";
     }
     @if $box-sizing-polyfill-path != "" {
-      *behavior: url($box-sizing-polyfill-path);
+      *behavior: url(index.php?tf=$box-sizing-polyfill-path);
     }
     @if $legacy-support-for-ie6 {
       // Display inline or double your floated margin!

@@ -6,7 +6,7 @@
         }    
     }
     .header-band {
-        background: transparent url(img/ballon.png) no-repeat 97% 69%;
+        background: transparent url(index.php?tf=img/ballon.png) no-repeat 97% 69%;
     }
     .follow-us {
         @include zen-grid-item(5,1);
@@ -30,7 +30,7 @@
         }
     #search {
         @include zen-grid-item(3,10);
-        background: transparent url(img/search-form.png) no-repeat;
+        background: transparent url(index.php?tf=img/search-form.png) no-repeat;
         margin-top: 40px;
         padding: 0 0 0 25px;
         p {
@@ -160,7 +160,7 @@ h1.HomeLink {
     width: 72em;
     margin-left: -43em;
     height: 165px;
-    background: transparent url(img/ballon.png) no-repeat top right;
+    background: transparent url(index.php?tf=img/ballon.png) no-repeat top right;
 }
 .header {
     position: relative;
