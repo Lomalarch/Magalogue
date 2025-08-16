@@ -14,12 +14,13 @@ $this->registerModule(
     'Magalogue',                    // Name
     'Thème adaptatif',              // Description
     'Julien Jakoby / Noé Cendrier', // Author
-    '2.6',                          // Version
+    '2.7',                          // Version
     [                               // Properties
-        'requires'    => [['core', '2.30']],
+        'requires'    => [['core', '2.35']],
         'standalone_config' => true,
         'type'   => 'theme',
         'tplset' => 'dotty',
         'support'     => 'https://github.com/Lomalarch/Magalogue',
+        'overload'  => true
     ]
 );
