@@ -407,6 +407,7 @@ class Frontend extends Process
     {
         # Settings
 
+        $res = '';
         if (App::plugins()->moduleExists('relatedEntries')) {
             if (App::url()->type == 'post')
             {
@@ -465,8 +466,9 @@ class Frontend extends Process
                     'App::frontend()->context()->posts = null; App::frontend()->context()->post_params = null;
                     endif; ?>';
 
-                return $res;
             }
         }
+        return $res;
+
     }
 }
