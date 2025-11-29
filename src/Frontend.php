@@ -218,7 +218,7 @@ class Frontend extends Process
     }
 
     /**
-     * Helper for Tpl:ductileEntriesList
+     * Helper for Tpl:magalogueEntriesList
      *
      * @param   string  $default    The default
      * @return  string
