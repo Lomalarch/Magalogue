@@ -420,7 +420,7 @@ class Frontend extends Process
 
                 $lastn = -1;
                 if (isset($attr['lastn'])) {
-                    $lastn = abs((integer) $attr['lastn']) + 0;
+                    $lastn = abs((int) $attr['lastn']) + 0;
                 }
 
                 $rel = "if (" . self::class . "::thisPostrelatedEntries(App::frontend()->context()->posts->post_id) !== '') :\n";
