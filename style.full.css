@@ -2472,7 +2472,7 @@ hr.home-separator {
   text-align: center;
   text-transform: uppercase;
   font-size: 1em;
-  background: transparent url(index.php?tf=img/gray-line.png) repeat-x center;
+  background: transparent url(index.php?tf=/img/gray-line.png) repeat-x center;
   color: var(--section-title-color);
   letter-spacing: 2px;
 }
