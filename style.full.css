@@ -1030,17 +1030,9 @@ li.tag-current a:link, li.tag-current a:visited {
 .sidebar .widget.tags ul {
   text-align: center; }
 
-.extratoppub {
-  margin: 1em -53px 0;
+.sidebar .widget.tags ul {
   text-align: center;
-  background: transparent url(index.php?tf=/img/ours_deco.png) no-repeat right; }
-
-.extrasidepub {
-  float: left;
-  margin: 1em 1em 0 0; }
-
-.extrasidepubcontainer {
-  background-color: #f3f3f3; }
+}
 
 @media screen and (min-width: 30.1em) and (max-width: 60em) {
   .blognav__widgets .widget, .blogextra__widgets .widget {
