@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function() {
 const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 if (!mediaQuery || mediaQuery.matches) {
     var animate = false;
