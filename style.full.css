@@ -556,15 +556,15 @@ body {
   }
 
   #sidebar {
-    float: left;
+    /* float: left; */
     width: 25%;
-    margin-left: 75%;
+    /* margin-left: 75%;
     margin-right: -100%;
     padding-left: 0;
     padding-right: 0;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    word-wrap: break-word;
+    word-wrap: break-word; */
   }
 
   .blognav__widgets,
@@ -576,13 +576,21 @@ body {
 @media screen and (min-width: 110.1em) {
 
   #page,
-  #bottomlinks,
-  .header-band {
+  #bottomlinks {
     max-width: 61.25em;
   }
 
+  .header-band {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #wrapper {
+    display: flex;
+  }
   #main {
-    float: left;
+    /* float: left;
     width: 66.6666667%;
     margin-left: 0%;
     margin-right: -100%;
@@ -590,19 +598,23 @@ body {
     padding-right: 0;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    word-wrap: break-word;
+    word-wrap: break-word; */
+    width: 66%;
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
+    /* justify-content: space-between; */
   }
 
   #sidebar {
-    float: left;
+    /* float: left; */
     width: 33.3333333%;
-    margin-left: 66.6666667%;
+    /* margin-left: 66.6666667%;
     margin-right: -100%;
     padding-left: 0;
     padding-right: 0;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    word-wrap: break-word;
+    word-wrap: break-word; */
   }
 }
 
@@ -617,13 +629,14 @@ body {
 
   .header-band {
     background: transparent url(index.php?tf=/img/ballon.png) no-repeat 97% 69%;
+    align-items: center;
   }
 
   .follow-us {
-    float: left;
-    width: 41.6666667%;
+    /* float: left; */
+    width: 33%;
     margin-left: 0%;
-    margin-right: -100%;
+    /* margin-right: -100%; */
     padding-left: 0;
     padding-right: 0;
     -moz-box-sizing: border-box;
@@ -645,11 +658,11 @@ body {
 
   .banner {
     padding-top: 10px;
-    margin-right: 3em;
-    float: left;
-    width: 25%;
-    margin-left: 33.3333333%;
-    margin-right: -100%;
+    /* margin-right: 3em; */
+    /* float: left; */
+    width: 33%;
+    /* margin-left: 33.3333333%;
+    margin-right: -100%; */
     padding-left: 0;
     padding-right: 0;
     -moz-box-sizing: border-box;
@@ -659,16 +672,17 @@ body {
   }
 
   #search {
-    float: left;
-    width: 25%;
-    margin-left: 75%;
-    margin-right: -100%;
+    /* float: left; */
+    width: 33%;
+    /* margin-left: 75%; */
+    /* margin-right: -100%; */
+    text-align: right;
     padding-left: 0;
     padding-right: 0;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     word-wrap: break-word;
-    background: transparent url(index.php?tf=/img/search-form.png) no-repeat;
+    background: transparent url(index.php?tf=/img/search-form.png) no-repeat center right;
     margin-top: 40px;
     padding: 0 0 0 25px;
   }
@@ -696,6 +710,7 @@ body {
   #search input[type="submit"] {
     text-transform: uppercase;
     font-weight: bold;
+    padding-right: 12px;
   }
 }
 
@@ -712,11 +727,11 @@ body {
     display: none;
   }
 
-  .banner {
+  /* .banner {
     order: 0;
     width: 30%;
     margin-right: 15px;
-  }
+  } */
 
   #topcontainer {
     min-height: 55px;
@@ -743,7 +758,7 @@ body {
   }
 
   .follow-us {
-    order: 5;
+    /* order: 5; */
     padding-bottom: 15px;
     text-align: center;
     padding: 1rem 0 0 0;
@@ -889,11 +904,12 @@ h1.HomeLink::first-letter {
 }
 
 .header__nav {
+  width: 100%;
   margin: 0;
   padding: 0;
   border: 0;
   overflow: hidden;
-  clear: left;
+  /* clear: left; */
 }
 
 .header__nav li {
@@ -905,10 +921,9 @@ h1.HomeLink::first-letter {
   white-space: nowrap;
   padding-left: 1.15em;
   padding-right: 1.15em;
-  margin-right: .5em;
   padding-top: 1em;
   padding-bottom: 1em;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .header__nav li span:not(.simple-menu-label) {
@@ -1255,19 +1270,27 @@ a.site-title__link:visited a.site-title__link:hover {
   border-radius: 15px 15px 5px 5px;
 }
 
-.sidebar .widget h3 {
+.sidebar .widget h3, #content-info h2 {
   display: inline-block;
   font-size: 1.25em;
-  text-transform: uppercase;
   color: var(--dark-bg-color);
   font-weight: normal;
-  position: relative;
-  top: -1.2rem;
   min-height: 35px;
   background-color: var(--higlight-color);
   padding: 6px 10px 7px;
   margin: auto 0 -1rem 0;
   border-radius: 10px;
+}
+
+.sidebar .widget h3 {
+  text-transform: uppercase;
+  position: relative;
+  top: -1.2rem;
+}
+
+#content-info h2 {
+  text-align: left;
+  margin: .5em 0;
 }
 
 .sidebar .widget ul {
@@ -1490,43 +1513,44 @@ li.tag-current a:visited {
 
 /* *** content info *** */
 #content-info {
+  /* display: flex; */
   border-bottom: 1px solid var(--off-white);
   padding: 0;
   font-size: 1em;
-  text-align: center;
+  /* text-align: center; */
 }
 
-#content-info h2 {
+/* #content-info h2 {
   display: inline-block;
   vertical-align: top;
   padding: .5em .75em;
-  border-radius: .5em;
   color: var(--main-color);
   font-size: 1.4285714em;
   text-align: center;
   margin: 1em 0;
-}
+} */
 
-#content-info h2 a {
+/* #content-info h2 a {
   color: var(--main-color);
-}
+} */
 
 #content-info h3 {
   font-size: 1em;
 }
 
 #content-info ul {
-  margin-top: 0.5714286em;
+  margin: .5em 0;
   padding-left: 0;
+  padding: 8px 0 7px;
 }
 
-.content-info__feed {
+.content-info__feed, .content-info__sub-cat ul {
   display: inline-block;
   vertical-align: top;
   list-style-type: none;
 }
 
-.content-info__feed li {
+.content-info__feed li, .content-info__sub-cat li {
   display: inline;
   margin-right: 1.5em;
 }
@@ -1648,16 +1672,16 @@ h3.related-entries span {
 
   .post,
   .related-entry {
-    float: right;
-    clear: right;
+    /* float: right;
+    clear: right; */
     width: 48.5%;
   }
 
-  .post.odd,
+  /* .post.odd,
   .related-entry.odd {
     float: left;
     clear: both;
-  }
+  } */
 
   .dc-post .post div.image {
     height: 390px;
@@ -2510,9 +2534,9 @@ hr.home-separator {
   transition: all 0.3s linear;
 }
 
-.js #content-info h2,
-.js .content-info__feed {
-  margin-right: 3.5em;
+.js #content-info h2/* ,
+.js .content-info__feed */ {
+  margin-right: 1.5em;
 }
 
 @media screen and (max-width: 80em) {
@@ -2559,6 +2583,7 @@ hr.home-separator {
   }
 
   #wrapper {
+    display: flex;
     position: relative;
   }
 
