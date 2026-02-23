@@ -628,8 +628,10 @@ body {
   }
 
   .header-band {
-    background: transparent url(index.php?tf=/img/ballon.png) no-repeat 97% 69%;
+    background: transparent url(index.php?tf=/img/ballon.png) no-repeat right top;
     align-items: center;
+    padding-top: 90px;
+
   }
 
   .follow-us {
@@ -642,7 +644,7 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     word-wrap: break-word;
-    padding-top: 3.3rem;
+    /* padding-top: 3.3rem; */
   }
 
   .follow-us ul {
@@ -657,7 +659,7 @@ body {
   }
 
   .banner {
-    padding-top: 10px;
+    /* padding-top: 10px; */
     /* margin-right: 3em; */
     /* float: left; */
     width: 33%;
@@ -683,7 +685,7 @@ body {
     box-sizing: border-box;
     word-wrap: break-word;
     background: transparent url(index.php?tf=/img/search-form.png) no-repeat center right;
-    margin-top: 40px;
+    /* margin-top: 40px; */
     padding: 0 0 0 25px;
   }
 
@@ -746,6 +748,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 1em;
+    align-items: baseline;
   }
 
   .header-band nav {
@@ -834,7 +837,7 @@ h1.HomeLink::first-letter {
   color: var(--higlight-color);
 }
 
-#balloon {
+/* #balloon {
   position: absolute;
   top: 16px;
   left: 50%;
@@ -843,14 +846,15 @@ h1.HomeLink::first-letter {
   margin-left: -43em;
   height: 165px;
   background: transparent url(index.php?tf=/img/ballon.png) no-repeat top right;
-}
+} */
 
 .header {
   position: relative;
   width: 100%;
   max-width: 100%;
   z-index: 1000;
-  background: var(--main-background);
+  background: transparent;
+  top: -58px;
 }
 
 .header a:link,
@@ -886,7 +890,7 @@ h1.HomeLink::first-letter {
 
 .header {
   border-bottom: 1px solid var(--off-white);
-  background-color: var(--main-background);
+  /* background-color: var(--main-background); */
 }
 
 .site-baseline {
