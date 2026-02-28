@@ -1679,18 +1679,16 @@ h3.related-entries span {
 
 @media screen and (min-width: 40.1em) {
 
+  #related-entries-block {
+    clear: both;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
   .post,
   .related-entry {
-    /* float: right;
-    clear: right; */
     width: 48.5%;
   }
-
-  /* .post.odd,
-  .related-entry.odd {
-    float: left;
-    clear: both;
-  } */
 
   .dc-post .post div.image {
     height: 390px;

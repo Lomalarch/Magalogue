@@ -69,7 +69,8 @@
 	<!-- # relatedPosts (if plugin is installed) -->
 	<tpl:magalogueRelatedEntries lastn="4">
 	<tpl:EntriesHeader>
-			<h3 class="related-entries"><span>{{tpl:lang Related entries}}</span></h3>
+	<h3 class="related-entries"><span>{{tpl:lang Related entries}}</span></h3>
+	<div id="related-entries-block">
 	</tpl:EntriesHeader>
 		<div class="related-entry {{tpl:EntryIfOdd}}">
 			<tpl:EntryIf has_featured_media="1">
@@ -102,6 +103,9 @@
 					<p class="post-read-it"><span class="button"><a href="{{tpl:EntryURL}}" title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:lang Continue reading}}</span></a></p>
 				</div>
 			</div>
+		<tpl:EntriesFooter>
+		</div>
+		</tpl:EntriesFooter>
 		</tpl:magalogueRelatedEntries>
 
 	<!-- # --BEHAVIOR-- publicEntryAfterContent -->
