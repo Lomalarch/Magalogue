@@ -2480,6 +2480,10 @@ hr.home-separator {
     top: -58px;
   }
 
+  #topcontainer {
+    margin-bottom: -58px;
+  }
+
   .dc-home .post {
     width: 32%;
   }
