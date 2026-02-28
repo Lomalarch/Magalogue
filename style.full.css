@@ -756,9 +756,9 @@ body {
     order: 2;
   }
 
-  .header-band div {
+  /* .header-band div {
     height: 2rem;
-  }
+  } */
 
   .follow-us {
     /* order: 5; */
@@ -854,7 +854,6 @@ h1.HomeLink::first-letter {
   max-width: 100%;
   z-index: 1000;
   background: transparent;
-  top: -58px;
 }
 
 .header a:link,
@@ -978,6 +977,7 @@ h1.HomeLink::first-letter {
   top: 10px;
   right: .5em;
   padding: 0;
+  z-index: 5000;
   background-color: var(--higlight-color);
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -1004,6 +1004,11 @@ h1.HomeLink::first-letter {
   .header__nav {
     margin-left: -.5em;
     margin-right: -.5em;
+  }
+
+  .header-band {
+    column-gap: 5%;
+    align-items: center;
   }
 
   .header__nav li {
@@ -2470,6 +2475,11 @@ hr.home-separator {
 }
 
 @media screen and (min-width: 80.1em) {
+
+  .header {
+    top: -58px;
+  }
+
   .dc-home .post {
     width: 32%;
   }
