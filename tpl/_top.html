@@ -1,6 +1,5 @@
 <div id="topcontainer">
 	<p class="site-baseline">{{tpl:BlogDescription remove_html="1"}}</p>
-	<div id="balloon"></div>
 	<header class="header">
 		<nav role="navigation">
 			<ul class="skip-links" id="prelude">
@@ -23,10 +22,11 @@
 			<setting name="homeonly">0</setting>
 			<setting name="content_only">0</setting>
 			</tpl:Widget>
-
 			{{tpl:SimpleMenu class="nav header__nav"}}
-
 		</div>
+		<!-- <div class="menu-band"> -->
+			
+		<!-- </div> -->
 
 		<!-- # --BEHAVIOR-- publicTopAfterContent -->
 		{{tpl:SysBehavior behavior="publicTopAfterContent"}}
