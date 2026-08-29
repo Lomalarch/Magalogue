@@ -20,22 +20,38 @@
 namespace Dotclear\Theme\magalogue;
 
 use Dotclear\App;
-use Dotclear\Core\Backend\Notices;
-use Dotclear\Core\Backend\Page;
-use Dotclear\Core\Backend\ThemeConfig;
-use Dotclear\Core\Process;
 use Dotclear\Helper\File\Files;
-use Dotclear\Helper\Html\Html;
-use Dotclear\Helper\Network\Http;
+use Dotclear\Helper\Html\Form\Caption;
+use Dotclear\Helper\Html\Form\Checkbox;
+use Dotclear\Helper\Html\Form\Fieldset;
+use Dotclear\Helper\Html\Form\Hidden;
+use Dotclear\Helper\Html\Form\Img;
+use Dotclear\Helper\Html\Form\Input;
+use Dotclear\Helper\Html\Form\Label;
+use Dotclear\Helper\Html\Form\Legend;
+use Dotclear\Helper\Html\Form\Number;
+use Dotclear\Helper\Html\Form\Para;
+use Dotclear\Helper\Html\Form\Set;
+use Dotclear\Helper\Html\Form\None;
+use Dotclear\Helper\Html\Form\Note;
+use Dotclear\Helper\Html\Form\Select;
+use Dotclear\Helper\Html\Form\Table;
+use Dotclear\Helper\Html\Form\Tbody;
+use Dotclear\Helper\Html\Form\Td;
+use Dotclear\Helper\Html\Form\Th;
+use Dotclear\Helper\Html\Form\Thead;
+use Dotclear\Helper\Html\Form\Tr;
+use Dotclear\Helper\Process\TraitProcess;
 use Exception;
-use form;
 
 /**
  * @brief   The module configuration process.
  * @ingroup ductile
  */
-class Config extends Process
+class Config
 {
+    use TraitProcess;
+
     public static function init(): bool
     {
         // limit to backend permissions
@@ -146,8 +162,6 @@ class Config extends Process
         App::backend()->magalogue_stickers = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_stickers');
         App::backend()->magalogue_stickers = @unserialize(App::backend()->magalogue_stickers);
 
-        // if (!$magalogue_base['links_color'])
-
         // If no stickers defined, add feed Atom one
         if (!is_array(App::backend()->magalogue_stickers)) {
             App::backend()->magalogue_stickers = [[
@@ -201,8 +215,8 @@ class Config extends Process
                 # HTML
                 $magalogue_user = App::backend()->magalogue_user;
 
-                $magalogue_user['logo_src'] = $_POST['logo_src'];
-                $magalogue_user['no_logo']  = (integer) !empty($_POST['no_logo']);
+                $magalogue_user['logo_src'] = $_POST['logo_src'] ?? '';
+                $magalogue_user['no_logo']  = (int) !empty($_POST['no_logo']);
                 $magalogue_user['links_color'] = $_POST['links_color'];
 
                 App::backend()->magalogue_user = $magalogue_user;
@@ -254,7 +268,7 @@ class Config extends Process
                 }
                 App::backend()->magalogue_counts = $magalogue_counts;
                     
-                App::blog()->settings()->addNamespace('themes');
+                App::blog()->settings()->addWorkspace('themes');
                 App::blog()->settings()->themes->put(App::blog()->settings()->system->theme . '_style', serialize(App::backend()->magalogue_user));
                 App::blog()->settings()->themes->put(App::blog()->settings()->system->theme . '_stickers', serialize($magalogue_stickers));
                 App::blog()->settings()->themes->put(App::blog()->settings()->system->theme . '_entries_lists', serialize(App::backend()->magalogue_lists));
@@ -266,7 +280,7 @@ class Config extends Process
                 // Template cache reset
                 App::cache()->emptyTemplatesCache();
 
-                Notices::message(__('Theme configuration upgraded.'), true, true);
+                App::backend()->notices()->message(__('Theme configuration upgraded.'), true, true);
             } catch (Exception $e) {
                App::error()->add($e->getMessage());
             }
@@ -284,123 +298,190 @@ class Config extends Process
             return;
         }
 
-        // Helpers
+        // Loop values
 
-        $fontDef = fn ($c) => isset(App::backend()->font_families[$c]) ?
-            '<abbr title="' . Html::escapeHTML(App::backend()->font_families[$c]) . '"> ' . __('Font family') . ' </abbr>' :
-            '';
-
-        // Legacy mode
-        if (!App::backend()->standalone_config) {
-            echo '</form>';
-        }
-
-        // HTML Tab
-
-        echo
-        // '<div class="multi-part" id="themes-list' . (App::backend()->conf_tab === 'html' ? '' : '-html') . '" title="' . __('Content') . '">' .
-        '<form id="theme_config" action="' . App::backend()->url()->get('admin.blog.theme', ['conf' => '1']) .
-        '" method="post" enctype="multipart/form-data">' .
-    
-        '<h4 class="pretty-title">' . __('Header') . '</h4>' .
-        '<p class="field"><label for="logo_src">' . __('Logo URL:') . '</label> ' . 
-        form::field('logo_src', 40, 255, App::backend()->magalogue_user['logo_src']) . '</p>' .
-        '<p class="field"><label for="no_logo">' . __('No logo (display Blog name):') . '</label> ' .
-        form::checkbox('no_logo', 1, App::backend()->magalogue_user['no_logo']);
-    
-    
-        if (App::plugins()->moduleExists('simpleMenu')) {
-            echo
-            '<p>' .
-            sprintf(
-                __('To configure the top menu go to the <a href="%s">Simple Menu administration page</a>.'),
-                App::backend()->url()->get('admin.plugin.simpleMenu')
-            ) .
-            '</p>';
-        }
-
-        echo '<h4 class="border-top pretty-title">' . __('Links color') . '</h4>';
-
-        echo 
-        '<p class="field"><label for="links_color">' . __('Select the base highlight color') . '</label>';
-        echo form::combo(['links_color'], App::backend()->links_colors, App::backend()->magalogue_user['links_color'] ?? 'green'); 
-        echo '<h4 class="border-top pretty-title">' . __('Social links') . '</h4>';
-        
-        echo
-        '<div class="table-outer">' .
-        '<table class="dragable">' . '<caption>' . __('Social links (header)') . '</caption>' .
-        '<thead>' .
-        '<tr>' .
-        '<th scope="col">' . '</th>' .
-        '<th scope="col">' . __('Image') . '</th>' .
-        '<th scope="col">' . __('Label') . '</th>' .
-        '<th scope="col">' . __('URL') . '</th>' .
-            '</tr>' .
-            '</thead>' .
-            '<tbody id="stickerslist">';
-        $count = 0;
-        foreach (App::backend()->magalogue_stickers as $i => $v) {
-            $count++;
-            $v['service'] = !empty($v['image']) ? str_replace('.svg', '', $v['image']) : null;
-            echo
-            '<tr class="line" id="l_' . $i . '">' .
-            '<td class="handle minimal">' . form::number(['order[' . $i . ']'], [
-                'min'     => 0,
-                'max'     => count(App::backend()->magalogue_stickers),
-                'default' => $count,
-                'class'   => 'position'
-            ]) .
-            form::hidden(['dynorder[]', 'dynorder-' . $i], $i) . '</td>' .
-            '<td class="linkimg">' . form::hidden(['sticker_image[]'], $v['image']) . '<img src="' . App::backend()->img_url_link . $v['image'] . '" alt="' . $v['service'] . '" title="' . $v['service'] . '" style="max-height: 1.2em;"/> ' . '</td>' .
-            '<td scope="row">' . form::field(['sticker_label[]', 'dsl-' . $i], 20, 255, $v['label']) . '</td>' .
-            '<td>' . form::field(['sticker_url[]', 'dsu-' . $i], 40, 255, $v['url']) . '</td>' .
-                '</tr>';
-        }
-        echo
-            '</tbody>' .
-            '</table></div>';
-        
-        echo '<h4 class="border-top pretty-title">' . __('Entries lists in homepage') . '</h4>';
-        
-        echo '<table id="entrieslist">' . '<caption class="hidden">' . __('Entries lists') . '</caption>' .
-        '<thead>' .
-        '<tr>' .
-        '<th scope="col">' . __('Context') . '</th>' .
-        '<th scope="col">' . __('Entries list type') . '</th>' .
-        '<th scope="col">' . __('Number of entries (Selected and Last entries only)') . '</th>' .
-        '</tr>' .
-        '</thead>' .
-        '<tbody>';
-        foreach (App::backend()->contexts as $k => $v) {
-            echo
-            '<tr>' .
-            '<td scope="row">' . App::backend()->contexts[$k] . '</td>' .
-            '<td>' . form::hidden(['list_ctx[]'], $k) . form::combo(['list_type[]'], App::backend()->slider_list_types, App::backend()->magalogue_lists[$k]) . '</td>';
-            if (array_key_exists($k, App::backend()->magalogue_counts)) {
-                echo '<td>' . form::hidden(['count_ctx[]'], $k) . form::number(['count_nb[]'], [
-                    'min'     => 0,
-                    'max'     => 999,
-                    'default' => App::backend()->magalogue_counts[$k]
-                ]) . '</td>';
-            } else {
-                echo '<td></td>';
+        $social_links = function () {
+            $count = 0;
+            foreach (App::backend()->magalogue_stickers as $i => $v) {
+                $count++;
+                $v['service'] = !empty($v['image']) ? str_replace('.svg', '', $v['image']) : null;
+                yield (new Tr('1_' . $i))
+                    ->cols([
+                        (new Td())
+                            ->class('handle minimal')
+                            ->items([
+                                (new Number(['order[' . $i . ']'], 0, count(App::backend()->magalogue_stickers), $count))
+                                    ->class('position'),
+                                (new Hidden(['dynorder[]', 'dynorder-' . $i], (string) $i)),
+                            ]),
+                        (new Td())
+                            ->class('linkimg')
+                            ->items([
+                                (new Hidden(['sticker_image[]'], $v['image'])),
+                                (new Img(App::backend()->img_url_link . $v['image']))
+                                    ->alt($v['service'])
+                                    ->title($v['service'])
+                                    ->extra('style="max-height: 1.2em"')
+                            ]),
+                        (new Td())
+                            ->items([
+                                (new Input(['sticker_label[]', 'dsl-' . $i]))
+                                    ->size(20)
+                                    ->maxlength(255)
+                                    ->default($v['label'])
+                            ]),
+                        (new Td())
+                            ->items([
+                                (new Input(['sticker_url[]', 'dsu-' . $i]))
+                                    ->size(40)
+                                    ->maxlength(255)
+                                    ->default($v['url'])
+                            ])
+                    ]);
             }
-            echo
-                '</tr>';
-        }
-        echo
-            '</tbody>' .
-            '</table>';
-        
-        echo '<p class="clear">' . form::hidden('ds_order', '') . '<input type="submit" value="' . __('Save') . '" />' . App::nonce()->getFormNonce() . '</p>';
-        echo '</form>';
-        
-        
-        Page::helpBlock('magalogue');
-        
-        // Legacy mode
-        if (!App::backend()->standalone_config) {
-            echo '<form style="display:none">';
-        }
+
+        };
+
+        $home_content = function () {
+            foreach (App::backend()->contexts as $k => $v) {
+                yield (new Tr())
+                    ->items([
+                        (new Td())
+                            ->scope('row')
+                            ->text(App::backend()->contexts[$k]),
+                        (new Td())
+                            ->items([
+                                (new Hidden('list_ctx[]', 'slider')),
+                                (new Select('list_type[]'))
+                                    ->items(App::backend()->slider_list_types)
+                                    ->default(App::backend()->magalogue_lists[$k])
+                            ]),
+                        (new Td())
+                            ->items([
+                                array_key_exists($k, App::backend()->magalogue_counts) ?
+                                    (new Set())
+                                        ->items([
+                                            (new Hidden(['count_ctx[]'], $k)),
+                                            (new Number(['count_nb[]'], 0, 999, (int) App::backend()->magalogue_counts[$k])),
+                                        ]) :
+                                    (new None()),
+
+                            ])
+                    ]);
+                // echo
+                // '<tr>' .
+                // '<td scope="row">' . App::backend()->contexts[$k] . '</td>' .
+                // '<td>' . form::hidden(['list_ctx[]'], $k) . form::combo(['list_type[]'], App::backend()->slider_list_types, App::backend()->magalogue_lists[$k]) . '</td>';
+                // if (array_key_exists($k, App::backend()->magalogue_counts)) {
+                //     echo '<td>' . form::hidden(['count_ctx[]'], $k) . form::number(['count_nb[]'], 0, 999, App::backend()->magalogue_counts[$k]) . '</td>';
+                // } else {
+                //     echo '<td></td>';
+                // }
+                // echo
+                //     '</tr>';
+            }
+        };
+
+        // Page content
+
+        echo (new Set())
+            ->items([
+                (new Fieldset())
+                    ->legend((new Legend((__('Header')))))
+                    ->items([
+                        (new Para())
+                            ->items([
+                                (new Input())
+                                    ->id('logo_src')
+                                    ->value(App::backend()->magalogue_user['logo_src'])
+                                    ->label((new Label(__('Logo URL:'), Label::OL_TF)))
+                            ])->class('field'),
+                        (new Para())
+                            ->items([
+                                (new Checkbox('no_logo'))
+                                    ->label((new Label(__('No logo (display Blog name):', Label::OL_TF))))
+                                    ->checked(App::backend()->magalogue_user['no_logo'])
+                            ]),
+                        App::plugins()->moduleExists('simpleMenu') ?
+                            (new Note())
+                                ->text(sprintf(
+                                    __('To configure the top menu go to the <a href="%s">Simple Menu administration page</a>.'),
+                                    App::backend()->url()->get('admin.plugin.simpleMenu')
+                                ))
+                                ->class(['form-note', 'info']) :
+                            (new None()),
+                    ]),
+                (new Fieldset())
+                    ->legend((new Legend(__('Links color'))))
+                    ->items([
+                        (new Para)
+                        ->class('field')
+                        ->items([
+                            (new Select('links_color'))
+                                ->items(App::backend()->links_colors)
+                                ->default((App::backend()->magalogue_user['links_color'] ?? 'green'))
+                                ->label((new Label(__('Select the base highlight color'), Label::OL_TF)))
+                            ])
+                    ]),
+                (new Fieldset())
+                    ->legend((new Legend(__('Social links'))))
+                    ->items([
+                        (new Table())
+                            ->class('dragable')
+                            ->caption((new Caption(__('Social links (header)'))))
+                            ->thead((new Thead())
+                                ->items([
+                                    (new Tr())
+                                        ->items([
+                                            (new Th())
+                                                ->scope('col'),
+                                            (new Th())
+                                                ->text(__('Image'))
+                                                ->scope('col'),
+                                            (new Th())
+                                                ->text(__('Label'))
+                                                ->scope('col'),
+                                            (new Th())
+                                                ->text(__('URL'))
+                                                ->scope('col'),
+                                        ]),
+                                ]))
+                            ->tbody((new Tbody('stickerslist'))
+                                ->items([
+                                    ...$social_links(),
+                                ])),
+
+
+                    ])
+                    ->class('table_outer'),
+                (new Fieldset())
+                    ->legend(new Legend((__('Entries lists in homepage'))))
+                    ->items([
+                        (new Table('entrieslist'))
+                            ->caption((new Caption(__('Entries lists')))
+                                ->class('hidden'))
+                            ->thead((new Thead())
+                                ->items([
+                                    (new Tr())
+                                        ->items([
+                                            (new Th())
+                                                ->scope('col')
+                                                ->text(__('Context')),
+                                            (new Th())
+                                                ->scope('col')
+                                                ->text(__('Entries list type')),
+                                            (new Th())
+                                                ->scope('col')
+                                                ->text(__('Number of entries (Selected and Last entries only)')),
+                                        ])
+                                ]))
+                            ->tbody((new Tbody())
+                                ->items([
+                                    ...$home_content(),
+                                ]))
+                    ])
+            ])->render();
+
+        App::backend()->page()->helpBlock('magalogue');
     }
 }
