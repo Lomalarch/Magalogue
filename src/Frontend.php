@@ -6,11 +6,13 @@
  * @copyright   AGPL-3.0
  */
 
+declare(strict_types=1);
+
 namespace Dotclear\Theme\magalogue;
 
 use ArrayObject;
 use Dotclear\App;
-use Dotclear\Core\Process;
+use Dotclear\Helper\Process\TraitProcess;
 use Dotclear\Helper\File\Files;
 use Dotclear\Helper\Html\Html;
 
@@ -18,8 +20,10 @@ use Dotclear\Helper\Html\Html;
  * @brief   The module frontend process.
  * @ingroup magalogue
  */
-class Frontend extends Process
+class Frontend
 {
+    use TraitProcess;
+
     /**
      * Init the process.
      *
@@ -246,7 +250,6 @@ class Frontend extends Process
     /**
      * Tpl:magalogueSocialLinks template element
      *
-     * @param   ArrayObject $attr
      * @return  string      <ul> with links to social media profiles
      */
     public static function magalogueSocialLinks(): string
@@ -287,6 +290,8 @@ class Frontend extends Process
             $res = '<ul id="stickers">' . "\n" . $res . '</ul>' . "\n";
             return $res;
         }
+        // If $res is empty
+        return '';
     }
 
     /**
@@ -409,7 +414,7 @@ class Frontend extends Process
 
         $res = '';
         if (App::plugins()->moduleExists('relatedEntries')) {
-            if (App::url()->type == 'post')
+            if (App::url()->getType() == 'post')
             {
 
                 $s = &App::blog()->settings()->relatedEntries;
@@ -438,7 +443,7 @@ class Frontend extends Process
                     } else {
                         // nb of entries per page not specified -> use ctx settings
                         $p .= "\$nb_entry_first_page = App::frontend()->context()->nb_entry_first_page; \$nb_entry_per_page = App::frontend()->context()->nb_entry_per_page;\n";
-                        $p .= "if ((App::url()->type == 'default') || (App::url()->type == 'default-page')) {\n";
+                        $p .= "if ((App::url()->getType() == 'default') || (App::url()->getType() == 'default-page')) {\n";
                         $p .= "    \$params['limit'] = (\$_page_number == 1 ? \$nb_entry_first_page : \$nb_entry_per_page);\n";
                         $p .= "} else {\n";
                         $p .= "    \$params['limit'] = \$nb_entry_per_page;\n";
