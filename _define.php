@@ -14,10 +14,9 @@ $this->registerModule(
     'Magalogue',                    // Name
     'Thème adaptatif',              // Description
     'Julien Jakoby / Noé Cendrier', // Author
-    '3.6',                          // Version
+    '3.7',                          // Version
     [                               // Properties
-        'requires'    => [['core', '2.37']],
-        'standalone_config' => true,
+        'requires'    => [['core', '2.39']],
         'type'   => 'theme',
         'tplset' => 'dotty',
         'support'     => 'https://github.com/Lomalarch/Magalogue',
