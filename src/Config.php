@@ -17,6 +17,8 @@
  # Liens RS
  */
 
+declare(strict_types=1);
+
 namespace Dotclear\Theme\magalogue;
 
 use Dotclear\App;
@@ -368,17 +370,6 @@ class Config
 
                             ])
                     ]);
-                // echo
-                // '<tr>' .
-                // '<td scope="row">' . App::backend()->contexts[$k] . '</td>' .
-                // '<td>' . form::hidden(['list_ctx[]'], $k) . form::combo(['list_type[]'], App::backend()->slider_list_types, App::backend()->magalogue_lists[$k]) . '</td>';
-                // if (array_key_exists($k, App::backend()->magalogue_counts)) {
-                //     echo '<td>' . form::hidden(['count_ctx[]'], $k) . form::number(['count_nb[]'], 0, 999, App::backend()->magalogue_counts[$k]) . '</td>';
-                // } else {
-                //     echo '<td></td>';
-                // }
-                // echo
-                //     '</tr>';
             }
         };
 
@@ -399,7 +390,7 @@ class Config
                         (new Para())
                             ->items([
                                 (new Checkbox('no_logo'))
-                                    ->label((new Label(__('No logo (display Blog name):', Label::OL_TF))))
+                                    ->label((new Label(__('No logo (display Blog name):'), Label::OL_TF)))
                                     ->checked(App::backend()->magalogue_user['no_logo'])
                             ]),
                         App::plugins()->moduleExists('simpleMenu') ?

@@ -14,7 +14,7 @@ $this->registerModule(
     'Magalogue',                    // Name
     'Thème adaptatif',              // Description
     'Julien Jakoby / Noé Cendrier', // Author
-    '3.7',                          // Version
+    '3.8',                          // Version
     [                               // Properties
         'requires'    => [['core', '2.39']],
         'type'   => 'theme',
